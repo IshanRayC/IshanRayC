@@ -29,9 +29,7 @@ I enjoy understanding how things work under the hood, experimenting with technol
   <img src="https://img.shields.io/badge/PYTHON-3776AB?style=for-the-badge&logo=python&logoColor=white" />
   <img src="https://img.shields.io/badge/JAVA-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" />
   <img src="https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white" />
-  <span style="display:inline-block; vertical-align:4px;">
-  <img src="https://img.shields.io/badge/MATLAB-0000A0?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEuOCAtMS44KSBzY2FsZSgxLjUwKSI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTMgMThoMy4yYzEuNSAwIDIuMi0uOCAyLjktMi40bDIuOC02LjZjLjUtMS4yIDEuOC0xLjggMS44LTEuOC43IDAgMS4yLjUgMS43IDEuNWwyLjUgNi4xYy41IDEuMiAxIDEuNyAyLjIgMS43SDIyVjE4aC0yLjFjLTEuOSAwLTIuOC0uOC0zLjUtMi41TDE0IDkuOGMtLjItLjUtLjQtLjctLjYtLjctLS4zIDAtLjUuMy0uOCAxbC0yLjggNi42QzguOSAxNy4xIDcuOCAxOCA1LjggMThIM3oiLz48L2c+PC9zdmc+&logoColor=white" />
-</span>
+  <img align="middle" src="https://img.shields.io/badge/MATLAB-0000A0?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEuOCAtMS44KSBzY2FsZSgxLjUwKSI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTMgMThoMy4yYzEuNSAwIDIuMi0uOCAyLjktMi40bDIuOC02LjZjLjUtMS4yIDEuOC0xLjggMS44LTEuOC43IDAgMS4yLjUgMS43IDEuNWwyLjUgNi4xYy41IDEuMiAxIDEuNyAyLjIgMS43SDIyVjE4aC0yLjFjLTEuOSAwLTIuOC0uOC0zLjUtMi41TDE0IDkuOGMtLjItLjUtLjQtLjctLjYtLjctLS4zIDAtLjUuMy0uOCAxbC0yLjggNi42QzguOSAxNy4xIDcuOCAxOCA1LjggMThIM3oiLz48L2c+PC9zdmc+&logoColor=white" />
 </p>
 
 ### 📊 Data Science & Scientific Computing
@@ -39,9 +37,7 @@ I enjoy understanding how things work under the hood, experimenting with technol
 <p>
   <img src="https://img.shields.io/badge/NUMPY-013243?style=for-the-badge&logo=numpy&logoColor=white" />
   <img src="https://img.shields.io/badge/PANDAS-150458?style=for-the-badge&logo=pandas&logoColor=white" />
-  <span style="display:inline-block; vertical-align:4px;">
-  <img src="https://img.shields.io/badge/MATLAB-0000A0?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEuOCAtMS44KSBzY2FsZSgxLjUwKSI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTMgMThoMy4yYzEuNSAwIDIuMi0uOCAyLjktMi40bDIuOC02LjZjLjUtMS4yIDEuOC0xLjggMS44LTEuOC43IDAgMS4yLjUgMS43IDEuNWwyLjUgNi4xYy41IDEuMiAxIDEuNyAyLjIgMS43SDIyVjE4aC0yLjFjLTEuOSAwLTIuOC0uOC0zLjUtMi41TDE0IDkuOGMtLjItLjUtLjQtLjctLjYtLjctLS4zIDAtLjUuMy0uOCAxbC0yLjggNi42QzguOSAxNy4xIDcuOCAxOCA1LjggMThIM3oiLz48L2c+PC9zdmc+&logoColor=white" />
-</span>
+  <img align="middle" src="https://img.shields.io/badge/MATLAB-0000A0?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEuOCAtMS44KSBzY2FsZSgxLjUwKSI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTMgMThoMy4yYzEuNSAwIDIuMi0uOCAyLjktMi40bDIuOC02LjZjLjUtMS4yIDEuOC0xLjggMS44LTEuOC43IDAgMS4yLjUgMS43IDEuNWwyLjUgNi4xYy41IDEuMiAxIDEuNyAyLjIgMS43SDIyVjE4aC0yLjFjLTEuOSAwLTIuOC0uOC0zLjUtMi41TDE0IDkuOGMtLjItLjUtLjQtLjctLjYtLjctLS4zIDAtLjUuMy0uOCAxbC0yLjggNi42QzguOSAxNy4xIDcuOCAxOCA1LjggMThIM3oiLz48L2c+PC9zdmc+&logoColor=white" />
 </p>
 
 ### ⚙️ Scripting & Automation
@@ -64,15 +60,19 @@ I enjoy understanding how things work under the hood, experimenting with technol
 ## 🔭 Currently Exploring
 
 ### 🤖 AI / ML & Data Science
+
 Machine learning, data analysis, AI systems and working with real-world datasets.
 
 ### 📈 Quantitative Finance & HFT
+
 Quantitative trading, algorithmic strategies, market data, financial systems and high-performance computing.
 
 ### ☁️ Cloud & DevOps
+
 Linux, cloud infrastructure, deployment, automation and the engineering behind reliable systems.
 
 ### ⚙️ Web Scraping & AI Automation
+
 Building automated workflows that collect information, process it and use AI to perform useful tasks.
 
 ---
@@ -118,3 +118,4 @@ BS — Data Science
   <br>
   <sub>Keep learning. Keep building.</sub>
 </p>
+
