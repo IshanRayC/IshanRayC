@@ -27,8 +27,6 @@ I enjoy understanding how things work under the hood, experimenting with technol
   <img src="https://skillicons.dev/icons?i=python,c,cpp,java,r,matlab,sql" />
 </p>
 
-
-
 ### 📊 Data Science & Scientific Computing
 
 <p>
@@ -38,8 +36,6 @@ I enjoy understanding how things work under the hood, experimenting with technol
   <img src="https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white" />
 </p>
 
-
-
 ### 🗄️ Databases
 
 <p>
@@ -47,14 +43,19 @@ I enjoy understanding how things work under the hood, experimenting with technol
   <img src="https://img.shields.io/badge/Oracle%20Database-F80000?style=for-the-badge&logo=oracle&logoColor=white" />
 </p>
 
-
-
 ### ⚙️ Scripting & Automation
 
 <p>
   <img src="https://img.shields.io/badge/BASH_SCRIPT-121011?style=for-the-badge&logo=gnubash&logoColor=white" />
-  <img src="https://img.shields.io/badge/POWERSHELL-5391FE?style=for-the-badge&logo=powershell&logoColor=white" />
+  <img src="./assets/powershell-badge.svg" alt="PowerShell" />
   <img src="https://img.shields.io/badge/N8N-EA4B71?style=for-the-badge&logo=n8n&logoColor=white" />
+</p>
+
+### ☁️ Cloud, DevOps & Infrastructure
+
+<p>
+  <img src="https://img.shields.io/badge/DOCKER-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
+  <img src="https://img.shields.io/badge/WSL-4D4D4D?style=for-the-badge&logo=linux&logoColor=white" />
 </p>
 
 ---
