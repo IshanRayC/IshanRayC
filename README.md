@@ -63,8 +63,6 @@ I enjoy understanding how things work under the hood, experimenting with technol
 
 ### 🎨 Design & UI/UX
 
-### 🎨 Design & UI/UX
-
 <p>
   <img src="https://img.shields.io/badge/FIGMA-F24E1E?style=for-the-badge&logo=figma&logoColor=white" />
   <img src="https://img.shields.io/badge/CANVA-00C4CC?style=for-the-badge&logo=canva&logoColor=white" />
