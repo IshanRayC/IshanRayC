@@ -63,11 +63,14 @@ I enjoy understanding how things work under the hood, experimenting with technol
 
 ### 🎨 Design & UI/UX
 
-[![Figma](https://img.shields.io/badge/FIGMA-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](#)
-[![Canva](https://img.shields.io/badge/CANVA-00C4CC?style=for-the-badge&logo=canva&logoColor=white)](#)
-[![Adobe Photoshop](https://img.shields.io/badge/PHOTOSHOP-31A8FF?style=for-the-badge&logo=adobephotoshop&logoColor=white)](#)
-[![Adobe XD](https://img.shields.io/badge/ADOBE%20XD-FF61F6?style=for-the-badge&logo=adobexd&logoColor=white)](#)
-[![Framer](https://img.shields.io/badge/FRAMER-0055FF?style=for-the-badge&logo=framer&logoColor=white)](#)
+### 🎨 Design & UI/UX
+
+<p>
+  <img src="https://img.shields.io/badge/FIGMA-F24E1E?style=for-the-badge&logo=figma&logoColor=white" />
+  <img src="https://img.shields.io/badge/CANVA-00C4CC?style=for-the-badge&logo=canva&logoColor=white" />
+  <img src="https://img.shields.io/badge/ADOBE%20XD%20%26%20PHOTOSHOP-FF61F6?style=for-the-badge&logo=adobe&logoColor=white" />
+  <img src="https://img.shields.io/badge/FRAMER-0055FF?style=for-the-badge&logo=framer&logoColor=white" />
+</p>
 
 ---
 
