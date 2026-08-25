@@ -1,5 +1,5 @@
-# Hey, I'm [![IshanRayC](https://img.shields.io/badge/IshanRayC-ff4d4d?style=for-the-badge&logo=github&logoColor=black)](https://github.com/IshanRayC)
- 👋
+# Hey, I'm Ishan👋
+[![IshanRayC](https://img.shields.io/badge/IshanRayC-ff4d4d?style=for-the-badge&logo=github&logoColor=black)](https://github.com/IshanRayC)
 
 ### Build → Break → Debug → Learn → Repeat.
 
