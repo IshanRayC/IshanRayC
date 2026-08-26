@@ -102,7 +102,7 @@ BS — Data Science
 
 [![IshanRayC](https://img.shields.io/badge/IshanRayC-ff4d4d?style=for-the-badge&logo=github&logoColor=black)](https://github.com/IshanRayC)
 
-[![IshanRayC](https://img.shields.io/badge/IshanRayC-00A7B5?style=for-the-badge&logo=linkedin&logoColor=0A66C2)](https://www.linkedin.com/in/ishan-ray-chaudhuri/)
+[![IshanRayC](https://img.shields.io/badge/IshanRayC-00A7B5?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%3EPHBhdGggZmlsbD0iIzBBNjZDMiIgZD0iTTIwLjQ3IDMuNXYxNy4wOEMyMC40NyAyMS41NyAyMC4xIDEyMS44IDcuMCAyMS44SDMuNTNWNDEgIi8%2bPC9zdmc%2b&logoColor=0A66C2)](https://www.linkedin.com/in/ishan-ray-chaudhuri/)
 
 ---
 
