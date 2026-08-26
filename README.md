@@ -100,19 +100,8 @@ BS — Data Science
 
 ## 🤝 Connect With Me
 
-<p>
-  <a href="https://github.com/IshanRayC">
-    <img src="https://img.icons8.com/ios-filled/30/ffffff/github.png" width="24" />
-  </a>
-  <a href="https://github.com/IshanRayC">IshanRayC</a>
-</p>
-
-<p>
-  <a href="https://www.linkedin.com/in/ishan-ray-chaudhuri/">
-    <img src="https://img.icons8.com/ios-filled/30/0A66C2/linkedin.png" width="24" />
-  </a>
-  <a href="https://www.linkedin.com/in/ishan-ray-chaudhuri/">Ishan Ray Chaudhuri</a>
-</p>
+[![IshanRayC](https://img.shields.io/badge/IshanRayC-ff4d4d?style=for-the-badge&logo=github&logoColor=black)](https://github.com/IshanRayC)
+[![IshanRayC](https://img.shields.io/badge/IshanRayC-00A7B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ishan-ray-chaudhuri/)
 
 ---
 
