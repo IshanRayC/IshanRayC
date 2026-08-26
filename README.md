@@ -103,6 +103,7 @@ BS — Data Science
 [![IshanRayC](https://img.shields.io/badge/IshanRayC-ff4d4d?style=for-the-badge&logo=github&logoColor=black)](https://github.com/IshanRayC)
 
 [![IshanRayC](https://img.shields.io/badge/IshanRayC-00A7B5?style=for-the-badge&logo=linkedin&logoColor=003B5C)](https://www.linkedin.com/in/ishan-ray-chaudhuri/)
+
 ---
 
 ## 📊 GitHub Stats
