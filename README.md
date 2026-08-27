@@ -1,6 +1,14 @@
 # Hey, I'm Ishan👋
-[![IshanRayC](https://img.shields.io/badge/IshanRayC-ff4d4d?style=for-the-badge&logo=github&logoColor=black)](https://github.com/IshanRayC)
 
+<p align="center">
+  <img
+    src="./assets/portrait.png"
+    alt="Ishan Ray Chaudhuri"
+    width="420"
+  />
+</p>
+
+<h1 align="center">Software Developer • AI/ML • Cloud & DevOps</h1>
 ### Build → Break → Debug → Learn → Repeat.
 
 I'm a Computer Science student interested in **Software Engineering, AI/ML, Data Science, Quantitative Finance, Cloud, DevOps and Automation**.
