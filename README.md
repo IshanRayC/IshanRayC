@@ -109,9 +109,9 @@ BS — Data Science
 ## 📊 GitHub Activity
 
 <p align="center">
-  <img src="./assets/metrics.isocalendar.svg" alt="3D contribution calendar" />
+  <img src="./assets/metrics.isocalendar.svg" alt="3D GitHub Contribution Calendar" />
 </p>
-
+---
 <p align="center">
   <b>Thanks for stopping by! 👋</b>
   <br>
