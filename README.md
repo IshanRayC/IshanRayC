@@ -2,7 +2,7 @@
 
 <p align="center">
   <img
-    src="./assets/Portrait.png"
+    src="./assets/portrait.png"
     alt="Ishan Ray Chaudhuri"
     width="420"
   />
