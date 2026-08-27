@@ -106,14 +106,11 @@ BS — Data Science
 
 ---
 
-## 📊 GitHub Stats
+## 📊 GitHub Activity
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=IshanRayC&show_icons=true&theme=tokyonight&hide_border=true" height="165"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=IshanRayC&layout=compact&theme=tokyonight&hide_border=true" height="165"/>
+  <img src="./assets/metrics.isocalendar.svg" alt="3D contribution calendar" />
 </p>
-
----
 
 <p align="center">
   <b>Thanks for stopping by! 👋</b>
