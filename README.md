@@ -1,9 +1,11 @@
 # Hey, I'm Ishan👋
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/IshanRayC/IshanRayC/main/assets/portrait.png"
-       alt="Ishan Ray Chaudhuri"
-       width="300">
+  <img
+    src="./assets/portrait.svg"
+    alt="Ishan Ray Chaudhuri"
+    width="500"
+  />
 </p>
 
 <h1 align="center">Software Developer • AI/ML • Cloud & DevOps</h1>
