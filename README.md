@@ -1,11 +1,7 @@
 # Hey, I'm Ishan👋
 
 <p align="center">
-  <img
-    src="./assets/portrait.png"
-    alt="Ishan Ray Chaudhuri"
-    width="420"
-  />
+  <img src="./assets/portrait.png" alt="Ishan Ray Chaudhuri" width="500">
 </p>
 
 <h1 align="center">Software Developer • AI/ML • Cloud & DevOps</h1>
