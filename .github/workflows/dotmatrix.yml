@@ -36,12 +36,17 @@ jobs:
         run: |
           python scripts/dotify.py \
             assets/portrait-source.png \
-            --out assets/portrait.svg \
-            --cols 220 \
-            --cell 4.5 \
+            -o assets/portrait.svg \
+            --cols 140 \
+            --cell 7 \
             --dot-scale 0.92 \
-            --fall-duration 1.10 \
-            --row-spread 3.20 \
+            --gamma 1.0 \
+            --contrast 1.25 \
+            --equalize \
+            --detail 0.5 \
+            --floor 0.06 \
+            --fall-duration 1.15 \
+            --row-delay 0.035 \
             --seed 42
 
       - name: Commit generated portrait
