@@ -3,7 +3,7 @@ name: Generate Dot Matrix Portrait
 on:
   push:
     branches:
-      - main
+      - main 
     paths:
       - "assets/portrait-source.png"
       - "scripts/dotify.py"
