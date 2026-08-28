@@ -4,7 +4,7 @@
   <img
     src="./assets/portrait.svg"
     alt="Ishan Ray Chaudhuri"
-    width="400"
+    width="300"
   />
 </p>
 
