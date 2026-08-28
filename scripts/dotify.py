@@ -3,248 +3,324 @@
 from __future__ import annotations
 
 import argparse
+import math
 import random
 import sys
 from pathlib import Path
 
 try:
-    from PIL import Image, ImageOps
+    from PIL import (
+        Image,
+        ImageChops,
+        ImageEnhance,
+        ImageFilter,
+        ImageOps,
+    )
 except ImportError:
     sys.exit("Pillow is required: python -m pip install Pillow")
 
 
-def load_image(path: Path, cols: int):
-    """
-    Convert the source image into a dense grid.
+def load_grid(
+    path: Path,
+    cols: int,
+    contrast: float,
+    gamma: float,
+    equalize: bool,
+    detail: float,
+):
+    img = ImageOps.exif_transpose(Image.open(path))
 
-    IMPORTANT:
-    - No color correction.
-    - No contrast adjustment.
-    - No equalization.
-    - No background removal.
-    - No brightness floor.
-    - Original image colors are preserved.
-    """
+    mask = None
 
-    img = ImageOps.exif_transpose(Image.open(path)).convert("RGB")
+    # Preserve alpha if the source has it.
+    if img.mode in ("RGBA", "LA", "P"):
+        img = img.convert("RGBA")
+
+        if img.getchannel("A").getextrema()[0] < 250:
+            mask = img.getchannel("A")
+
+        flat = Image.new(
+            "RGBA",
+            img.size,
+            (0, 0, 0, 255),
+        )
+
+        flat.alpha_composite(img)
+        img = flat
+
+    img = img.convert("RGB")
+
+    gray = img.convert("L")
+
+    # Exactly the kind of processing Gargi uses:
+    # improve tonal separation while preserving source colours.
+    if equalize:
+        gray = ImageOps.equalize(
+            gray,
+            mask=(
+                mask.point(
+                    lambda v: 255 if v > 127 else 0
+                )
+                if mask
+                else None
+            ),
+        )
+
+    if detail > 0:
+        radius = max(
+            2,
+            round(min(img.size) / 52),
+        )
+
+        gray = gray.filter(
+            ImageFilter.UnsharpMask(
+                radius=radius,
+                percent=round(detail * 100),
+                threshold=0,
+            )
+        )
+
+    if contrast != 1.0:
+        gray = ImageEnhance.Contrast(
+            gray
+        ).enhance(contrast)
 
     width, height = img.size
 
-    # Preserve the source aspect ratio.
-    rows = max(1, round(cols * height / width))
+    rows = max(
+        1,
+        round(cols * (height / width)),
+    )
 
-    small = img.resize(
+    small_g = gray.resize(
         (cols, rows),
         Image.Resampling.LANCZOS,
     )
 
-    pixels = small.load()
+    if mask is not None:
+        small_m = mask.resize(
+            (cols, rows),
+            Image.Resampling.LANCZOS,
+        )
 
-    data = []
+        small_g = ImageChops.multiply(
+            small_g,
+            small_m,
+        )
+
+    small_c = img.resize(
+        (cols, rows),
+        Image.Resampling.LANCZOS,
+    )
+
+    gp = small_g.load()
+    cp = small_c.load()
+
+    rgb = []
+    lum = []
 
     for y in range(rows):
-        row = []
+
+        rgb_row = []
+        lum_row = []
 
         for x in range(cols):
-            r, g, b = pixels[x, y]
 
-            # Only use luminance to decide how large the dot is.
-            # The actual colour remains the original RGB value.
-            luminance = (
-                0.2126 * r +
-                0.7152 * g +
-                0.0722 * b
-            ) / 255.0
+            rgb_row.append(cp[x, y])
 
-            row.append(
-                (luminance, r, g, b)
+            value = gp[x, y] / 255.0
+
+            value = min(
+                1.0,
+                max(
+                    0.0,
+                    value ** gamma,
+                ),
             )
 
-        data.append(row)
+            lum_row.append(value)
 
-    return cols, rows, data
+        rgb.append(rgb_row)
+        lum.append(lum_row)
+
+    return cols, rows, lum, rgb
 
 
-def build_svg(
-    cols: int,
-    rows: int,
-    data,
-    cell: float,
-    dot_scale: float,
-    seed: int,
-    fall_duration: float,
-    row_spread: float,
+def build_dots(
+    cols,
+    rows,
+    lum,
+    rgb,
+    cell,
+    dot_scale,
+    floor,
+    fall_duration,
+    row_delay,
+    seed,
 ):
     random.seed(seed)
 
-    width = cols * cell
-    height = rows * cell
+    max_r = cell * 0.5 * dot_scale
 
-    circles = []
+    output = []
 
     for y in range(rows):
 
+        row = []
+
         for x in range(cols):
 
-            luminance, r, g, b = data[y][x]
+            v = lum[y][x]
 
-            # --------------------------------------------------
-            # DOT SIZE
-            # --------------------------------------------------
-            #
-            # IMPORTANT:
-            # Every pixel gets a dot.
-            #
-            # Dark pixels are NOT deleted.
-            #
-            # That preserves the complete picture, including
-            # the dark jacket, hair, shadows and blue background.
-            #
+            # THIS is what prevents the background from becoming
+            # a giant field of dots.
+            if v < floor:
+                continue
 
-            min_radius = cell * 0.13
-            max_radius = cell * 0.47
+            r = max_r * (v ** 0.85)
 
-            radius = (
-                min_radius +
-                (max_radius - min_radius)
-                * (luminance ** 0.72)
-            )
+            if r < 0.18:
+                continue
 
             cx = x * cell + cell / 2
             cy = y * cell + cell / 2
 
-            # Tiny spacing variation, similar to a physical
-            # dot-matrix / halftone surface.
-            cx += random.uniform(-0.04, 0.04) * cell
-            cy += random.uniform(-0.04, 0.04) * cell
+            # ORIGINAL SOURCE COLOUR.
+            cr, cg, cb = rgb[y][x]
+
+            fill = (
+                f"#{cr:02x}"
+                f"{cg:02x}"
+                f"{cb:02x}"
+            )
 
             # --------------------------------------------------
-            # ORIGINAL COLOUR
+            # BOTTOM -> TOP REVEAL
             # --------------------------------------------------
-
-            fill = f"#{r:02x}{g:02x}{b:02x}"
-
-            # --------------------------------------------------
-            # FALLING ANIMATION
-            # --------------------------------------------------
-            #
-            # BOTTOM ROWS MUST FINISH FIRST.
-            #
-            # So:
-            #
-            # bottom -> small delay
-            # top    -> large delay
-            #
 
             reverse_y = rows - 1 - y
 
-            base_delay = (
-                reverse_y / max(rows - 1, 1)
-            ) * row_spread
-
-            # Small randomness stops every dot from moving
-            # in a perfectly rigid horizontal line.
-            random_delay = random.uniform(
-                0.0,
-                0.22,
+            delay = (
+                reverse_y * row_delay
+                + random.uniform(0, row_delay * 0.75)
             )
-
-            delay = base_delay + random_delay
 
             duration = (
-                fall_duration +
-                random.uniform(-0.10, 0.12)
+                fall_duration
+                + random.uniform(-0.12, 0.12)
             )
 
-            # Every dot begins ABOVE the canvas.
-            #
-            # The distance varies slightly so the animation
-            # looks like independent falling particles.
-            start_y = -(
-                height * (
+            # Each dot starts above the final position.
+            fall_distance = (
+                rows * cell * (
                     0.65 +
-                    random.uniform(0.0, 0.45)
+                    random.uniform(0.0, 0.35)
                 )
             )
 
-            circles.append(
+            row.append(
                 f"""
 <circle
     class="dot"
     cx="{cx:.2f}"
     cy="{cy:.2f}"
-    r="{radius:.2f}"
+    r="{r:.2f}"
     fill="{fill}"
     style="
-        --start-y: {start_y:.2f}px;
-        animation-delay: {delay:.3f}s;
-        animation-duration: {duration:.3f}s;
+        --fall:{fall_distance:.2f}px;
+        animation-delay:{delay:.3f}s;
+        animation-duration:{duration:.3f}s;
     "
 />
 """
             )
 
-    # ----------------------------------------------------------
-    # MATRIX-LIKE FALL
-    # ----------------------------------------------------------
+        output.append("".join(row))
+
+    return "".join(output)
+
+
+def build_svg(
+    cols,
+    rows,
+    lum,
+    rgb,
+    cell,
+    dot_scale,
+    floor,
+    fall_duration,
+    row_delay,
+    seed,
+):
+    width = cols * cell
+    height = rows * cell
+
+    dots = build_dots(
+        cols,
+        rows,
+        lum,
+        rgb,
+        cell,
+        dot_scale,
+        floor,
+        fall_duration,
+        row_delay,
+        seed,
+    )
 
     css = """
 <style>
 
 .dot {
     opacity: 0;
-    transform: translateY(var(--start-y));
 
-    animation-name: falling-dots;
+    transform:
+        translateY(calc(var(--fall) * -1));
+
+    animation-name: dot-fall;
 
     animation-fill-mode: forwards;
 
-    /*
-     * Fast falling motion followed by a smooth landing.
-     */
     animation-timing-function:
-        cubic-bezier(0.12, 0.82, 0.22, 1);
+        cubic-bezier(
+            0.12,
+            0.82,
+            0.22,
+            1
+        );
 }
 
-@keyframes falling-dots {
+@keyframes dot-fall {
 
-    /*
-     * Particle begins far above the portrait.
-     */
     0% {
         opacity: 0;
-        transform: translateY(var(--start-y));
+        transform:
+            translateY(calc(var(--fall) * -1));
     }
 
-    /*
-     * Becomes visible while falling.
-     */
-    12% {
-        opacity: 0.18;
+    15% {
+        opacity: 0.25;
     }
 
-    55% {
-        opacity: 0.68;
+    65% {
+        opacity: 0.85;
     }
 
-    /*
-     * Slight overshoot.
-     */
-    78% {
+    82% {
         opacity: 1;
-        transform: translateY(7px);
+        transform:
+            translateY(5px);
     }
 
-    88% {
-        transform: translateY(-2px);
+    92% {
+        transform:
+            translateY(-2px);
     }
 
-    /*
-     * Final position.
-     */
     100% {
         opacity: 1;
-        transform: translateY(0);
+        transform:
+            translateY(0);
     }
 }
 
@@ -261,35 +337,27 @@ def build_svg(
 </style>
 """
 
-    # ----------------------------------------------------------
-    # TRANSPARENT SVG
-    # ----------------------------------------------------------
+    # IMPORTANT:
+    # NO rect.
+    # NO white background.
+    # NO black background.
     #
-    # NO <rect>
-    # NO white background
-    # NO black background
-    #
+    # The SVG is transparent.
 
-    svg_start = f"""
-<svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 {width:.0f} {height:.0f}"
-    width="{width:.0f}"
-    height="{height:.0f}"
-    role="img"
-    aria-label="Ishan Ray Chaudhuri dot matrix portrait"
+    return f"""<svg
+xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 {width:.0f} {height:.0f}"
+width="{width:.0f}"
+height="{height:.0f}"
+role="img"
+aria-label="Ishan Ray Chaudhuri dot matrix portrait"
 >
 {css}
-
 <g>
-"""
-
-    svg_end = """
+{dots}
 </g>
 </svg>
 """
-
-    return svg_start + "".join(circles) + svg_end
 
 
 def main():
@@ -308,16 +376,19 @@ def main():
         default=Path("assets/portrait.svg"),
     )
 
+    # Higher than Gargi's default 88/100,
+    # but still reasonable for GitHub.
     parser.add_argument(
         "--cols",
         type=int,
-        default=220,
+        default=140,
     )
 
+    # Same visual idea as her circular dot cells.
     parser.add_argument(
         "--cell",
         type=float,
-        default=4.5,
+        default=7.0,
     )
 
     parser.add_argument(
@@ -327,15 +398,46 @@ def main():
     )
 
     parser.add_argument(
-        "--fall-duration",
+        "--gamma",
         type=float,
-        default=1.10,
+        default=1.0,
     )
 
     parser.add_argument(
-        "--row-spread",
+        "--contrast",
         type=float,
-        default=3.20,
+        default=1.25,
+    )
+
+    parser.add_argument(
+        "--equalize",
+        action="store_true",
+    )
+
+    parser.add_argument(
+        "--detail",
+        type=float,
+        default=0.5,
+    )
+
+    # Same fundamental concept as Gargi:
+    # don't draw insignificant background pixels.
+    parser.add_argument(
+        "--floor",
+        type=float,
+        default=0.06,
+    )
+
+    parser.add_argument(
+        "--fall-duration",
+        type=float,
+        default=1.15,
+    )
+
+    parser.add_argument(
+        "--row-delay",
+        type=float,
+        default=0.035,
     )
 
     parser.add_argument(
@@ -348,7 +450,7 @@ def main():
 
     if not args.image.exists():
         sys.exit(
-            f"Image not found: {args.image}"
+            f"no such image: {args.image}"
         )
 
     args.out.parent.mkdir(
@@ -356,20 +458,26 @@ def main():
         exist_ok=True,
     )
 
-    cols, rows, data = load_image(
+    cols, rows, lum, rgb = load_grid(
         args.image,
         args.cols,
+        args.contrast,
+        args.gamma,
+        args.equalize,
+        args.detail,
     )
 
     svg = build_svg(
-        cols=cols,
-        rows=rows,
-        data=data,
-        cell=args.cell,
-        dot_scale=args.dot_scale,
-        seed=args.seed,
-        fall_duration=args.fall_duration,
-        row_spread=args.row_spread,
+        cols,
+        rows,
+        lum,
+        rgb,
+        args.cell,
+        args.dot_scale,
+        args.floor,
+        args.fall_duration,
+        args.row_delay,
+        args.seed,
     )
 
     args.out.write_text(
@@ -378,8 +486,8 @@ def main():
     )
 
     print(
-        f"Generated {args.out}"
-        f" ({cols} x {rows})"
+        f"wrote {args.out} "
+        f"({cols}x{rows} cells)"
     )
 
 
