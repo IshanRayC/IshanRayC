@@ -6,10 +6,6 @@ on:
 
   workflow_dispatch:
 
-  push:
-    branches:
-      - main
-
 permissions:
   contents: write
 
@@ -18,12 +14,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Generate contribution snake
+      - name: Generate snake
         uses: Platane/snk/svg-only@v3
         with:
           github_user_name: IshanRayC
           outputs: |
-            dist/github-contribution-snake.svg?palette=github-dark&color_snake=%23061A3A
+            dist/github-snake.svg?palette=github-dark&color_snake=%23061A3A
 
       - name: Publish snake
         uses: crazy-max/ghaction-github-pages@v4
