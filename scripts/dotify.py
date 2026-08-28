@@ -128,10 +128,6 @@ def build_dots(
         cell * 0.5 * dot_scale
     )
 
-    min_radius = (
-        cell * 0.055
-    )
-
     dots = []
 
     for y in range(rows):
@@ -159,14 +155,22 @@ def build_dots(
             # Nothing from the original image is discarded.
             #
 
-            radius = (
-                min_radius
-                + (
-                    max_radius
-                    - min_radius
-                )
-                * (luminance ** 0.82)
-            )
+           # Dense, fully filled circular dot matrix.
+#
+# Every cell has a clearly visible dot.
+# Brightness still changes the size slightly,
+# but dark areas never collapse into tiny specks.
+
+min_radius = cell * 0.34
+max_radius = cell * 0.48
+
+radius = (
+    min_radius
+    + (
+        max_radius - min_radius
+    )
+    * (luminance ** 0.82)
+)
 
             # ------------------------------------------------
             # FINAL POSITION
@@ -185,15 +189,7 @@ def build_dots(
             # Very small positional variation.
             # This prevents the pattern from looking like
             # a perfectly rigid computer-generated grid.
-            cx += random.uniform(
-                -0.015,
-                0.015
-            ) * cell
-
-            cy += random.uniform(
-                -0.015,
-                0.015
-            ) * cell
+            
 
             # ------------------------------------------------
             # ORIGINAL IMAGE COLOUR
