@@ -19,7 +19,7 @@ jobs:
         with:
           github_user_name: IshanRayC
           outputs: |
-            dist/github-contribution-snake.svg?color_snake=%2322D3C5&color_dots=%23071A2F,%230B3554,%2312658A,%231597B8,%2322D3C5
+            dist/github-contribution-snake.svg?color_snake=%2322D3C5&color_dots=%23071A2F,%230B3554,%2312658A,%231597B8,%231FA8C2
 
       - name: Publish snake
         uses: crazy-max/ghaction-github-pages@v4
