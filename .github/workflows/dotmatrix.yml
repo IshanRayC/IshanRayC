@@ -34,16 +34,16 @@ jobs:
           python -m pip install Pillow
 
       - name: Generate dot matrix portrait
-        run: |
-          python scripts/dotify.py \
-            assets/portrait-source.png \
-            --out assets/portrait.svg \
-            --cols 150 \
-            --cell 6 \
-            --dot-scale 0.90 \
-            --fall-duration 1.15 \
-            --row-spread 0.030 \
-            --seed 42
+  run: |
+    python scripts/dotify.py \
+      assets/portrait-source.png \
+      --out assets/portrait.svg \
+      --cols 150 \
+      --cell 6 \
+      --dot-scale 1.0 \
+      --fall-duration 1.15 \
+      --row-spread 0.030 \
+      --seed 42
 
       - name: Commit generated portrait
         run: |
