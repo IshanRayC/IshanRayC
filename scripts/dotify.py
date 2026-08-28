@@ -1,473 +1,559 @@
 #!/usr/bin/env python3
-"""
-Turn a portrait into dense dot-matrix SVG art with a falling-particle reveal.
 
-Usage:
-    python scripts/dotify.py assets/portrait-source.png -o assets/portrait.svg
+"""
+Generate a high-resolution circular dot-matrix portrait.
+
+Source:
+    assets/portrait-source.png
+
+Output:
+    assets/portrait.svg
+
+Design goals:
+    - Preserve source colours
+    - Preserve the complete visible portrait
+    - Circular dots similar to a halftone/dot-matrix portrait
+    - Transparent dark background so the GitHub profile background shows through
+    - Bottom-to-top reveal
+    - Individual particles fall from above and settle into position
 """
 
 from __future__ import annotations
 
 import argparse
-import math
 import random
 import sys
 from pathlib import Path
 
-try:
-    from PIL import Image, ImageChops, ImageEnhance, ImageFilter, ImageOps
-except ImportError:
-    sys.exit("Pillow is required: python -m pip install Pillow")
+from PIL import Image, ImageOps
 
 
-# ---------------------------------------------------------------------------
-# Image preparation
-# ---------------------------------------------------------------------------
+# ============================================================
+# IMAGE LOADING
+# ============================================================
 
-def load_image_grid(
-    path: Path,
-    cols: int,
-    contrast: float,
-    gamma: float,
-    equalize: bool,
-    detail: float,
-):
+def load_image(path: Path, cols: int):
     """
-    Convert the source image into:
-        luminance[y][x] -> 0..1
-        rgb[y][x]       -> source colour
+    Load the source image and resize it to a dense grid.
 
-    Transparent pixels are treated as background.
+    IMPORTANT:
+        The RGB values used for the dots come directly from
+        the original source image.
+
+    We do NOT recolour the image.
     """
 
-    img = ImageOps.exif_transpose(Image.open(path))
+    image = ImageOps.exif_transpose(
+        Image.open(path)
+    )
 
-    mask = None
+    # Work in RGB so every dot gets an actual source colour.
+    image = image.convert("RGB")
 
-    if img.mode in ("RGBA", "LA", "P"):
-        img = img.convert("RGBA")
-        alpha = img.getchannel("A")
+    source_width, source_height = image.size
 
-        # Treat a real alpha channel as a subject mask.
-        if alpha.getextrema()[0] < 250:
-            mask = alpha
+    # Preserve the source image aspect ratio.
+    rows = max(
+        1,
+        round(cols * source_height / source_width)
+    )
 
-        bg = Image.new("RGBA", img.size, (0, 0, 0, 255))
-        bg.alpha_composite(img)
-        img = bg
-
-    img = img.convert("RGB")
-
-    gray = img.convert("L")
-
-    # Improve shadow/detail information.
-    if equalize:
-        binary_mask = None
-        if mask is not None:
-            binary_mask = mask.point(
-                lambda v: 255 if v > 127 else 0
-            )
-
-        gray = ImageOps.equalize(gray, mask=binary_mask)
-
-    if detail > 0:
-        radius = max(2, round(min(img.size) / 52))
-        gray = gray.filter(
-            ImageFilter.UnsharpMask(
-                radius=radius,
-                percent=round(detail * 100),
-                threshold=0,
-            )
-        )
-
-    if contrast != 1.0:
-        gray = ImageEnhance.Contrast(gray).enhance(contrast)
-        img = ImageEnhance.Contrast(img).enhance(contrast)
-
-    width, height = img.size
-
-    # Preserve the original aspect ratio.
-    rows = max(1, round(cols * height / width))
-
-    small_gray = gray.resize(
+    # High-quality downsampling.
+    small = image.resize(
         (cols, rows),
         Image.Resampling.LANCZOS
     )
 
-    small_color = img.resize(
-        (cols, rows),
-        Image.Resampling.LANCZOS
-    )
+    pixels = small.load()
 
-    if mask is not None:
-        small_mask = mask.resize(
-            (cols, rows),
-            Image.Resampling.LANCZOS
-        )
-        small_gray = ImageChops.multiply(
-            small_gray,
-            small_mask
-        )
-
-    gp = small_gray.load()
-    cp = small_color.load()
-
-    luminance = []
-    rgb = []
+    grid = []
 
     for y in range(rows):
-        lum_row = []
-        rgb_row = []
+
+        row = []
 
         for x in range(cols):
-            value = gp[x, y] / 255.0
 
-            # Gamma correction.
-            value = value ** gamma
+            r, g, b = pixels[x, y]
 
-            value = max(0.0, min(1.0, value))
+            # Luminance is used ONLY to determine dot radius.
+            #
+            # RGB itself is kept untouched.
+            luminance = (
+                0.2126 * r +
+                0.7152 * g +
+                0.0722 * b
+            ) / 255.0
 
-            lum_row.append(value)
-            rgb_row.append(cp[x, y])
+            row.append(
+                {
+                    "r": r,
+                    "g": g,
+                    "b": b,
+                    "luminance": luminance,
+                }
+            )
 
-        luminance.append(lum_row)
-        rgb.append(rgb_row)
+        grid.append(row)
 
-    return cols, rows, luminance, rgb
+    return cols, rows, grid
 
 
-# ---------------------------------------------------------------------------
-# SVG
-# ---------------------------------------------------------------------------
+# ============================================================
+# DOT GENERATION
+# ============================================================
 
-def build_svg(
+def build_dots(
     cols: int,
     rows: int,
-    luminance,
-    rgb,
+    grid,
     cell: float,
     dot_scale: float,
-    floor: float,
-    palette: bool,
-    fall_duration: float,
-    stagger: float,
     seed: int,
+    fall_duration: float,
+    row_spread: float,
 ):
     """
-    Build an SVG where every visible dot starts above the portrait
-    and falls into its final position.
+    Convert every image cell into a circular dot.
 
-    The delay is mostly based on vertical position, so the animation
-    visually reads as particles falling from the top.
+    Dark pixels become very small dots.
+    Bright pixels become larger dots.
+
+    The original source RGB colour is retained.
     """
 
     random.seed(seed)
 
+    max_radius = (
+        cell * 0.5 * dot_scale
+    )
+
+    min_radius = (
+        cell * 0.055
+    )
+
+    dots = []
+
+    for y in range(rows):
+
+        for x in range(cols):
+
+            pixel = grid[y][x]
+
+            luminance = pixel["luminance"]
+
+            r = pixel["r"]
+            g = pixel["g"]
+            b = pixel["b"]
+
+            # ------------------------------------------------
+            # DOT SIZE
+            # ------------------------------------------------
+            #
+            # Bright pixels:
+            #     larger circles
+            #
+            # Dark pixels:
+            #     extremely small circles
+            #
+            # Nothing from the original image is discarded.
+            #
+
+            radius = (
+                min_radius
+                + (
+                    max_radius
+                    - min_radius
+                )
+                * (luminance ** 0.82)
+            )
+
+            # ------------------------------------------------
+            # FINAL POSITION
+            # ------------------------------------------------
+
+            cx = (
+                x * cell
+                + cell / 2
+            )
+
+            cy = (
+                y * cell
+                + cell / 2
+            )
+
+            # Very small positional variation.
+            # This prevents the pattern from looking like
+            # a perfectly rigid computer-generated grid.
+            cx += random.uniform(
+                -0.015,
+                0.015
+            ) * cell
+
+            cy += random.uniform(
+                -0.015,
+                0.015
+            ) * cell
+
+            # ------------------------------------------------
+            # ORIGINAL IMAGE COLOUR
+            # ------------------------------------------------
+
+            color = (
+                f"#{r:02x}"
+                f"{g:02x}"
+                f"{b:02x}"
+            )
+
+            # ------------------------------------------------
+            # FALLING ANIMATION
+            # ------------------------------------------------
+            #
+            # Bottom rows are FIRST.
+            #
+            # Therefore:
+            #
+            # bottom -> delay near zero
+            # top    -> larger delay
+            #
+
+            reverse_y = (
+                rows - 1 - y
+            )
+
+            vertical_delay = (
+                reverse_y
+                * row_spread
+            )
+
+            random_delay = (
+                random.random()
+                * row_spread
+                * 0.8
+            )
+
+            delay = (
+                vertical_delay
+                + random_delay
+            )
+
+            # Slight variation between particles.
+            duration = (
+                fall_duration
+                + random.uniform(
+                    -0.12,
+                    0.12
+                )
+            )
+
+            # Every particle begins well above
+            # the final portrait.
+            fall_distance = (
+                rows * cell
+                * (
+                    0.80
+                    + random.random() * 0.45
+                )
+            )
+
+            dots.append(
+                f"""
+<circle
+    class="dot"
+    cx="{cx:.2f}"
+    cy="{cy:.2f}"
+    r="{radius:.3f}"
+    fill="{color}"
+    style="
+        --fall:{fall_distance:.2f}px;
+        --delay:{delay:.3f}s;
+        --duration:{duration:.3f}s;
+    "
+/>
+"""
+            )
+
+    return "".join(dots)
+
+
+# ============================================================
+# SVG
+# ============================================================
+
+def build_svg(
+    cols: int,
+    rows: int,
+    grid,
+    cell: float,
+    dot_scale: float,
+    seed: int,
+    fall_duration: float,
+    row_spread: float,
+):
+    """
+    Build the final SVG.
+
+    There is intentionally NO background rectangle.
+
+    This means the SVG itself is transparent and the portrait
+    can blend into GitHub's dark profile background.
+    """
+
     width = cols * cell
     height = rows * cell
 
-    max_radius = cell * 0.5 * dot_scale
+    dots = build_dots(
+        cols=cols,
+        rows=rows,
+        grid=grid,
+        cell=cell,
+        dot_scale=dot_scale,
+        seed=seed,
+        fall_duration=fall_duration,
+        row_spread=row_spread,
+    )
 
-    circles = []
+    # --------------------------------------------------------
+    # ANIMATION
+    # --------------------------------------------------------
 
-    # Warm orange/amber palette inspired by the reference profile.
-    def warm_color(value: float) -> str:
-        stops = [
-            (0.00, (85, 18, 10)),
-            (0.20, (120, 25, 10)),
-            (0.40, (175, 45, 12)),
-            (0.60, (220, 82, 20)),
-            (0.78, (255, 140, 45)),
-            (0.92, (255, 190, 90)),
-            (1.00, (255, 225, 145)),
-        ]
+    css = """
+<style>
 
-        for i in range(len(stops) - 1):
-            a_v, a_c = stops[i]
-            b_v, b_c = stops[i + 1]
+.dot {
+    opacity: 0;
 
-            if value <= b_v:
-                t = (value - a_v) / max(b_v - a_v, 1e-9)
+    transform:
+        translateY(
+            calc(var(--fall) * -1)
+        );
 
-                r = round(a_c[0] + (b_c[0] - a_c[0]) * t)
-                g = round(a_c[1] + (b_c[1] - a_c[1]) * t)
-                b = round(a_c[2] + (b_c[2] - a_c[2]) * t)
+    animation-name:
+        matrix-fall;
 
-                return f"#{r:02x}{g:02x}{b:02x}"
+    animation-duration:
+        var(--duration);
 
-        return "#ffe191"
+    animation-delay:
+        var(--delay);
 
-    for y in range(rows):
-        for x in range(cols):
-            value = luminance[y][x]
+    animation-fill-mode:
+        forwards;
 
-            # Remove almost-black cells.
-            if value < floor:
-                continue
-
-            # Make brighter regions denser/larger.
-            radius = max_radius * (value ** 0.82)
-
-            if radius < 0.18:
-                continue
-
-            cx = x * cell + cell / 2
-            cy = y * cell + cell / 2
-
-            # Slight organic variation.
-            jitter_x = random.uniform(-0.12, 0.12)
-            jitter_y = random.uniform(-0.12, 0.12)
-
-            cx += jitter_x
-            cy += jitter_y
-
-            if palette:
-                # Use the source colour only very subtly;
-                # the main appearance remains warm like the reference.
-                sr, sg, sb = rgb[y][x]
-
-                # Mix source colour toward the warm palette.
-                warm = warm_color(value)
-                fill = warm
-
-                # Keep variables referenced intentionally.
-                _ = (sr, sg, sb)
-            else:
-                fill = warm_color(value)
-
-            # Falling distance.
-            # Higher rows start farther above the final location.
-            fall_distance = height * 0.9 + random.uniform(0, height * 0.18)
-
-            # Mostly top-to-bottom, with a little random staggering.
-            row_delay = (y / max(rows - 1, 1)) * stagger
-            random_delay = random.uniform(0.0, stagger * 0.28)
-            delay = row_delay + random_delay
-
-            # Small per-dot duration variation.
-            duration = fall_duration + random.uniform(-0.08, 0.12)
-
-            circles.append(
-                f"""
-                <circle
-                    class="dot"
-                    cx="{cx:.2f}"
-                    cy="{cy:.2f}"
-                    r="{radius:.2f}"
-                    fill="{fill}"
-                    style="
-                        --x: {cx:.2f}px;
-                        --y: {cy:.2f}px;
-                        --fall: {-fall_distance:.2f}px;
-                        animation-delay: {delay:.3f}s;
-                        animation-duration: {duration:.2f}s;
-                    "
-                />
-                """
-            )
-
-    css = f"""
-    <style>
-        .dot {{
-            opacity: 0;
-            transform: translateY(var(--fall));
-            animation-name: fall;
-            animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-            animation-fill-mode: forwards;
-        }}
-
-        @keyframes fall {{
-            0% {{
-                opacity: 0;
-                transform: translateY(var(--fall));
-            }}
-
-            12% {{
-                opacity: 0.15;
-            }}
-
-            68% {{
-                opacity: 0.9;
-                transform: translateY(5px);
-            }}
-
-            84% {{
-                opacity: 1;
-                transform: translateY(-2px);
-            }}
-
-            92% {{
-                transform: translateY(1px);
-            }}
-
-            100% {{
-                opacity: 1;
-                transform: translateY(0);
-            }}
-        }}
-
-        @media (prefers-reduced-motion: reduce) {{
-            .dot {{
-                animation: none;
-                opacity: 1;
-                transform: none;
-            }}
-        }}
-    </style>
-    """
-
-    header = f"""
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 {width:.0f} {height:.0f}"
-        width="{width:.0f}"
-        height="{height:.0f}"
-        role="img"
-        aria-label="Ishan Ray Chaudhuri dot matrix portrait"
-    >
-        {css}
-        <rect width="100%" height="100%" fill="#0d1117" />
-        <g>
-    """
-
-    footer = """
-        </g>
-    </svg>
-    """
-
-    return header + "".join(circles) + footer
+    animation-timing-function:
+        cubic-bezier(
+            0.12,
+            0.82,
+            0.22,
+            1
+        );
+}
 
 
-# ---------------------------------------------------------------------------
-# CLI
-# ---------------------------------------------------------------------------
+/*
+ * FALL → IMPACT → SMALL BOUNCE → SETTLE
+ */
+@keyframes matrix-fall {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(
+                calc(var(--fall) * -1)
+            );
+    }
+
+    12% {
+        opacity: 0.10;
+    }
+
+    48% {
+        opacity: 0.65;
+    }
+
+    76% {
+        opacity: 0.95;
+
+        transform:
+            translateY(6px);
+    }
+
+    86% {
+        opacity: 1;
+
+        transform:
+            translateY(-2px);
+    }
+
+    93% {
+        transform:
+            translateY(1px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/*
+ * Respect users who disable animation.
+ */
+@media (prefers-reduced-motion: reduce) {
+
+    .dot {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+
+}
+
+</style>
+"""
+
+    # --------------------------------------------------------
+    # IMPORTANT:
+    #
+    # NO BACKGROUND <rect>
+    #
+    # The surrounding GitHub page supplies the background.
+    # --------------------------------------------------------
+
+    svg = f"""<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 {width:.0f} {height:.0f}"
+    width="{width:.0f}"
+    height="{height:.0f}"
+    role="img"
+    aria-label="Ishan Ray Chaudhuri dot matrix portrait"
+>
+
+{css}
+
+<g>
+{dots}
+</g>
+
+</svg>
+"""
+
+    return svg
+
+
+# ============================================================
+# MAIN
+# ============================================================
 
 def main():
+
     parser = argparse.ArgumentParser(
-        description="Generate a falling dot-matrix portrait SVG."
+        description=(
+            "Generate a high-resolution "
+            "coloured dot-matrix portrait."
+        )
     )
 
     parser.add_argument(
         "image",
         type=Path,
-        help="source portrait PNG/JPG/WebP"
+        help="source portrait image"
     )
 
     parser.add_argument(
         "-o",
         "--out",
         type=Path,
-        default=Path("assets/portrait.svg"),
-        help="output SVG path"
+        default=Path(
+            "assets/portrait.svg"
+        ),
+        help="output SVG"
     )
+
+    # --------------------------------------------------------
+    # IMAGE RESOLUTION
+    # --------------------------------------------------------
 
     parser.add_argument(
         "--cols",
         type=int,
-        default=120,
-        help="number of dots across"
+        default=150,
+        help="number of circular cells across"
     )
 
     parser.add_argument(
         "--cell",
         type=float,
-        default=8.0,
-        help="SVG units per cell"
+        default=6.0,
+        help="distance between dot centres"
     )
 
     parser.add_argument(
         "--dot-scale",
         type=float,
-        default=0.88,
-        help="maximum dot diameter as a fraction of a cell"
+        default=0.90,
+        help="maximum dot size"
     )
 
-    parser.add_argument(
-        "--gamma",
-        type=float,
-        default=0.88,
-        help="gamma correction"
-    )
-
-    parser.add_argument(
-        "--contrast",
-        type=float,
-        default=1.35,
-        help="image contrast"
-    )
-
-    parser.add_argument(
-        "--equalize",
-        action="store_true",
-        help="recover detail from dark regions"
-    )
-
-    parser.add_argument(
-        "--detail",
-        type=float,
-        default=0.7,
-        help="local facial detail enhancement"
-    )
-
-    parser.add_argument(
-        "--floor",
-        type=float,
-        default=0.045,
-        help="ignore cells below this brightness"
-    )
+    # --------------------------------------------------------
+    # ANIMATION
+    # --------------------------------------------------------
 
     parser.add_argument(
         "--fall-duration",
         type=float,
-        default=1.25,
-        help="fall duration per dot"
+        default=1.15,
+        help="fall duration"
     )
 
     parser.add_argument(
-        "--stagger",
+        "--row-spread",
         type=float,
-        default=2.7,
-        help="total vertical stagger"
+        default=0.030,
+        help=(
+            "delay between successive rows "
+            "from bottom to top"
+        )
     )
 
     parser.add_argument(
         "--seed",
         type=int,
         default=42,
-        help="random seed"
+        help="deterministic randomness"
     )
 
     args = parser.parse_args()
 
     if not args.image.exists():
-        sys.exit(f"Image not found: {args.image}")
+
+        sys.exit(
+            f"Image not found: {args.image}"
+        )
 
     args.out.parent.mkdir(
         parents=True,
         exist_ok=True
     )
 
-    cols, rows, luminance, rgb = load_image_grid(
+    cols, rows, grid = load_image(
         args.image,
-        args.cols,
-        args.contrast,
-        args.gamma,
-        equalize=args.equalize,
-        detail=args.detail,
+        args.cols
     )
 
     svg = build_svg(
         cols=cols,
         rows=rows,
-        luminance=luminance,
-        rgb=rgb,
+        grid=grid,
         cell=args.cell,
         dot_scale=args.dot_scale,
-        floor=args.floor,
-        palette=True,
-        fall_duration=args.fall_duration,
-        stagger=args.stagger,
         seed=args.seed,
+        fall_duration=args.fall_duration,
+        row_spread=args.row_spread,
     )
 
     args.out.write_text(
@@ -476,8 +562,8 @@ def main():
     )
 
     print(
-        f"Generated {args.out} "
-        f"({cols} x {rows} cells)"
+        f"Generated {args.out}"
+        f" ({cols} x {rows} cells)"
     )
 
 
