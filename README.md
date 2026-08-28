@@ -126,8 +126,9 @@ BS — Data Science
 
 <p align="center">
   <img
-    src="https://github.com/IshanRayC/IshanRayC/blob/output/github-contribution-snake.svg"
+    src="https://raw.githubusercontent.com/IshanRayC/IshanRayC/gh-pages/github-contribution-snake.svg"
     alt="GitHub Contribution Snake"
+    width="100%"
   />
 </p>
 
