@@ -8,13 +8,19 @@ import sys
 from pathlib import Path
 
 try:
-    from PIL import Image, ImageEnhance, ImageFilter, ImageOps
+    from PIL import (
+        Image,
+        ImageChops,
+        ImageEnhance,
+        ImageFilter,
+        ImageOps,
+    )
 except ImportError:
-    sys.exit("Pillow is required. Install it with: python -m pip install Pillow")
+    sys.exit("Pillow is required: python -m pip install Pillow")
 
 
 # ============================================================
-# IMAGE PROCESSING
+# IMAGE → GRID
 # ============================================================
 
 def load_grid(
@@ -23,34 +29,38 @@ def load_grid(
     contrast: float,
     gamma: float,
     detail: float,
-    equalize: bool,
 ):
+    """
+    Convert the source image into a dense dot grid.
+
+    IMPORTANT:
+    - Source RGB colours are preserved.
+    - Alpha is preserved as a subject mask.
+    - We only improve the luminance used to determine dot size.
+    """
+
     img = ImageOps.exif_transpose(Image.open(path))
 
-    # Handle transparency correctly.
-    if img.mode in ("RGBA", "LA", "P"):
+    # Keep the original RGB information.
+    if img.mode != "RGBA":
         img = img.convert("RGBA")
-        alpha = img.getchannel("A")
 
-        # Composite against black so the dark background disappears
-        # naturally when converted to luminance.
-        bg = Image.new("RGBA", img.size, (0, 0, 0, 255))
-        bg.alpha_composite(img)
-        img = bg.convert("RGB")
+    alpha = img.getchannel("A")
 
-        # Use alpha to suppress transparent pixels.
-        alpha_rgb = alpha
-    else:
-        img = img.convert("RGB")
-        alpha_rgb = None
+    # Flatten only for luminance calculation.
+    # The actual dot colours still come from the original image.
+    black = Image.new("RGBA", img.size, (0, 0, 0, 255))
+    flattened = Image.alpha_composite(black, img).convert("RGB")
 
-    gray = img.convert("L")
+    gray = flattened.convert("L")
 
-    if equalize:
-        gray = ImageOps.equalize(gray)
+    # Improve facial/detail contrast WITHOUT changing
+    # the colours that will be used by the dots.
+    gray = ImageEnhance.Contrast(gray).enhance(contrast)
 
     if detail > 0:
-        radius = max(1, round(min(img.size) / 60))
+        radius = max(1, round(min(img.size) / 70))
+
         gray = gray.filter(
             ImageFilter.UnsharpMask(
                 radius=radius,
@@ -59,133 +69,113 @@ def load_grid(
             )
         )
 
-    gray = ImageEnhance.Contrast(gray).enhance(contrast)
-
     width, height = img.size
 
-    # Preserve aspect ratio.
-    rows = max(1, round(cols * height / width))
+    # Maintain aspect ratio.
+    rows = max(
+        1,
+        round(cols * (height / width)),
+    )
 
-    gray_small = gray.resize(
+    small_gray = gray.resize(
         (cols, rows),
         Image.Resampling.LANCZOS,
     )
 
-    if alpha_rgb is not None:
-        alpha_small = alpha_rgb.resize(
-            (cols, rows),
-            Image.Resampling.LANCZOS,
-        )
-    else:
-        alpha_small = None
+    small_alpha = alpha.resize(
+        (cols, rows),
+        Image.Resampling.LANCZOS,
+    )
 
-    px = gray_small.load()
-    apx = alpha_small.load() if alpha_small else None
+    small_color = img.resize(
+        (cols, rows),
+        Image.Resampling.LANCZOS,
+    )
 
-    values = []
+    gp = small_gray.load()
+    ap = small_alpha.load()
+    cp = small_color.load()
+
+    luminance = []
+    colors = []
 
     for y in range(rows):
-        row = []
+
+        lum_row = []
+        color_row = []
 
         for x in range(cols):
-            value = px[x, y] / 255.0
 
-            if apx is not None:
-                value *= apx[x, y] / 255.0
+            v = gp[x, y] / 255.0
 
-            value = max(0.0, min(1.0, value))
-            value = value ** gamma
+            # Alpha controls whether the dot exists.
+            v *= ap[x, y] / 255.0
 
-            row.append(value)
+            # Gamma controls detail in darker regions.
+            v = max(0.0, min(1.0, v ** gamma))
 
-        values.append(row)
+            lum_row.append(v)
 
-    return cols, rows, values
+            # Preserve ORIGINAL colour.
+            r, g, b, _ = cp[x, y]
+            color_row.append((r, g, b))
 
+        luminance.append(lum_row)
+        colors.append(color_row)
 
-# ============================================================
-# MATRIX GREEN PALETTE
-# ============================================================
-
-def green_color(v: float) -> str:
-    """
-    Matrix-style monochrome green.
-    Dark values -> deep green
-    Bright values -> vivid/lime green
-    """
-
-    stops = [
-        (0.00, (0, 20, 4)),
-        (0.18, (0, 45, 8)),
-        (0.38, (0, 85, 14)),
-        (0.58, (0, 135, 28)),
-        (0.75, (35, 190, 55)),
-        (0.90, (110, 225, 100)),
-        (1.00, (180, 255, 170)),
-    ]
-
-    for i in range(len(stops) - 1):
-        a_v, a_c = stops[i]
-        b_v, b_c = stops[i + 1]
-
-        if v <= b_v:
-            t = (v - a_v) / max(b_v - a_v, 1e-9)
-
-            r = round(a_c[0] + (b_c[0] - a_c[0]) * t)
-            g = round(a_c[1] + (b_c[1] - a_c[1]) * t)
-            b = round(a_c[2] + (b_c[2] - a_c[2]) * t)
-
-            return f"#{r:02x}{g:02x}{b:02x}"
-
-    return "#b4ffa8"
+    return cols, rows, luminance, colors
 
 
 # ============================================================
-# SVG GENERATION
+# SVG
 # ============================================================
 
 def build_svg(
     cols: int,
     rows: int,
-    values,
+    luminance,
+    colors,
     cell: float,
     dot_scale: float,
     floor: float,
-    fall_time: float,
-    max_delay: float,
+    fall_duration: float,
+    spread: float,
     seed: int,
 ):
+    """
+    Create a transparent SVG dot portrait.
+
+    Every visible dot:
+      1. starts above the portrait,
+      2. falls downward,
+      3. slightly overshoots,
+      4. settles into its final position.
+
+    The dots retain the source image's original colours.
+    """
+
     random.seed(seed)
 
     width = cols * cell
     height = rows * cell
 
-    max_radius = cell * 0.48 * dot_scale
+    max_radius = cell * 0.5 * dot_scale
 
     circles = []
 
-    # We want a falling-rain feel:
-    #
-    #   •  •      •
-    #   ↓  ↓      ↓
-    #      ↓
-    #   •  ↓  •   ↓
-    #       ↓
-    #  FINAL PORTRAIT
-    #
-    # Every dot begins above its final position.
-    # Delay is randomized so it feels organic instead of row-by-row.
-
     for y in range(rows):
-        for x in range(cols):
-            value = values[y][x]
 
-            # Remove empty/background cells.
+        for x in range(cols):
+
+            value = luminance[y][x]
+
+            # Remove almost-black / transparent background cells.
             if value < floor:
                 continue
 
-            # Bright parts get larger dots.
-            radius = max_radius * (value ** 0.78)
+            # Same basic idea as Gargi's dots mode:
+            # brighter pixel = larger circle.
+            radius = max_radius * (value ** 0.85)
 
             if radius < 0.20:
                 continue
@@ -193,121 +183,146 @@ def build_svg(
             cx = x * cell + cell / 2
             cy = y * cell + cell / 2
 
-            # Tiny jitter keeps the matrix organic.
-            cx += random.uniform(-0.10, 0.10)
-            cy += random.uniform(-0.10, 0.10)
+            r, g, b = colors[y][x]
 
-            # Every particle starts above the canvas.
-            start_y = -height * (
-                0.35 + random.random() * 0.85
+            fill = f"#{r:02x}{g:02x}{b:02x}"
+
+            # ------------------------------------------------
+            # MATRIX-STYLE FALL
+            # ------------------------------------------------
+
+            # Every dot starts above the visible canvas.
+            start_y = -(
+                height
+                * (0.35 + random.random() * 0.75)
             )
 
-            # Mix vertical position + randomness.
-            #
-            # This gives us a waterfall of individual drops instead
-            # of a rigid top-to-bottom row reveal.
-            vertical_component = (
+            # Columns begin at slightly different times,
+            # producing a falling-rain / Matrix-like flow.
+            column_delay = (
+                x / max(cols - 1, 1)
+            ) * spread * 0.45
+
+            # Random stagger prevents a rigid synchronized wave.
+            random_delay = random.uniform(
+                0,
+                spread * 0.65,
+            )
+
+            # Small vertical influence.
+            vertical_delay = (
                 y / max(rows - 1, 1)
-            ) * max_delay * 0.55
+            ) * spread * 0.20
 
-            random_component = (
-                random.random() * max_delay * 0.75
+            delay = (
+                column_delay
+                + random_delay
+                + vertical_delay
             )
 
-            delay = vertical_component + random_component
-
-            # Slight variation prevents perfect synchronization.
-            duration = fall_time + random.uniform(-0.16, 0.20)
-
-            fill = green_color(value)
+            duration = (
+                fall_duration
+                + random.uniform(-0.12, 0.18)
+            )
 
             circles.append(
                 f'''
-                <circle
-                    class="dot"
-                    cx="{cx:.2f}"
-                    cy="{cy:.2f}"
-                    r="{radius:.2f}"
-                    fill="{fill}"
-                    style="--start-y:{start_y:.2f}px;
-                           animation-delay:{delay:.3f}s;
-                           animation-duration:{duration:.3f}s"
-                />
-                '''
+<circle
+    class="dot"
+    cx="{cx:.2f}"
+    cy="{cy:.2f}"
+    r="{radius:.2f}"
+    fill="{fill}"
+    style="
+        --start-y:{start_y:.2f}px;
+        animation-delay:{delay:.3f}s;
+        animation-duration:{duration:.3f}s;
+    "
+/>
+'''
             )
 
+    # --------------------------------------------------------
+    # ANIMATION
+    # --------------------------------------------------------
+
     css = """
-    <style>
+<style>
 
-        .dot {
-            opacity: 0;
-            transform: translateY(var(--start-y));
-            animation-name: matrixFall;
-            animation-timing-function: cubic-bezier(0.15, 0.85, 0.28, 1);
-            animation-fill-mode: forwards;
-        }
+.dot {
+    opacity: 0;
+    transform: translateY(var(--start-y));
 
-        /*
-         * Matrix-style falling particle:
-         *
-         * 0%   = invisible above the image
-         * 10%  = appears
-         * 70%  = approaches destination
-         * 88%  = tiny overshoot
-         * 100% = settles
-         */
-        @keyframes matrixFall {
+    animation-name: matrix-drop;
+    animation-fill-mode: forwards;
 
-            0% {
-                opacity: 0;
-                transform: translateY(var(--start-y));
-            }
+    /*
+     * Fast start, smooth landing.
+     * This gives the "fall → settle" feeling.
+     */
+    animation-timing-function:
+        cubic-bezier(0.18, 0.86, 0.24, 1);
+}
 
-            8% {
-                opacity: 0.15;
-            }
+@keyframes matrix-drop {
 
-            45% {
-                opacity: 0.65;
-            }
+    /* invisible above the portrait */
+    0% {
+        opacity: 0;
+        transform: translateY(var(--start-y));
+    }
 
-            72% {
-                opacity: 0.95;
-                transform: translateY(8px);
-            }
+    /* particle appears while falling */
+    12% {
+        opacity: 0.25;
+    }
 
-            86% {
-                opacity: 1;
-                transform: translateY(-3px);
-            }
+    /* falling toward its final position */
+    60% {
+        opacity: 0.80;
+    }
 
-            94% {
-                transform: translateY(1px);
-            }
+    /* slight overshoot */
+    82% {
+        opacity: 1;
+        transform: translateY(7px);
+    }
 
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    /* bounce back */
+    91% {
+        transform: translateY(-2px);
+    }
 
-        @media (prefers-reduced-motion: reduce) {
+    /* settle */
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-            .dot {
-                animation: none;
-                opacity: 1;
-                transform: none;
-            }
+@media (prefers-reduced-motion: reduce) {
 
-        }
+    .dot {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
 
-    </style>
-    """
+}
 
-    # Transparent SVG background.
+</style>
+"""
+
+    # --------------------------------------------------------
+    # NO BACKGROUND RECTANGLE
+    # --------------------------------------------------------
     #
-    # This is important because GitHub can then supply its own
-    # background instead of us drawing a giant rectangle.
+    # This is deliberate.
+    #
+    # The SVG is transparent.
+    # GitHub supplies the surrounding profile background.
+    #
+
     svg_start = f'''
 <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -315,9 +330,10 @@ def build_svg(
     width="{width:.0f}"
     height="{height:.0f}"
     role="img"
-    aria-label="Ishan Ray Chaudhuri Matrix dot portrait"
+    aria-label="Ishan Ray Chaudhuri dot matrix portrait"
 >
 {css}
+
 <g>
 '''
 
@@ -330,13 +346,13 @@ def build_svg(
 
 
 # ============================================================
-# CLI
+# COMMAND LINE
 # ============================================================
 
 def main():
 
     parser = argparse.ArgumentParser(
-        description="Generate a high-resolution Matrix-style falling dot portrait."
+        description="Generate a high-resolution coloured dot-matrix portrait."
     )
 
     parser.add_argument(
@@ -351,58 +367,62 @@ def main():
         default=Path("assets/portrait.svg"),
     )
 
+    # Dense grid.
     parser.add_argument(
         "--cols",
         type=int,
-        default=160,
+        default=170,
     )
 
+    # Physical spacing between circles.
     parser.add_argument(
         "--cell",
         type=float,
-        default=5.5,
+        default=5.0,
     )
 
+    # Dot size.
     parser.add_argument(
         "--dot-scale",
         type=float,
-        default=0.92,
-    )
-
-    parser.add_argument(
-        "--gamma",
-        type=float,
-        default=0.82,
+        default=0.84,
     )
 
     parser.add_argument(
         "--contrast",
         type=float,
-        default=1.55,
+        default=1.35,
+    )
+
+    parser.add_argument(
+        "--gamma",
+        type=float,
+        default=0.90,
     )
 
     parser.add_argument(
         "--detail",
         type=float,
-        default=0.85,
+        default=0.75,
     )
 
     parser.add_argument(
         "--floor",
         type=float,
-        default=0.035,
+        default=0.045,
     )
 
+    # Animation.
     parser.add_argument(
-        "--fall-time",
+        "--fall-duration",
         type=float,
         default=1.15,
     )
 
     parser.add_argument(
-        "--max-delay",
+        "--spread",
         type=float,
-        default=3.2,
+        default=2.8,
     )
 
     parser.add_argument(
@@ -414,31 +434,33 @@ def main():
     args = parser.parse_args()
 
     if not args.image.exists():
-        sys.exit(f"Image not found: {args.image}")
+        sys.exit(
+            f"Image not found: {args.image}"
+        )
 
     args.out.parent.mkdir(
         parents=True,
         exist_ok=True,
     )
 
-    cols, rows, values = load_grid(
+    cols, rows, luminance, colors = load_grid(
         args.image,
         args.cols,
         args.contrast,
         args.gamma,
         args.detail,
-        equalize=True,
     )
 
     svg = build_svg(
         cols=cols,
         rows=rows,
-        values=values,
+        luminance=luminance,
+        colors=colors,
         cell=args.cell,
         dot_scale=args.dot_scale,
         floor=args.floor,
-        fall_time=args.fall_time,
-        max_delay=args.max_delay,
+        fall_duration=args.fall_duration,
+        spread=args.spread,
         seed=args.seed,
     )
 
@@ -449,7 +471,7 @@ def main():
 
     print(
         f"Generated {args.out} "
-        f"using {cols} x {rows} cells."
+        f"({cols} x {rows} cells)"
     )
 
 
