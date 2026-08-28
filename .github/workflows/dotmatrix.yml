@@ -27,7 +27,7 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Install Pillow
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           python -m pip install Pillow
@@ -36,13 +36,17 @@ jobs:
         run: |
           python scripts/dotify.py \
             assets/portrait-source.png \
-            -o assets/portrait.svg \
-            --cols 140 \
-            --cell 7 \
-            --dot-scale 0.92 \
-            --fall-duration 1.10 \
-            --row-delay 0.035 \
-            --seed 42
+            --out assets/portrait.svg \
+            --cols 120 \
+            --cell 8 \
+            --dot-scale 0.88 \
+            --contrast 1.35 \
+            --gamma 0.88 \
+            --detail 0.7 \
+            --floor 0.045 \
+            --fall-duration 1.25 \
+            --stagger 2.7 \
+            --equalize
 
       - name: Commit generated portrait
         run: |
