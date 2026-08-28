@@ -2,10 +2,13 @@ name: GitHub Metrics
 
 on:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "*/30 * * * *"
+
   workflow_dispatch:
+
   push:
-    branches: [main]
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -25,3 +28,52 @@ jobs:
           config_timezone: Asia/Kolkata
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
+
+      - name: Recolor contribution cubes
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          path = Path("assets/metrics.isocalendar.svg")
+          text = path.read_text(encoding="utf-8")
+
+          # Five shades: darkest -> brightest
+          colors = [
+              "#071A2F",
+              "#0B3554",
+              "#12658A",
+              "#1597B8",
+              "#1FA8C2",
+          ]
+
+          # Replace the green GitHub contribution palette
+          # used by the generated isometric calendar.
+          replacements = {
+              "#ebedf0": colors[0],
+              "#9be9a8": colors[1],
+              "#40c463": colors[2],
+              "#30a14e": colors[3],
+              "#216e39": colors[4],
+          }
+
+          for old, new in replacements.items():
+              text = text.replace(old, new)
+
+          path.write_text(text, encoding="utf-8")
+          print("Recolored isometric calendar.")
+
+      - name: Commit updated calendar
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add assets/metrics.isocalendar.svg
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Recolor 3D contribution calendar"
+          git push
