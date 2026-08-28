@@ -10,8 +10,8 @@
 
 <a href="https://github.com/IshanRayC">
   <img
-    src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=28&duration=2200&pause=900&color=39D353&center=true&vCenter=true&width=800&height=70&lines=Ishan+Ray+Chaudhuri;%E5%A8%81%E9%96%83%5B%E3%82%A4%E3%82%B7%E3%83%A3%E3%83%B3%5D;Software+Engineer;AI%2FML;Cloud+%26+DevOps;Competitive+Programming;Design;Finance"
-    alt="Ishan Ray Chaudhuri typing animation"
+    src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=30&duration=1800&pause=650&color=58A6FF&center=true&vCenter=true&width=900&height=75&cursor=true&cursorChar=%E2%96%8C&cursorStyle=1&repeat=true&lines=Ishan+Ray+Chaudhuri;%E5%A8%81%E9%96%83%5B%E3%82%A4%E3%82%B7%E3%83%A3%E3%83%B3%5D;Software+Engineer;AI%2FML;Cloud+%26+DevOps;Competitive+Programming;Design;Finance"
+    alt="Ishan Ray Chaudhuri"
   />
 </a>
 
