@@ -124,9 +124,15 @@ BS — Data Science
   <img src="./assets/metrics.isocalendar.svg" alt="3D GitHub Contribution Calendar" />
 </p>
 
+<p align="center">
+  <img
+    src="https://github.com/IshanRayC/IshanRayC/blob/output/github-contribution-snake.svg"
+    alt="GitHub Contribution Snake"
+  />
+</p>
 
 <p align="center">
-  <b>Thanks for stopping by! 👋</b>
+  <b>Thanks for stopping by! ✌🏻</b>
   <br>
   <sub>Keep learning. Keep building.</sub>
 </p>
