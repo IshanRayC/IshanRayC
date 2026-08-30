@@ -2,7 +2,7 @@
   <img
     src="./assets/portrait.svg"
     alt="Ishan Ray Chaudhuri"
-    width="350"
+    width="400"
   />
 </p>
 
