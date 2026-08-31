@@ -122,7 +122,7 @@ BS — Data Science
 
 <p align="center">
   <img
-    src="./assets/metrics.isocalendar.svg?v=2"
+    src="https://raw.githubusercontent.com/IshanRayC/IshanRayC/5c5f8d5/assets/metrics.isocalendar.svg"
     alt="3D GitHub Contribution Calendar"
   />
 </p>
