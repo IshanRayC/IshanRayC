@@ -8,7 +8,8 @@ on:
       - .github/workflows/profile-assets.yml
       - assets/portrait.svg
   schedule:
-    - cron: "11 */6 * * *"
+    # Refresh profile stats twice per hour. 15/45 avoids the busy top-of-hour window.
+    - cron: "15,45 * * * *"
   workflow_dispatch:
 permissions:
   contents: write
