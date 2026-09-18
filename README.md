@@ -1,12 +1,35 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-hero-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="./assets/profile-hero-light.svg">
-    <img src="./assets/profile-hero-light.svg" width="100%" alt="Ishan Ray Chaudhuri profile system">
-  </picture>
-</p>
+<div align="center">
 
-<!-- EXISTING NAME ANIMATION — intentionally unchanged -->
+<table>
+<tr>
+<td width="42%" align="center" valign="middle">
+
+<img src="./assets/portrait.svg" width="100%" alt="Ishan Ray Chaudhuri animated dot-matrix portrait">
+
+</td>
+<td width="58%" valign="middle">
+
+<h3>02 // SYSTEM INFORMATION</h3>
+
+<table>
+<tr><td><b>SUBJECT</b></td><td><b>ISHAN RAY CHAUDHURI</b></td></tr>
+<tr><td>ROLE</td><td>CSE + DATA SCIENCE STUDENT</td></tr>
+<tr><td>ORIGIN</td><td>CHENNAI, INDIA</td></tr>
+<tr><td>EDUCATION</td><td>BTECH CSE · VIT CHENNAI<br>BS DATA SCIENCE · IIT MADRAS</td></tr>
+<tr><td>STATUS</td><td>LEARNING · BUILDING · SHIPPING</td></tr>
+<tr><td>CORE.LANG</td><td>C · C++ · PYTHON · JAVA · R</td></tr>
+<tr><td>CORE.DATA</td><td>NUMPY · PANDAS · MATLAB</td></tr>
+<tr><td>CORE.INFRA</td><td>DOCKER · WSL · CLOUD · DEVOPS</td></tr>
+<tr><td>INTERESTS</td><td>AI/ML · FULL STACK · AUTOMATION<br>SYSTEMS · QUANT · HFT</td></tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</div>
+
+<!-- EXISTING NAME ANIMATION — kept unchanged -->
 <div align="center">
 <a href="https://github.com/IshanRayC"><img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=30&duration=1800&pause=650&color=58A6FF&center=true&vCenter=true&width=900&height=75&cursor=true&cursorChar=%E2%96%8C&cursorStyle=1&repeat=true&lines=Ishan+Ray+Chaudhuri;Software+Engineer;AI%2FML;Cloud+%26+DevOps;Competitive+Programming;Design;Finance;%E5%A8%81%E9%96%83%5B%E3%82%A4%E3%82%B7%E3%83%A3%E3%83%B3%5D" alt="Ishan Ray Chaudhuri"></a>
 </div>
@@ -26,28 +49,23 @@
 ## ⚡ GitHub Activity
 
 <p align="center">
-<img height="180" src="https://github-readme-stats.vercel.app/api?username=IshanRayC&show_icons=true&hide_border=true&include_all_commits=true&count_private=true&bg_color=0B1118&title_color=22D3EE&icon_color=06B6D4&text_color=94A3B8" alt="GitHub stats">
-<img height="180" src="https://streak-stats.demolab.com/?user=IshanRayC&theme=dark&hide_border=true&background=0B1118&ring=22D3EE&fire=06B6D4&currStreakLabel=22D3EE&sideLabels=94A3B8&dates=64748B&currStreakNum=F8FAFC&sideNums=F8FAFC" alt="GitHub streak">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-activity-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/profile-activity-light.svg">
+    <img src="./assets/profile-activity-dark.svg" width="100%" alt="GitHub activity statistics">
+  </picture>
 </p>
-
-<p align="center"><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=IshanRayC&layout=compact&hide_border=true&langs_count=8&bg_color=0B1118&title_color=22D3EE&text_color=94A3B8" height="180" alt="Top languages"></p>
-
-## 🐍 Contribution Activity
-
-<p align="center"><img src="https://raw.githubusercontent.com/IshanRayC/IshanRayC/gh-pages/github-contribution-snake.svg" width="100%" alt="GitHub contribution snake"></p>
-<p align="center"><img src="https://raw.githubusercontent.com/IshanRayC/IshanRayC/main/assets/metrics.isocalendar.svg" width="100%" alt="GitHub contribution calendar"></p>
 
 ---
 
 ## 🚀 Projects
 
 <p align="center">
-<a href="https://github.com/IshanRayC/VITalWatch-Prototype"><img src="https://github-readme-stats.vercel.app/api/pin/?username=IshanRayC&repo=VITalWatch-Prototype&hide_border=true&bg_color=0B1118&title_color=22D3EE&icon_color=06B6D4&text_color=94A3B8" width="49%"></a>
-<a href="https://github.com/IshanRayC/AI_Agents_Hackathon"><img src="https://github-readme-stats.vercel.app/api/pin/?username=IshanRayC&repo=AI_Agents_Hackathon&hide_border=true&bg_color=0B1118&title_color=22D3EE&icon_color=06B6D4&text_color=94A3B8" width="49%"></a>
-<a href="https://github.com/IshanRayC/DeepFake_shield"><img src="https://github-readme-stats.vercel.app/api/pin/?username=IshanRayC&repo=DeepFake_shield&hide_border=true&bg_color=0B1118&title_color=22D3EE&icon_color=06B6D4&text_color=94A3B8" width="49%"></a>
-<a href="https://github.com/IshanRayC/n8n-workflows"><img src="https://github-readme-stats.vercel.app/api/pin/?username=IshanRayC&repo=n8n-workflows&hide_border=true&bg_color=0B1118&title_color=22D3EE&icon_color=06B6D4&text_color=94A3B8" width="49%"></a>
-<a href="https://github.com/IshanRayC/Free-Certifications"><img src="https://github-readme-stats.vercel.app/api/pin/?username=IshanRayC&repo=Free-Certifications&hide_border=true&bg_color=0B1118&title_color=22D3EE&icon_color=06B6D4&text_color=94A3B8" width="49%"></a>
-<a href="https://github.com/IshanRayC/project-based-learning"><img src="https://github-readme-stats.vercel.app/api/pin/?username=IshanRayC&repo=project-based-learning&hide_border=true&bg_color=0B1118&title_color=22D3EE&icon_color=06B6D4&text_color=94A3B8" width="49%"></a>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/projects-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/projects-light.svg">
+    <img src="./assets/projects-dark.svg" width="100%" alt="Projects">
+  </picture>
 </p>
 
 ---
