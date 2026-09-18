@@ -246,17 +246,17 @@ aria-label="GitHub activity, stats, languages and contribution snake">
 
   <rect x="628" y="264" width="500" height="12" rx="2" fill="{snake_default}"/>
 '''.strip()]
-    langs = sorted(d["langs"].items(), key=lambda x: x[1], reverse=True)[:8]
+    langs = sorted(d["langs"].items(), key=lambda x: x[1], reverse=True)[:5]
     total = sum(v for _, v in langs) or 1
     cursor = 628
-    lang_colors = [CYAN, TEAL, BLUE, "#155E75", "#164E63", "#1E7490", "#287F9B", "#3B91AA"]
+    lang_colors = ["#22D3EE", "#00E5FF", "#38BDF8", "#2DD4BF", "#60A5FA"]
     for i, (lang, n) in enumerate(langs):
         w = max(3, 500 * n / total)
-        p.append(f'<rect x="{cursor:.1f}" y="264" width="{w:.1f}" height="12" fill="{lang_colors[i]}"/>')
+        p.append(f'<rect x="{cursor:.1f}" y="264" width="{w:.1f}" height="14" fill="{lang_colors[i]}"/>')
         cursor += w
         y = 301 + i * 21
         p.append(
-            f'<circle cx="632" cy="{y-4}" r="3.6" fill="{lang_colors[i]}"/>'
+            f'<circle cx="632" cy="{y-5}" r="4" fill="{lang_colors[i]}"/>'
             f'<text x="646" y="{y}" fill="{text}" font-size="11" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{esc(lang)}</text>'
             f'<text x="1128" y="{y}" text-anchor="end" fill="{muted}" font-size="11" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{n/total*100:.1f}%</text>'
         )
