@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="590" viewBox="0 0 1180 590">
+<defs><linearGradient id="c" x1="0" x2="1"><stop stop-color="#06B6D4"/><stop offset=".5" stop-color="#22D3EE"/><stop offset="1" stop-color="#0EA5E9"/></linearGradient></defs>
+<rect width="1180" height="590" rx="14" fill="#070B10" stroke="#12313B" stroke-width="2"/>
+<rect x="0" y="0" width="1180" height="44" rx="14" fill="#0B1118"/><rect x="0" y="30" width="1180" height="14" fill="#0B1118"/>
+<circle cx="22" cy="22" r="6" fill="#22D3EE"/><circle cx="42" cy="22" r="6" fill="#06B6D4"/><circle cx="62" cy="22" r="6" fill="#0EA5E9"/>
+<text x="86" y="27" fill="#F8FAFC" font-family="monospace" font-size="13" font-weight="700">IshanRayC</text><text x="1140" y="27" text-anchor="end" fill="#22D3EE" font-family="monospace" font-size="11">PROFILE.SYS</text>
+<rect x="26" y="68" width="430" height="486" rx="10" fill="#05080C" stroke="#0E7490" stroke-width="2"/><text x="48" y="94" fill="#22D3EE" font-family="monospace" font-size="11">01 // PORTRAIT</text>
+<rect x="48" y="110" width="386" height="420" rx="7" fill="#020508" stroke="#164E5D"/>
+<image href="https://raw.githubusercontent.com/IshanRayC/IshanRayC/main/assets/portrait.svg" x="54" y="116" width="374" height="408" preserveAspectRatio="xMidYMid meet"/>
+<rect x="480" y="68" width="674" height="486" rx="10" fill="#0B1118" stroke="#12313B"/><text x="504" y="95" fill="#22D3EE" font-family="monospace" font-size="11" font-weight="700">02 // SYSTEM INFORMATION</text><line x1="504" y1="108" x2="1130" y2="108" stroke="#12313B"/>
+<g font-family="monospace" font-size="11">
+<text x="504" y="137" fill="#64748B">SUBJECT</text><text x="675" y="137" fill="#F8FAFC" font-weight="700">ISHAN RAY CHAUDHURI</text>
+<text x="504" y="164" fill="#64748B">ROLE</text><text x="675" y="164" fill="#22D3EE">CSE + DATA SCIENCE STUDENT</text>
+<text x="504" y="191" fill="#64748B">ORIGIN</text><text x="675" y="191" fill="#F8FAFC">CHENNAI, INDIA</text>
+<text x="504" y="218" fill="#64748B">EDUCATION</text><text x="675" y="218" fill="#F8FAFC">BTECH CSE · VIT CHENNAI</text><text x="675" y="237" fill="#F8FAFC">BS DATA SCIENCE · IIT MADRAS</text>
+<text x="504" y="264" fill="#64748B">STATUS</text><text x="675" y="264" fill="#22D3EE">LEARNING · BUILDING · SHIPPING</text>
+<text x="504" y="303" fill="#64748B">CORE.LANG</text><text x="675" y="303" fill="#F8FAFC">C · C++ · PYTHON · JAVA · R</text>
+<text x="504" y="330" fill="#64748B">CORE.DATA</text><text x="675" y="330" fill="#F8FAFC">NUMPY · PANDAS · MATLAB</text>
+<text x="504" y="357" fill="#64748B">CORE.INFRA</text><text x="675" y="357" fill="#F8FAFC">DOCKER · WSL · CLOUD · DEVOPS</text>
+<text x="504" y="396" fill="#64748B">INTERESTS</text><text x="675" y="396" fill="#F8FAFC">AI/ML · FULL STACK · AUTOMATION</text><text x="675" y="415" fill="#F8FAFC">SYSTEMS · QUANT · HFT</text>
+<rect x="675" y="440" width="300" height="30" rx="15" fill="#071A22" stroke="#0E7490"/><text x="825" y="460" text-anchor="middle" fill="#22D3EE">@IshanRayC</text>
+<text x="504" y="500" fill="#64748B">TARGET</text><text x="675" y="500" fill="#22D3EE">SOFTWARE · AI/ML · CLOUD · DEVOPS</text><text x="675" y="519" fill="#22D3EE">AUTOMATION · SYSTEM DESIGN · QUANT</text>
+</g><rect x="480" y="570" width="674" height="4" rx="2" fill="url(#c)"/></svg>
