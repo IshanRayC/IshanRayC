@@ -105,6 +105,7 @@ def snake_body():
         )
         with urllib.request.urlopen(req, timeout=20) as r:
             raw = r.read().decode("utf-8")
+        raw = raw.replace("--ce:#071A2F", "--ce:#343942").replace("--ce:#071a2f", "--ce:#343942")
         m = re.search(r"<svg\b[^>]*>(.*)</svg>\s*$", raw, re.I | re.S)
         return m.group(1) if m else ""
     except Exception:
@@ -153,9 +154,18 @@ aria-label="GitHub activity, stats, languages and contribution snake">
   <line x1="786.67" y1="44" x2="786.67" y2="170" stroke="{divider}"/>
 
   <!-- ACTIVE DAYS -->
-  <text x="205" y="63" text-anchor="middle"
-        font-family="Segoe UI Emoji, Segoe UI, sans-serif"
-        font-size="23">📅</text>
+  <g fill="{primary}">
+    <rect x="193" y="42" width="24" height="22" rx="4"/>
+    <rect x="193" y="40" width="24" height="7" rx="3"/>
+    <rect x="197" y="36" width="3" height="7" rx="1"/>
+    <rect x="210" y="36" width="3" height="7" rx="1"/>
+    <rect x="197" y="50" width="3" height="3" rx="1"/>
+    <rect x="203" y="50" width="3" height="3" rx="1"/>
+    <rect x="209" y="50" width="3" height="3" rx="1"/>
+    <rect x="197" y="56" width="3" height="3" rx="1"/>
+    <rect x="203" y="56" width="3" height="3" rx="1"/>
+    <rect x="209" y="56" width="3" height="3" rx="1"/>
+  </g>
   <text x="205" y="98" text-anchor="middle" fill="{primary}"
         font-family="Segoe UI,Ubuntu,sans-serif"
         font-size="30" font-weight="700">{active}</text>
@@ -169,9 +179,10 @@ aria-label="GitHub activity, stats, languages and contribution snake">
 
   <!-- CURRENT STREAK -->
   <circle cx="590" cy="91" r="40" fill="none" stroke="{primary}" stroke-width="5"/>
-  <text x="590" y="52" text-anchor="middle"
-        font-family="Segoe UI Emoji, Segoe UI, sans-serif"
-        font-size="20">🔥</text>
+  <g fill="{primary}">
+    <path d="M590 37 C594 44 591 48 597 53 C603 58 600 66 594 70 C600 67 606 63 606 57 C606 52 604 48 600 44 C601 51 596 55 594 51 C592 47 595 42 590 37 Z"/>
+    <path d="M586 56 C582 60 581 64 583 68 C585 72 589 74 593 74 C589 71 588 68 590 65 C592 62 590 59 586 56 Z"/>
+  </g>
   <text x="590" y="99" text-anchor="middle" fill="{text}"
         font-family="Segoe UI,Ubuntu,sans-serif"
         font-size="28" font-weight="700">{cur}</text>
@@ -183,9 +194,13 @@ aria-label="GitHub activity, stats, languages and contribution snake">
         font-size="12">active contribution days</text>
 
   <!-- LONGEST STREAK -->
-  <text x="983" y="64" text-anchor="middle"
-        font-family="Segoe UI Emoji, Segoe UI, sans-serif"
-        font-size="23">🏆</text>
+  <g fill="{secondary}">
+    <path d="M983 39 L987 49 L998 50 L990 57 L992 68 L983 63 L974 68 L976 57 L968 50 L979 49 Z"/>
+    <rect x="979" y="63" width="8" height="13" rx="1"/>
+    <rect x="970" y="76" width="26" height="6" rx="2"/>
+    <path d="M976 48 H963 C963 58 967 63 975 64 V58 C970 57 968 54 968 51 H976 Z"/>
+    <path d="M990 48 H1003 C1003 58 999 63 991 64 V58 C996 57 998 54 998 51 H990 Z"/>
+  </g>
   <text x="983" y="98" text-anchor="middle" fill="{secondary}"
         font-family="Segoe UI,Ubuntu,sans-serif"
         font-size="30" font-weight="700">{longest}</text>
@@ -205,27 +220,27 @@ aria-label="GitHub activity, stats, languages and contribution snake">
   <path d="M178 238 H550" stroke="{card_border}" stroke-dasharray="2 7"/>
 
   <g font-family="Segoe UI Emoji, Segoe UI, sans-serif" font-size="10">
-    <text x="50" y="282">📁</text>
+    <path d="M50 274 H59 L63 278 H75 V289 H50 Z" fill="{primary}"/>
     <text x="68" y="282" fill="{muted}" font-size="10">Repositories</text>
     <text x="68" y="304" fill="{text}" font-size="18" font-weight="700">{d["repos"]}</text>
 
-    <text x="318" y="282">⭐</text>
+    <path d="M330 274 L332.5 280 L339 280.5 L334 284.5 L335.5 291 L330 287.5 L324.5 291 L326 284.5 L321 280.5 L327.5 280 Z" fill="{primary}"/>
     <text x="336" y="282" fill="{muted}" font-size="10">Stars</text>
     <text x="336" y="304" fill="{text}" font-size="18" font-weight="700">{d["stars"]}</text>
 
-    <text x="50" y="329">👥</text>
+    <g fill="{primary}"><circle cx="57" cy="322" r="4"/><circle cx="68" cy="324" r="3"/><path d="M50 336 C50 330 53 327 57 327 C61 327 64 330 64 336 Z"/><path d="M63 336 C63 332 66 330 69 330 C72 330 75 332 75 336 Z"/></g>
     <text x="68" y="329" fill="{muted}" font-size="10">Followers</text>
     <text x="68" y="351" fill="{text}" font-size="18" font-weight="700">{d["followers"]}</text>
 
-    <text x="318" y="329">💻</text>
+    <g fill="{primary}"><rect x="50" y="319" width="23" height="15" rx="2"/><rect x="56" y="336" width="11" height="2" rx="1"/></g>
     <text x="336" y="329" fill="{muted}" font-size="10">Commits</text>
     <text x="336" y="351" fill="{text}" font-size="18" font-weight="700">{d["commits"]}</text>
 
-    <text x="50" y="376">🔀</text>
+    <g fill="none" stroke="{primary}" stroke-width="2"><circle cx="56" cy="372" r="3.5"/><circle cx="70" cy="372" r="3.5"/><circle cx="63" cy="384" r="3.5"/><path d="M56 376 V384 M70 376 V379 C70 382 68 384 63 384"/></g>
     <text x="68" y="376" fill="{muted}" font-size="10">Pull Requests</text>
     <text x="68" y="398" fill="{text}" font-size="18" font-weight="700">{d["prs"]}</text>
 
-    <text x="318" y="376">⚠️</text>
+    <g fill="{primary}"><circle cx="330" cy="377" r="8"/><rect x="329" y="372" width="2" height="6" rx="1" fill="{card}"/><circle cx="330" cy="381" r="1.2" fill="{card}"/></g>
     <text x="336" y="376" fill="{muted}" font-size="10">Issues</text>
     <text x="336" y="398" fill="{text}" font-size="18" font-weight="700">{d["issues"]}</text>
   </g>
@@ -280,7 +295,7 @@ aria-label="GitHub activity, stats, languages and contribution snake">
 
 def projects(d,theme):
  bg,panel,stroke,text,muted=DARK if theme=="dark" else LIGHT;wanted=["VITalWatch-Prototype","AI_Agents_Hackathon","DeepFake_shield","n8n-workflows","Free-Certifications","project-based-learning"];by={r["name"]:r for r in d["repo_data"]};rs=[by[x] for x in wanted if x in by];h=58+math.ceil(len(rs)/2)*146
- p=[f'<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="{h}" viewBox="0 0 1180 {h}"><rect x="1" y="1" width="1178" height="{h-2}" rx="16" fill="{bg}" stroke="{stroke}" stroke-width="2"/><text x="590" y="28" text-anchor="middle" fill="{CYAN}" font-family="monospace" font-size="12" font-weight="700">PROJECTS</text>']
+ p=[f'<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="{h}" viewBox="0 0 1180 {h}"><rect x="1" y="1" width="1178" height="{h-2}" rx="16" fill="{bg}" stroke="{stroke}" stroke-width="2"/>']
  for i,r in enumerate(rs):
   x=5+(i%2)*570;y=42+(i//2)*146;desc=esc(r.get("description") or "Repository project")
   p.append(f'<a href="https://github.com/{r["full_name"]}"><rect x="{x}" y="{y}" width="560" height="132" rx="12" fill="{panel}" stroke="{stroke}"/><text x="{x+16}" y="{y+23}" fill="{muted}" font-family="monospace" font-size="9">● {esc(r["full_name"])}</text><text x="{x+16}" y="{y+57}" fill="{text}" font-family="monospace" font-size="15" font-weight="700">{esc(r["name"])}</text><text x="{x+16}" y="{y+81}" fill="{muted}" font-family="monospace" font-size="10">{desc[:80]}</text><rect x="{x+16}" y="{y+98}" width="86" height="18" rx="9" fill="#06232A" stroke="{stroke}"/><text x="{x+59}" y="{y+111}" text-anchor="middle" fill="{CYAN}" font-family="monospace" font-size="9">{esc(r.get("language") or "GitHub")}</text><text x="{x+542}" y="{y+111}" text-anchor="end" fill="{muted}" font-family="monospace" font-size="10">★ {r.get("stargazers_count",0)}</text></a>')
