@@ -6,6 +6,7 @@ on:
       - README.md
       - scripts/generate_profile_assets.py
       - .github/workflows/profile-assets.yml
+      - assets/portrait.svg
   schedule:
     - cron: "11 */6 * * *"
   workflow_dispatch:
@@ -17,7 +18,7 @@ concurrency:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - name: Generate profile SVGs
@@ -28,8 +29,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/profile-activity-dark.svg assets/profile-activity-light.svg assets/projects-dark.svg assets/projects-light.svg
+          git add assets/profile-activity-dark.svg assets/profile-activity-light.svg assets/projects-dark.svg assets/projects-light.svg assets/hero-dark.svg assets/hero-light.svg assets/signature-stripe-dark.svg assets/signature-stripe-light.svg
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "chore(profile): refresh cyan stats and projects"
+          git commit -m "chore(profile): refresh cyan profile visuals"
           git pull --rebase origin main
           git push origin HEAD:main
