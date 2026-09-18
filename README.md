@@ -43,17 +43,4 @@
 </picture>
 </div>
 
-## 🧠 Areas of Interest/
 
-Software Engineering · AI/ML · Data Science · Quantitative Finance & HFT · Cloud & DevOps · Web Scraping · AI Automation
-
-## 🛠️ Tech Stack
-
-C · C++ · Python · Java · R · NumPy · Pandas · MATLAB · Docker · WSL · MySQL · Oracle · Figma · Canva · n8n
-
-## 🎓 Education
-
-**VIT Chennai** — B.Tech Computer Science & Engineering (Core)  
-**IIT Madras** — BS Data Science
-
-<p align="center"><sub>Keep learning. Keep building. Keep shipping.</sub></p>
