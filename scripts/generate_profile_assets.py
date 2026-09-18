@@ -87,6 +87,7 @@ def hero(theme):
 def signature(theme):
     bg = "#FFFFFF" if theme == "light" else "#0D1016"
     text = "#0F172A" if theme == "light" else "#F8FAFC"
+    stroke = "#B8DCE4" if theme == "light" else "#12313B"
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="72" viewBox="0 0 1040 72" role="img" aria-label="Ishan signature stripe">
 <rect x="1" y="1" width="1038" height="70" rx="8" fill="{bg}" stroke="{CYAN}" stroke-width="2"/><rect x="82" y="10" width="1" height="52" fill="{stroke}"/>
 <text x="24" y="44" fill="{text}" font-size="18" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">IR</text>
