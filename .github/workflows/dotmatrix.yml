@@ -58,4 +58,5 @@ jobs:
           fi
 
           git commit -m "Generate dot matrix portrait"
-          git push
+          git pull --rebase origin main
+          git push origin HEAD:main
