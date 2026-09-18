@@ -2,7 +2,8 @@ name: Generate Contribution Snake
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    # Refresh the contribution snake twice per hour so the embedded snake stays current.
+    - cron: "0,30 * * * *"
 
   workflow_dispatch:
 
