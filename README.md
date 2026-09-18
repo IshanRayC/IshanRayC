@@ -27,10 +27,6 @@
 <a href="https://www.kaggle.com/ishanrayc"><img src="https://img.shields.io/badge/KAGGLE-0891B2?style=for-the-badge&logo=kaggle&logoColor=white"></a>
 </p>
 
----
-
-## ⚡ GitHub Activity
-
 <div align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-activity-dark.svg?v=20260918">
@@ -38,10 +34,6 @@
   <img width="100%" src="./assets/profile-activity-dark.svg?v=20260918" alt="GitHub activity statistics">
 </picture>
 </div>
-
----
-
-## 🚀 Projects
 
 <div align="center">
 <picture>
@@ -51,9 +43,7 @@
 </picture>
 </div>
 
----
-
-## 🧠 Areas of Interest
+## 🧠 Areas of Interest/
 
 Software Engineering · AI/ML · Data Science · Quantitative Finance & HFT · Cloud & DevOps · Web Scraping · AI Automation
 
