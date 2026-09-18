@@ -144,6 +144,7 @@ viewBox="0 0 1180 670" role="img"
 aria-label="GitHub activity, stats, languages and contribution snake">
 <defs>
   <clipPath id="activityFrame"><rect x="1" y="1" width="1178" height="668" rx="16"/></clipPath>
+  <mask id="streakMask"><rect x="0" y="0" width="1180" height="195" fill="white"/><ellipse cx="590" cy="32" rx="13" ry="18" fill="black"/></mask>
 </defs>
 <rect x="1" y="1" width="1178" height="668" rx="16"
       fill="{frame}" stroke="{card_border}" stroke-width="2"/>
@@ -154,7 +155,8 @@ aria-label="GitHub activity, stats, languages and contribution snake">
   <line x1="786.67" y1="44" x2="786.67" y2="170" stroke="{divider}"/>
 
   <!-- ACTIVE DAYS -->
-  <g transform="translate(205 54) scale(0.42)">
+  <g transform="translate(196.67 34) scale(0.78)">
+    <ellipse cx="0" cy="29" rx="25" ry="4" fill="#000000" opacity="0.12"/>
     <rect x="-28" y="-18" width="56" height="48" rx="7" fill="{primary}"/>
     <rect x="-28" y="-18" width="56" height="16" rx="7" fill="{primary}"/>
     <rect x="-28" y="-10" width="56" height="8" fill="{primary}"/>
@@ -173,49 +175,34 @@ aria-label="GitHub activity, stats, languages and contribution snake">
       <circle cx="-12" cy="-18" r="2"/><circle cx="0" cy="-18" r="2"/><circle cx="12" cy="-18" r="2"/>
     </g>
   </g>
-  <text x="205" y="98" text-anchor="middle" fill="{primary}"
-        font-family="Segoe UI,Ubuntu,sans-serif"
-        font-size="30" font-weight="700">{active}</text>
-  <text x="205" y="126" text-anchor="middle" fill="{primary}"
-        font-family="Segoe UI,Ubuntu,sans-serif"
-        font-size="14" font-weight="700">Active Days</text>
-  <text x="205" y="150" text-anchor="middle" fill="{sub}"
-        font-family="Segoe UI,Ubuntu,sans-serif"
-        font-size="12">last 400 days</text>
-  <rect x="180" y="158" width="50" height="4" rx="2" fill="{primary}"/>
+  <text x="196.67" y="94" text-anchor="middle" fill="{primary}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="30" font-weight="700">{active}</text>
+  <text x="196.67" y="124" text-anchor="middle" fill="{primary}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="14" font-weight="700">Active Days</text>
+  <text x="196.67" y="148" text-anchor="middle" fill="{sub}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="12">last 400 days</text>
+  <rect x="172" y="158" width="49" height="4" rx="2" fill="{primary}"/>
 
   <!-- CURRENT STREAK -->
-  <circle cx="590" cy="91" r="40" fill="none" stroke="{primary}" stroke-width="5"/>
-  <g transform="translate(590 44) scale(1.05)">
+  <g mask="url(#streakMask)">
+    <circle cx="590" cy="71" r="40" fill="none" stroke="{primary}" stroke-width="5"/>
+  </g>
+  <g transform="translate(590 19.5)" stroke-opacity="0">
     <path d="M 1.5 0.67 C 1.5 0.67 2.24 3.32 2.24 5.47 C 2.24 7.53 0.89 9.2 -1.17 9.2 C -3.23 9.2 -4.79 7.53 -4.79 5.47 L -4.76 5.11 C -6.78 7.51 -8 10.62 -8 13.99 C -8 18.41 -4.42 22 0 22 C 4.42 22 8 18.41 8 13.99 C 8 8.6 5.41 3.79 1.5 0.67 Z M -0.29 19 C -2.07 19 -3.51 17.6 -3.51 15.86 C -3.51 14.24 -2.46 13.1 -0.7 12.74 C 1.07 12.38 2.9 11.53 3.92 10.16 C 4.31 11.45 4.51 12.81 4.51 14.2 C 4.51 16.85 2.36 19 -0.29 19 Z" fill="{primary}"/>
   </g>
-  <text x="590" y="99" text-anchor="middle" fill="{text}"
-        font-family="Segoe UI,Ubuntu,sans-serif"
-        font-size="28" font-weight="700">{cur}</text>
-  <text x="590" y="140" text-anchor="middle" fill="{primary}"
-        font-family="Segoe UI,Ubuntu,sans-serif"
-        font-size="14" font-weight="700">Current Streak</text>
-  <text x="590" y="166" text-anchor="middle" fill="{sub}"
-        font-family="Segoe UI,Ubuntu,sans-serif"
-        font-size="12">active contribution days</text>
+  <text x="590" y="80" text-anchor="middle" fill="{text}" font-family="Segoe UI,Ubuntu,sans-serif" font-weight="700" font-size="28">{cur}</text>
+  <text x="590" y="140" text-anchor="middle" fill="{primary}" font-family="Segoe UI,Ubuntu,sans-serif" font-weight="700" font-size="14">Current Streak</text>
+  <text x="590" y="166" text-anchor="middle" fill="{sub}" font-family="Segoe UI,Ubuntu,sans-serif" font-weight="400" font-size="12">recent contribution run</text>
 
   <!-- LONGEST STREAK -->
-  <g transform="translate(983 53)">
+  <g transform="translate(983.33 34) scale(0.78)">
+    <ellipse cx="0" cy="29" rx="27" ry="4" fill="#000000" opacity="0.12"/>
     <path d="M-10 -20 H10 V-3 C10 7 5 14 0 17 C-5 14 -10 7 -10 -3 Z" fill="{secondary}"/>
     <path d="M-10 -15 H-22 V-5 C-22 6 -15 13 -7 13 V7 C-12 6 -15 2 -15 -4 H-10 Z" fill="{secondary}"/>
     <path d="M10 -15 H22 V-5 C22 6 15 13 7 13 V7 C12 6 15 2 15 -4 H10 Z" fill="{secondary}"/>
     <path d="M-3 15 H3 V23 H-3 Z" fill="{secondary}"/>
     <rect x="-18" y="22" width="36" height="8" rx="3" fill="{secondary}"/>
   </g>
-  <text x="983" y="98" text-anchor="middle" fill="{secondary}"
-        font-family="Segoe UI,Ubuntu,sans-serif"
-        font-size="30" font-weight="700">{longest}</text>
-  <text x="983" y="126" text-anchor="middle" fill="{secondary}"
-        font-family="Segoe UI,Ubuntu,sans-serif"
-        font-size="14" font-weight="700">Longest Streak</text>
-  <text x="983" y="150" text-anchor="middle" fill="{sub}"
-        font-family="Segoe UI,Ubuntu,sans-serif"
-        font-size="12">all-time record</text>
+  <text x="983.33" y="94" text-anchor="middle" fill="{secondary}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="30" font-weight="700">{longest}</text>
+  <text x="983.33" y="124" text-anchor="middle" fill="{secondary}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="14" font-weight="700">Longest Streak</text>
+  <text x="983.33" y="148" text-anchor="middle" fill="{sub}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="12">all-time record</text>
   <rect x="958" y="158" width="51" height="4" rx="2" fill="{secondary}"/>
 
   <!-- GITHUB STATS CARD -->
@@ -225,31 +212,28 @@ aria-label="GitHub activity, stats, languages and contribution snake">
         font-family="ui-monospace,SFMono-Regular,Menlo,monospace">GITHUB STATS</text>
   <path d="M178 238 H550" stroke="{card_border}" stroke-dasharray="2 7"/>
 
-  <g font-family="Segoe UI Emoji, Segoe UI, sans-serif" font-size="10">
-    <path d="M50 274 H59 L63 278 H75 V289 H50 Z" fill="{primary}"/>
-    <text x="42" y="282" fill="{muted}" font-size="10">Repositories</text>
-    <text x="42" y="304" fill="{text}" font-size="18" font-weight="700">{d["repos"]}</text>
-
-    <path d="M330 274 L332.5 280 L339 280.5 L334 284.5 L335.5 291 L330 287.5 L324.5 291 L326 284.5 L321 280.5 L327.5 280 Z" fill="{primary}"/>
-    <text x="278" y="282" fill="{muted}" font-size="10">Stars</text>
-    <text x="278" y="304" fill="{text}" font-size="18" font-weight="700">{d["stars"]}</text>
-
-    <g fill="{primary}"><circle cx="57" cy="322" r="4"/><circle cx="68" cy="324" r="3"/><path d="M50 336 C50 330 53 327 57 327 C61 327 64 330 64 336 Z"/><path d="M63 336 C63 332 66 330 69 330 C72 330 75 332 75 336 Z"/></g>
-    <text x="42" y="329" fill="{muted}" font-size="10">Followers</text>
-    <text x="42" y="351" fill="{text}" font-size="18" font-weight="700">{d["followers"]}</text>
-
-    <g fill="{primary}"><rect x="50" y="319" width="23" height="15" rx="2"/><rect x="56" y="336" width="11" height="2" rx="1"/></g>
-    <text x="278" y="329" fill="{muted}" font-size="10">Commits</text>
-    <text x="278" y="351" fill="{text}" font-size="18" font-weight="700">{d["commits"]}</text>
-
-    <g fill="none" stroke="{primary}" stroke-width="2"><circle cx="56" cy="372" r="3.5"/><circle cx="70" cy="372" r="3.5"/><circle cx="63" cy="384" r="3.5"/><path d="M56 376 V384 M70 376 V379 C70 382 68 384 63 384"/></g>
-    <text x="42" y="376" fill="{muted}" font-size="10">Pull Requests</text>
-    <text x="42" y="398" fill="{text}" font-size="18" font-weight="700">{d["prs"]}</text>
-
-    <g fill="{primary}"><circle cx="330" cy="377" r="8"/><rect x="329" y="372" width="2" height="6" rx="1" fill="{card}"/><circle cx="330" cy="381" r="1.2" fill="{card}"/></g>
-    <text x="278" y="376" fill="{muted}" font-size="10">Issues</text>
-    <text x="278" y="398" fill="{text}" font-size="18" font-weight="700">{d["issues"]}</text>
+  <g fill="none" stroke="{primary}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-8 -4.5 H-1.5 L0 -3 H8 V6 H-8 Z" transform="translate(31 279)"/>
+    <path d="M0 -8 L2.1 -2.6 L7.8 -2.1 L3.4 1.5 L4.8 7.4 L0 4.3 L-4.8 7.4 L-3.4 1.5 L-7.8 -2.1 L-2.1 -2.6 Z" transform="translate(267 279)"/>
+    <circle cx="28.3" cy="319.1" r="3.2"/><path d="M22.5 329.5 C23.3 325.8 25.3 324.1 28.3 324.1 C31.2 324.1 33.3 325.8 34.1 329.5"/>
+    <circle cx="36.2" cy="320.6" r="2.3"/><path d="M34.6 324.4 C37 324.5 38.4 325.7 39.1 327.8"/>
+    <path d="M-8 0 H-3 M3 0 H8" transform="translate(267 327.5)"/><circle cx="267" cy="327.5" r="3.4" fill="{primary}" stroke="none"/>
+    <circle cx="28.3" cy="371" r="2.15"/><circle cx="28.3" cy="383" r="2.15"/><circle cx="39.3" cy="371" r="2.15"/>
+    <path d="M28.3 373.15 V380.85 M30.6 383 C36.2 383 39.3 380 39.3 374.8 V373.15"/>
+    <circle cx="267" cy="376" r="7.2"/><path d="M267 372.4 V377.2"/><circle cx="267" cy="380.2" r=".75" fill="{primary}" stroke="none"/>
   </g>
+  <text x="42" y="282" fill="{muted}" font-size="9" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Repositories</text>
+  <text x="42" y="303" fill="{text}" font-size="17" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["repos"]}</text>
+  <text x="278" y="282" fill="{muted}" font-size="9" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Stars</text>
+  <text x="278" y="303" fill="{text}" font-size="17" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["stars"]}</text>
+  <text x="42" y="329" fill="{muted}" font-size="9" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Followers</text>
+  <text x="42" y="350" fill="{text}" font-size="17" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["followers"]}</text>
+  <text x="278" y="329" fill="{muted}" font-size="9" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Commits</text>
+  <text x="278" y="350" fill="{text}" font-size="17" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["commits"]}</text>
+  <text x="42" y="376" fill="{muted}" font-size="9" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Pull Requests</text>
+  <text x="42" y="397" fill="{text}" font-size="17" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["prs"]}</text>
+  <text x="278" y="376" fill="{muted}" font-size="9" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Issues</text>
+  <text x="278" y="397" fill="{text}" font-size="17" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["issues"]}</text>
   <text x="50" y="414" fill="{secondary}" font-size="9"
         font-family="ui-monospace,SFMono-Regular,Menlo,monospace">generated by GitHub Actions</text>
 
