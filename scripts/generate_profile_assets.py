@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import html,json,math,os,urllib.parse,urllib.request
+import html,json,math,os,re,urllib.parse,urllib.request
 from collections import Counter
 from datetime import date,timedelta
 from pathlib import Path
@@ -36,6 +36,64 @@ def streak(days):
  for d in sorted(active):
   run=run+1 if prev and d==prev+timedelta(days=1) else 1;longest=max(longest,run);prev=d
  return len(active),cur,longest
+
+def read_portrait():
+    path = A / "portrait.svg"
+    if not path.exists():
+        return "", "0 0 1000 1000"
+    raw = path.read_text(encoding="utf-8")
+    m = re.search(r'<svg\\b[^>]*\\bviewBox=["\\\']([^"\\\']+)["\\\']', raw, re.I)
+    vb = m.group(1) if m else "0 0 1000 1000"
+    body = re.search(r"<svg\\b[^>]*>(.*)</svg>\\s*$", raw, re.I | re.S)
+    return (body.group(1) if body else raw), vb
+
+def hero(theme):
+    bg, panel, stroke, text, muted = DARK if theme == "dark" else LIGHT
+    body, vb = read_portrait()
+    if theme == "dark":
+        shell, label, dotted, visual, value = "#0D1016", "#67E8F9", "#16343E", "#06080B", "#F8FAFC"
+    else:
+        shell, label, dotted, visual, value = "#FFFFFF", "#0E7490", "#D6EAF0", "#050608", "#0F172A"
+    portrait = f'<svg x="52" y="130" width="420" height="420" viewBox="{esc(vb)}" preserveAspectRatio="xMidYMid meet" overflow="hidden">{body}</svg>'
+    rows = [
+        ("Subject","ISHAN RAY CHAUDHURI"),("Role","CSE AND DATA SCIENCE STUDENT"),
+        ("Origin","CHENNAI, INDIA"),("Education","BTECH CSE · VIT CHENNAI"),
+        ("","BS DATA SCIENCE · IIT MADRAS"),("Status","LEARNING + BUILDING + SHIPPING"),
+        ("Core.Lang","C · C++ · PYTHON · JAVA · R"),("Core.Data","NUMPY · PANDAS · MATLAB"),
+        ("Core.Infra","DOCKER · WSL · CLOUD · DEVOPS")]
+    p = [f'''<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="610" viewBox="0 0 1180 610" role="img" aria-label="Ishan Ray Chaudhuri system profile">
+<defs><clipPath id="v"><rect x="52" y="130" width="420" height="420" rx="14"/></clipPath></defs>
+<rect width="1180" height="610" rx="18" fill="{bg}"/><rect x="18" y="18" width="1144" height="574" rx="16" fill="{shell}" stroke="{stroke}"/>
+<rect x="42" y="42" width="1100" height="44" rx="10" fill="{CYAN}"/>
+<circle cx="66" cy="64" r="6" fill="#FFF"/><circle cx="86" cy="64" r="6" fill="#FFF"/><circle cx="106" cy="64" r="6" fill="#FFF"/>
+<text x="134" y="70" fill="#FFF" font-size="14" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">ISHAN LABS</text>
+<rect x="954" y="42" width="44" height="44" fill="#FFF"/><text x="976" y="70" fill="#0F172A" font-size="14" font-weight="700" text-anchor="middle" font-family="ui-monospace,monospace">IR</text>
+<rect x="998" y="42" width="144" height="44" fill="{CYAN}"/><text x="1070" y="69" fill="#FFF" font-size="14" font-weight="700" text-anchor="middle" font-family="ui-monospace,monospace">02</text>
+<text x="60" y="116" fill="{label}" font-size="13" font-family="ui-monospace,monospace">VISUAL.MAP</text><text x="504" y="116" fill="{label}" font-size="13" font-family="ui-monospace,monospace">SYSTEM.INFO</text>
+<rect x="52" y="130" width="420" height="420" rx="14" fill="{visual}" stroke="{CYAN}" stroke-width="2"/><g clip-path="url(#v)">{portrait}</g>
+<g font-size="14" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">''']
+    y = 154
+    for k, v in rows:
+        p.append(f'<text x="522" y="{y}" fill="{muted}">{esc(k)}</text>' if k else f'<text x="522" y="{y}" fill="{muted}"> </text>')
+        p.append(f'<path d="M610 {y-4} H900" stroke="{dotted}" stroke-dasharray="2 6"/><text x="930" y="{y}" fill="{value}" text-anchor="end">{esc(v)}</text>')
+        y += 23
+    p.append(f'''</g><rect x="522" y="378" width="408" height="34" rx="17" fill="{CYAN}" fill-opacity=".10" stroke="{CYAN}" stroke-opacity=".75"/>
+<text x="726" y="400" fill="{CYAN}" font-size="14" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">@IshanRayC</text>
+<text x="522" y="448" fill="{CYAN}" font-size="13" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">TARGET</text>
+<text x="522" y="472" fill="{value}" font-size="15" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">SOFTWARE · AI/ML · CLOUD · DEVOPS · QUANT · HFT</text>
+<text x="522" y="496" fill="{value}" font-size="15" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">AUTOMATION · SYSTEM DESIGNS</text></svg>''')
+    return "".join(p)
+
+def signature(theme):
+    bg = "#FFFFFF" if theme == "light" else "#0D1016"
+    text = "#0F172A" if theme == "light" else "#F8FAFC"
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="72" viewBox="0 0 1040 72" role="img" aria-label="Ishan signature stripe">
+<rect x="1" y="1" width="1038" height="70" rx="8" fill="{bg}" stroke="{CYAN}" stroke-width="2"/><rect x="82" y="10" width="1" height="52" fill="{stroke}"/>
+<text x="24" y="44" fill="{text}" font-size="18" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">IR</text>
+<text x="110" y="44" fill="{CYAN}" font-size="20" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">BUILD • BREAK • DEBUG • LEARN • DEPLOY</text>
+<text x="1000" y="44" fill="{CYAN}" font-size="20" font-weight="700" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">02</text></svg>'''
+
+
 def activity(d,theme):
  bg,panel,stroke,text,muted=DARK if theme=="dark" else LIGHT;active,cur,longest=streak(d["days"])
  p=[f'<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="670" viewBox="0 0 1180 670"><rect x="1" y="1" width="1178" height="668" rx="16" fill="{bg}" stroke="{stroke}" stroke-width="2"/>',f'<rect x="16" y="16" width="1148" height="178" rx="12" fill="{panel}" stroke="{stroke}"/>']
@@ -65,5 +123,5 @@ def projects(d,theme):
 def main():
  token=os.environ.get("GITHUB_TOKEN");assert token,"GITHUB_TOKEN missing";A.mkdir(exist_ok=True);d=collect(token)
  for t in ("dark","light"):
-  (A/f"profile-activity-{t}.svg").write_text(activity(d,t),encoding="utf-8");(A/f"projects-{t}.svg").write_text(projects(d,t),encoding="utf-8")
+  (A/f"profile-activity-{t}.svg").write_text(activity(d,t),encoding="utf-8");(A/f"projects-{t}.svg").write_text(projects(d,t),encoding="utf-8");(A/f"hero-{t}.svg").write_text(hero(t),encoding="utf-8");(A/f"signature-stripe-{t}.svg").write_text(signature(t),encoding="utf-8")
 if __name__=="__main__":main()
