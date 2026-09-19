@@ -113,7 +113,7 @@ viewBox="0 0 1180 610" role="img" aria-label="Ishan Ray Chaudhuri system profile
 {logo_img}
 <text x="1070" y="69" fill="#F0FDFF" font-size="20" font-weight="700"
       font-style="italic" letter-spacing="-1.2" text-anchor="middle"
-      font-family="Crillee, Crillee Italic, Arial Narrow, sans-serif"
+      font-family="Magneto, Magneto Bold, Arial Black, Arial, sans-serif"
       transform="skewX(-7) scale(1.02,1)">95</text>
 
 <text x="60" y="116" fill="{label}" font-size="13" font-family="ui-monospace,monospace">VISUAL.MAP</text>
