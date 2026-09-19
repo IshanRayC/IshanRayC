@@ -200,12 +200,12 @@ def signature(theme):
     bg = "#FFFFFF" if theme == "light" else "#0D1016"
     stroke = "#B8DCE4" if theme == "light" else "#12313B"
     logo_data = read_logo_data()
-    logo_img = f'<rect x="12" y="9" width="84" height="54" rx="8" fill="#0B1118"/><image href="data:image/png;base64,{logo_data}" x="19" y="14" width="30" height="44" preserveAspectRatio="xMidYMid meet"/>{pro_racing_95_svg(target_height=32, center_x=77, baseline_y=52.0)}' if logo_data else pro_racing_95_svg(target_height=32, center_x=77, baseline_y=52.0)
+    logo_img = f'<rect x="12" y="9" width="132" height="54" rx="8" fill="#0B1118"/><image href="data:image/png;base64,{logo_data}" x="18" y="14" width="30" height="44" preserveAspectRatio="xMidYMid meet"/>{pro_racing_95_svg(target_height=25, center_x=94.60, baseline_y=48.50)}' if logo_data else pro_racing_95_svg(target_height=25, center_x=94.60, baseline_y=48.50)
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="72" viewBox="0 0 1040 72" role="img" aria-label="Ishan signature stripe">
 <rect x="1" y="1" width="1038" height="70" rx="8" fill="{bg}" stroke="{CYAN}" stroke-width="2"/>
 {logo_img}
-<rect x="108" y="10" width="1" height="52" fill="{stroke}"/>
-<text x="136" y="44" fill="{CYAN}" font-size="20" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">BUILD • BREAK • DEBUG • LEARN • DEPLOY</text>
+<rect x="156" y="10" width="1" height="52" fill="{stroke}"/>
+<text x="184" y="44" fill="{CYAN}" font-size="20" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">BUILD • BREAK • DEBUG • LEARN • DEPLOY</text>
 </svg>'''
 
 def snake_body():
