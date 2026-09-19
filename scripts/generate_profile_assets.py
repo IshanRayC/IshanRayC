@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import html,json,math,os,re,urllib.parse,urllib.request
+import base64,html,json,math,os,re,urllib.parse,urllib.request
 from collections import Counter
 from datetime import date,timedelta
 from pathlib import Path
@@ -47,9 +47,18 @@ def read_portrait():
     body = re.search(r"<svg\\b[^>]*>(.*)</svg>\\s*$", raw, re.I | re.S)
     return (body.group(1) if body else raw), vb
 
+def read_logo_data():
+    path = A / "is-monogram.png"
+    if not path.exists():
+        return ""
+    return base64.b64encode(path.read_bytes()).decode("ascii")
+
+
 def hero(theme):
     bg, panel, stroke, text, muted = DARK if theme == "dark" else LIGHT
     body, vb = read_portrait()
+    logo_data = read_logo_data()
+    logo_img = f'<image href="data:image/png;base64,{logo_data}" x="1105" y="47" width="30" height="34" preserveAspectRatio="xMidYMid meet"/>' if logo_data else ""
     if theme == "dark":
         shell, label, dotted, visual, value = "#0D1016", "#67E8F9", "#16343E", "#06080B", "#F8FAFC"
     else:
@@ -67,8 +76,7 @@ def hero(theme):
 <rect x="42" y="42" width="1100" height="44" rx="10" fill="{CYAN}"/>
 <circle cx="66" cy="64" r="6" fill="#FFF"/><circle cx="86" cy="64" r="6" fill="#FFF"/><circle cx="106" cy="64" r="6" fill="#FFF"/>
 <text x="134" y="70" fill="#FFF" font-size="14" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">ISHAN LABS</text>
-<rect x="954" y="42" width="44" height="44" fill="#FFF"/><text x="976" y="70" fill="#0F172A" font-size="14" font-weight="700" text-anchor="middle" font-family="ui-monospace,monospace">IR</text>
-<rect x="998" y="42" width="144" height="44" fill="{CYAN}"/><text x="1070" y="69" fill="#FFF" font-size="14" font-weight="700" text-anchor="middle" font-family="ui-monospace,monospace">02</text>
+<rect x="1098" y="42" width="44" height="44" rx="6" fill="#0B1118" stroke="{CYAN}" stroke-width="1"/>{logo_img}
 <text x="60" y="116" fill="{label}" font-size="13" font-family="ui-monospace,monospace">VISUAL.MAP</text><text x="504" y="116" fill="{label}" font-size="13" font-family="ui-monospace,monospace">SYSTEM.INFO</text>
 <rect x="52" y="130" width="420" height="420" rx="14" fill="{visual}" stroke="{CYAN}" stroke-width="2"/><g clip-path="url(#v)">{portrait}</g>
 <g font-size="14" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">''']
