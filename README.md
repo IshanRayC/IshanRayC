@@ -1,9 +1,9 @@
 <!-- ===== CYAN SYSTEM PROFILE — reference-style layout ===== -->
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/hero-dark.svg?v=20260920-0042-fix2">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/hero-light.svg?v=20260920-0042-fix2">
-  <img width="100%" src="./assets/hero-dark.svg?v=20260920-0042-fix2" alt="Ishan Ray Chaudhuri system profile">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/hero-dark.svg?v=20260920-1924-fix3">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/hero-light.svg?v=20260920-1924-fix3">
+  <img width="100%" src="./assets/hero-dark.svg?v=20260920-1924-fix3" alt="Ishan Ray Chaudhuri system profile">
 </picture>
 
 <!-- EXISTING NAME ANIMATION — kept unchanged -->
@@ -13,9 +13,9 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/signature-stripe-dark.svg?v=20260920-0042-fix2">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/signature-stripe-light.svg?v=20260920-0042-fix2">
-  <img width="100%" src="./assets/signature-stripe-dark.svg?v=20260920-0042-fix2" alt="Ishan signature stripe">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/signature-stripe-dark.svg?v=20260920-1924-fix3">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/signature-stripe-light.svg?v=20260920-1924-fix3">
+  <img width="100%" src="./assets/signature-stripe-dark.svg?v=20260920-1924-fix3" alt="Ishan signature stripe">
 </picture>
 </div>
 
