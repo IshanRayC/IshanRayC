@@ -60,7 +60,7 @@ def hero(theme):
     logo_data = read_logo_data()
     # Logo and 95 sit directly on the single rounded header — no separate boxes,
     # no outlines, and no divider strokes.
-    logo_img = f'<image href="data:image/png;base64,{logo_data}" x="960" y="47" width="32" height="34" preserveAspectRatio="xMidYMid meet"/>' if logo_data else ""
+    logo_img = f'<image href="data:image/png;base64,{logo_data}" x="960" y="47" width="32" height="34" preserveAspectRatio="xMidYMid meet" filter="url(#logoCutout)"/>' if logo_data else ""
     if theme == "dark":
         shell, label, dotted, visual, value = "#0D1016", "#67E8F9", "#16343E", "#06080B", "#F8FAFC"
     else:
@@ -91,6 +91,13 @@ viewBox="0 0 1180 610" role="img" aria-label="Ishan Ray Chaudhuri system profile
   <clipPath id="headerClip">
     <rect x="42" y="42" width="1100" height="44" rx="12"/>
   </clipPath>
+  <filter id="logoCutout" color-interpolation-filters="sRGB">
+    <feColorMatrix type="matrix"
+      values="1 0 0 0 0
+              0 1 0 0 0
+              0 0 1 0 0
+              .2126 .7152 .0722 0 0"/>
+  </filter>
 </defs>
 
 <rect width="1180" height="610" rx="18" fill="{bg}"/>
@@ -103,6 +110,7 @@ viewBox="0 0 1180 610" role="img" aria-label="Ishan Ray Chaudhuri system profile
 <circle cx="106" cy="64" r="6" fill="#ECFEFF"/>
 <text x="134" y="70" fill="url(#labsText)" font-size="14" font-weight="700"
       letter-spacing=".7" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">ISHAN LABS</text>
+<rect x="954" y="42" width="44" height="44" fill="#063640"/>
 {logo_img}
 <text x="1070" y="69" fill="#F0FDFF" font-size="14" font-weight="800"
       letter-spacing="1.2" text-anchor="middle"
