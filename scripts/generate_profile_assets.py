@@ -80,8 +80,10 @@ viewBox="0 0 1180 610" role="img" aria-label="Ishan Ray Chaudhuri system profile
 <defs>
   <clipPath id="v"><rect x="52" y="130" width="420" height="420" rx="14"/></clipPath>
   <linearGradient id="headerGradient" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0" stop-color="#062A35"/>
-    <stop offset=".48" stop-color="#0B596A"/>
+    <stop offset="0" stop-color="#0E8AA3"/>
+    <stop offset=".18" stop-color="#0B596A"/>
+    <stop offset=".50" stop-color="#062A35"/>
+    <stop offset=".82" stop-color="#0B596A"/>
     <stop offset="1" stop-color="#0E8AA3"/>
   </linearGradient>
   <linearGradient id="labsText" x1="0" y1="0" x2="1" y2="0">
@@ -104,7 +106,7 @@ viewBox="0 0 1180 610" role="img" aria-label="Ishan Ray Chaudhuri system profile
 <text x="134" y="70" fill="url(#labsText)" font-size="14" font-weight="700"
       letter-spacing=".7" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">ISHAN LABS</text>
 {logo_img}
-<text x="1070" y="69" fill="#F0FDFF" font-size="15" font-weight="700"
+<text x="1070" y="71" fill="#F0FDFF" font-size="22" font-weight="700"
       font-style="italic" text-anchor="middle"
       font-family="Gothic UI,Segoe UI,sans-serif">95</text>
 
