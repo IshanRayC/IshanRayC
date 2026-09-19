@@ -29,18 +29,18 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-activity-dark.svg?v=20260918">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/profile-activity-light.svg?v=20260918">
-  <img width="100%" src="./assets/profile-activity-dark.svg?v=20260918" alt="GitHub activity statistics">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-activity-dark.svg?v=20260920">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/profile-activity-light.svg?v=20260920">
+  <img width="100%" src="./assets/profile-activity-dark.svg?v=20260920" alt="GitHub activity statistics">
 </picture>
 </div>
 
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/tech-stack-dark.svg?v=20260919">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/tech-stack-light.svg?v=20260919">
-  <img width="100%" src="./assets/tech-stack-dark.svg?v=20260919" alt="Technology stack">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/tech-stack-dark.svg?v=20260920">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/tech-stack-light.svg?v=20260920">
+  <img width="100%" src="./assets/tech-stack-dark.svg?v=20260920" alt="Technology stack">
 </picture>
 </div>
 
