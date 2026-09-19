@@ -274,10 +274,10 @@ aria-label="GitHub activity, stats, languages and contribution snake">
 <rect x="1" y="1" width="1178" height="668" rx="16"
       fill="{frame}" stroke="{card_border}" stroke-width="2"/>
 <g clip-path="url(#activityFrame)">
-  <rect x="16" y="16" width="1148" height="178" rx="12"
+  <rect x="8" y="16" width="1164" height="178" rx="12"
         fill="{card}" stroke="{card_border}"/>
-  <line x1="393.33" y1="44" x2="393.33" y2="170" stroke="{divider}"/>
-  <line x1="786.67" y1="44" x2="786.67" y2="170" stroke="{divider}"/>
+  <line x1="396" y1="44" x2="396" y2="170" stroke="{divider}"/>
+  <line x1="784" y1="44" x2="784" y2="170" stroke="{divider}"/>
 
   <!-- ACTIVE DAYS -->
   <g transform="translate(196.67 34) scale(0.78)">
@@ -340,37 +340,37 @@ aria-label="GitHub activity, stats, languages and contribution snake">
   <!-- Consistent icon columns: each icon sits on a fixed 30px rail directly left of its labels. -->
   <g fill="none" stroke="{primary}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
     <!-- Repositories -->
-    <path d="M-8 -4.5 H-1.5 L0 -3 H8 V6 H-8 Z" transform="translate(48 279)"/>
+    <path d="M-8 -4.5 H-1.5 L0 -3 H8 V6 H-8 Z" transform="translate(48 271)"/>
     <!-- Stars -->
-    <path d="M0 -8 L2.1 -2.6 L7.8 -2.1 L3.4 1.5 L4.8 7.4 L0 4.3 L-4.8 7.4 L-3.4 1.5 L-7.8 -2.1 L-2.1 -2.6 Z" transform="translate(318 279)"/>
+    <path d="M0 -8 L2.1 -2.6 L7.8 -2.1 L3.4 1.5 L4.8 7.4 L0 4.3 L-4.8 7.4 L-3.4 1.5 L-7.8 -2.1 L-2.1 -2.6 Z" transform="translate(318 271)"/>
     <!-- Followers -->
-    <circle cx="48" cy="319.1" r="3.2"/>
-    <path d="M42.2 329.5 C43 325.8 45 324.1 48 324.1 C50.9 324.1 53 325.8 53.8 329.5"/>
-    <circle cx="55.9" cy="320.6" r="2.3"/>
-    <path d="M54.3 324.4 C56.7 324.5 58.1 325.7 58.8 327.8"/>
+    <circle cx="48" cy="311.1" r="3.2"/>
+    <path d="M42.2 321.5 C43 317.8 45 316.1 48 316.1 C50.9 316.1 53 317.8 53.8 321.5"/>
+    <circle cx="55.9" cy="312.6" r="2.3"/>
+    <path d="M54.3 316.4 C56.7 316.5 58.1 317.7 58.8 319.8"/>
     <!-- Commits -->
-    <path d="M310 327.5 H314 M322 327.5 H326" />
-    <circle cx="318" cy="327.5" r="3.4" fill="{primary}" stroke="none"/>
+    <path d="M310 319.5 H314 M322 319.5 H326" />
+    <circle cx="318" cy="319.5" r="3.4" fill="{primary}" stroke="none"/>
     <!-- Pull Requests -->
-    <circle cx="48" cy="371" r="2.15"/><circle cx="48" cy="383" r="2.15"/><circle cx="59" cy="371" r="2.15"/>
-    <path d="M48 373.15 V380.85 M50.3 383 C55.9 383 59 380 59 374.8 V373.15"/>
+    <circle cx="48" cy="363" r="2.15"/><circle cx="48" cy="375" r="2.15"/><circle cx="59" cy="363" r="2.15"/>
+    <path d="M48 365.15 V372.85 M50.3 375 C55.9 375 59 372 59 366.8 V365.15"/>
     <!-- Issues -->
-    <circle cx="318" cy="376" r="7.2"/>
-    <path d="M318 372.4 V377.2"/>
-    <circle cx="318" cy="380.2" r=".75" fill="{primary}" stroke="none"/>
+    <circle cx="318" cy="368" r="7.2"/>
+    <path d="M318 364.4 V369.2"/>
+    <circle cx="318" cy="372.2" r=".75" fill="{primary}" stroke="none"/>
   </g>
-  <text x="82" y="282" fill="{muted}" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Repositories</text>
-  <text x="82" y="303" fill="{text}" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["repos"]}</text>
-  <text x="348" y="282" fill="{muted}" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Stars</text>
-  <text x="348" y="303" fill="{text}" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["stars"]}</text>
-  <text x="82" y="329" fill="{muted}" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Followers</text>
-  <text x="82" y="350" fill="{text}" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["followers"]}</text>
-  <text x="348" y="329" fill="{muted}" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Commits</text>
-  <text x="348" y="350" fill="{text}" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["commits"]}</text>
-  <text x="82" y="376" fill="{muted}" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Pull Requests</text>
-  <text x="82" y="397" fill="{text}" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["prs"]}</text>
-  <text x="348" y="376" fill="{muted}" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Issues</text>
-  <text x="348" y="397" fill="{text}" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["issues"]}</text>
+  <text x="82" y="276" fill="{muted}" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Repositories</text>
+  <text x="82" y="297" fill="{text}" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["repos"]}</text>
+  <text x="348" y="276" fill="{muted}" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Stars</text>
+  <text x="348" y="297" fill="{text}" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["stars"]}</text>
+  <text x="82" y="323" fill="{muted}" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Followers</text>
+  <text x="82" y="344" fill="{text}" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["followers"]}</text>
+  <text x="348" y="323" fill="{muted}" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Commits</text>
+  <text x="348" y="344" fill="{text}" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["commits"]}</text>
+  <text x="82" y="370" fill="{muted}" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Pull Requests</text>
+  <text x="82" y="391" fill="{text}" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["prs"]}</text>
+  <text x="348" y="370" fill="{muted}" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Issues</text>
+  <text x="348" y="391" fill="{text}" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["issues"]}</text>
   <text x="50" y="414" fill="{secondary}" font-size="10.8"
         font-family="ui-monospace,SFMono-Regular,Menlo,monospace">generated by GitHub Actions</text>
 
@@ -384,10 +384,23 @@ aria-label="GitHub activity, stats, languages and contribution snake">
   <rect x="628" y="264" width="500" height="12" rx="2" fill="{snake_default}"/>
 '''.strip()]
     langs = sorted(d["langs"].items(), key=lambda x: x[1], reverse=True)[:5]
+    # Always render five rows. When the account has fewer than five
+    # byte-counted languages, use an observed primary repo language as the
+    # fifth row rather than inventing a numeric percentage.
+    if len(langs) < 5:
+        primary_candidates = []
+        for repo in d["repo_data"]:
+            lang = repo.get("language")
+            if lang and lang not in [x[0] for x in langs] and lang not in primary_candidates:
+                primary_candidates.append(lang)
+        for candidate in primary_candidates:
+            if len(langs) >= 5:
+                break
+            langs.append((candidate, 0))
     total = sum(v for _, v in langs) or 1
     cursor = 628
-    lang_colors = ["#22D3EE", "#00E5FF", "#38BDF8", "#2DD4BF", "#60A5FA"]
-    for i, (lang, n) in enumerate(langs):
+    lang_colors = ["#22D3EE", "#0EA5E9", "#2DD4BF", "#38BDF8", "#06B6D4"]
+    for i, (lang, n) in enumerate(langs[:5]):
         w = max(3, 500 * n / total)
         p.append(f'<rect x="{cursor:.1f}" y="264" width="{w:.1f}" height="14" fill="{lang_colors[i]}"/>')
         cursor += w
