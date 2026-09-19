@@ -4,7 +4,7 @@ import base64,html,json,math,os,re,urllib.parse,urllib.request
 from collections import Counter
 from datetime import date,timedelta
 from pathlib import Path
-USER="IshanRayC"; ROOT=Path(__file__).resolve().parents[1]; A=ROOT/"assets"  # IS monogram is sourced from assets/is-monogram.png
+USER="IshanRayC"; ROOT=Path(__file__).resolve().parents[1]; A=ROOT/"assets"  # IS monogram is sourced from assets/is-monogram.png; embed for profile branding
 CYAN="#22D3EE";TEAL="#06B6D4";BLUE="#0EA5E9"
 DARK=("#070B10","#0B1118","#12313B","#F8FAFC","#94A3B8"); LIGHT=("#F5FAFC","#FFFFFF","#B8DCE4","#0F172A","#64748B")
 def rest(path,token):
