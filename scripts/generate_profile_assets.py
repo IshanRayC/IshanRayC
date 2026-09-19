@@ -42,9 +42,9 @@ def read_portrait():
     if not path.exists():
         return "", "0 0 1000 1000"
     raw = path.read_text(encoding="utf-8")
-    m = re.search(r'<svg\\b[^>]*\\bviewBox=["\\\']([^"\\\']+)["\\\']', raw, re.I)
+    m = re.search(r'<svg\b[^>]*\bviewBox=["\']([^"\']+)["\']', raw, re.I)
     vb = m.group(1) if m else "0 0 1000 1000"
-    body = re.search(r"<svg\\b[^>]*>(.*)</svg>\\s*$", raw, re.I | re.S)
+    body = re.search(r"<svg\b[^>]*>(.*)</svg>\s*$", raw, re.I | re.S)
     return (body.group(1) if body else raw), vb
 
 def read_logo_data():
@@ -125,7 +125,15 @@ def hero(theme):
     else:
         shell, label, dotted, visual, value = "#FFFFFF", "#0E7490", "#D6EAF0", "#050608", "#0F172A"
 
-    portrait_vb = vb\n    try:\n        vx, vy, vw, vh = [float(v) for v in vb.split()]\n        crop_top = min(80.0, vh * 0.07)\n        crop_bottom = min(80.0, vh * 0.07)\n        portrait_vb = f"{vx:.2f} {vy + crop_top:.2f} {vw:.2f} {vh - crop_top - crop_bottom:.2f}"\n    except Exception:\n        portrait_vb = vb\n    portrait = f'<svg x="52" y="130" width="420" height="420" viewBox="{esc(portrait_vb)}" preserveAspectRatio="xMidYMid meet" overflow="hidden">{body}</svg>'
+    portrait_vb = vb
+    try:
+        vx, vy, vw, vh = [float(v) for v in vb.split()]
+        crop_top = min(80.0, vh * 0.071)
+        crop_bottom = min(80.0, vh * 0.071)
+        portrait_vb = f"{vx:.2f} {vy + crop_top:.2f} {vw:.2f} {vh - crop_top - crop_bottom:.2f}"
+    except Exception:
+        portrait_vb = vb
+    portrait = f'<svg x="52" y="130" width="420" height="420" viewBox="{esc(portrait_vb)}" preserveAspectRatio="xMidYMid meet" overflow="hidden">{body}</svg>'
     rows = [
         ("Subject","ISHAN RAY CHAUDHURI"),("Role","CSE AND DATA SCIENCE STUDENT"),
         ("Origin","CHENNAI, INDIA"),("Education","BTECH CSE · VIT CHENNAI"),
