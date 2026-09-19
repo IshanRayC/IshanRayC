@@ -34,7 +34,7 @@ viewBox="0 0 1180 610" role="img" aria-label="Ishan Ray Chaudhuri system profile
 <text x="60" y="116" fill="#67E8F9" font-size="13" font-family="ui-monospace,monospace">VISUAL.MAP</text>
 <text x="504" y="116" fill="#67E8F9" font-size="13" font-family="ui-monospace,monospace">SYSTEM.INFO</text>
 <rect x="52" y="130" width="420" height="420" rx="14" fill="#06080B" stroke="#22D3EE" stroke-width="2"/>
-<g clip-path="url(#v)"><svg x="52" y="130" width="420" height="420" viewBox="0.00 79.87 900.00 965.25" preserveAspectRatio="xMidYMid meet" overflow="hidden"><style>
+<g clip-path="url(#v)"><svg x="52" y="130" width="420" height="420" viewBox="0.00 112.50 900.00 900.00" preserveAspectRatio="xMidYMid slice" overflow="hidden" shape-rendering="geometricPrecision"><style>
 .dot{opacity:0;transform:translateY(calc(var(--fall) * -1));animation-name:matrix-fall;animation-duration:var(--duration);animation-delay:var(--delay);animation-iteration-count:1;animation-fill-mode:forwards;animation-timing-function:cubic-bezier(.12,.82,.22,1)}
 @keyframes matrix-fall{
 0%{opacity:0;transform:translateY(calc(var(--fall) * -1))}
