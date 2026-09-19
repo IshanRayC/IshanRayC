@@ -19,24 +19,20 @@
 </picture>
 </div>
 
-<table align="center" cellspacing="0" cellpadding="0">
-<tr><td align="center" style="padding:0 0 2px 0">
+<div align="center">
 <a href="https://www.linkedin.com/in/ishan-ray-chaudhuri/"><img src="https://img.shields.io/badge/LINKEDIN-06B6D4?style=for-the-badge&logo=linkedin&logoColor=white"></a>
 <a href="https://github.com/IshanRayC"><img src="https://img.shields.io/badge/ISHANRAYC-0B1118?style=for-the-badge&logo=github&logoColor=22D3EE"></a>
 <a href="https://leetcode.com/u/IshanRayC"><img src="https://img.shields.io/badge/LEETCODE-22D3EE?style=for-the-badge&logo=leetcode&logoColor=0B1118"></a>
 <a href="https://codeforces.com/profile/IshanRayC"><img src="https://img.shields.io/badge/CODEFORCES-0EA5E9?style=for-the-badge&logo=codeforces&logoColor=white"></a>
 <a href="https://www.kaggle.com/ishanrayc"><img src="https://img.shields.io/badge/KAGGLE-0891B2?style=for-the-badge&logo=kaggle&logoColor=white"></a>
-
-</td></tr>
-<tr><td align="center" style="padding:0">
+</div>
+<div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-activity-dark.svg?v=20260920-2010-fix7">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/profile-activity-light.svg?v=20260920-2010-fix7">
-  <img width="100%" src="./assets/profile-activity-dark.svg?v=20260920-2010-fix7" alt="GitHub activity statistics">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-activity-dark.svg?v=20260920-2030-fix8">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/profile-activity-light.svg?v=20260920-2030-fix8">
+  <img width="100%" src="./assets/profile-activity-dark.svg?v=20260920-2030-fix8" alt="GitHub activity statistics">
 </picture>
-</td></tr>
-</table>
-
+</div>
 
 <div align="center">
 <picture>
