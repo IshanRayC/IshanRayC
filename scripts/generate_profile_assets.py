@@ -54,7 +54,7 @@ def read_logo_data():
     return base64.b64encode(path.read_bytes()).decode("ascii")
 
 
-def pro_racing_95_svg(fill="#F0FDFF", target_height=25, center_x=1070, baseline_y=72):
+def pro_racing_95_svg(fill="#F0FDFF", target_height=15, center_x=1080, baseline_y=71.5):
     """Return actual Pro Racing Slant 95 glyph outlines as inline SVG paths."""
     try:
         from fontTools.ttLib import TTFont
