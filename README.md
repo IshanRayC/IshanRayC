@@ -35,6 +35,78 @@
 </picture>
 </div>
 
+
+<div align="center">
+
+<table width="100%" cellpadding="14" cellspacing="0">
+<tr>
+<td>
+
+<h2 align="center">⚡ TECH STACK</h2>
+<p align="center"><sub>BUILD&nbsp;&nbsp;•&nbsp;&nbsp;COMPUTE&nbsp;&nbsp;•&nbsp;&nbsp;AUTOMATE&nbsp;&nbsp;•&nbsp;&nbsp;DEPLOY&nbsp;&nbsp;•&nbsp;&nbsp;DESIGN</sub></p>
+
+<table width="100%" cellpadding="10" cellspacing="0">
+<tr>
+<td colspan="2">
+<h3>⌘ Programming Languages &amp; Scientific Computing</h3>
+<p>
+<img src="https://img.shields.io/badge/C-0B1118?style=for-the-badge&logo=c&logoColor=22D3EE" alt="C"/>
+<img src="https://img.shields.io/badge/C%2B%2B-0B1118?style=for-the-badge&logo=cplusplus&logoColor=22D3EE" alt="C++"/>
+<img src="https://img.shields.io/badge/Python-0B1118?style=for-the-badge&logo=python&logoColor=3776AB" alt="Python"/>
+<img src="https://img.shields.io/badge/Java-0B1118?style=for-the-badge&logo=openjdk&logoColor=ED8B00" alt="Java"/>
+<img src="https://img.shields.io/badge/R-0B1118?style=for-the-badge&logo=r&logoColor=276DC3" alt="R"/>
+<img src="https://img.shields.io/badge/MATLAB-0B1118?style=for-the-badge&logo=mathworks&logoColor=0076A8" alt="MATLAB"/>
+<img src="https://img.shields.io/badge/NumPy-0B1118?style=for-the-badge&logo=numpy&logoColor=4DABCF" alt="NumPy"/>
+<img src="https://img.shields.io/badge/Pandas-0B1118?style=for-the-badge&logo=pandas&logoColor=150458" alt="Pandas"/>
+</p>
+</td>
+</tr>
+
+<tr>
+<td width="50%">
+<h3>⌘ Scripting &amp; Automation</h3>
+<p>
+<img src="https://img.shields.io/badge/Bash-0B1118?style=for-the-badge&logo=gnubash&logoColor=22D3EE" alt="Bash"/>
+<img src="https://img.shields.io/badge/PowerShell-0B1118?style=for-the-badge&logo=powershell&logoColor=5391FE" alt="PowerShell"/>
+<img src="https://img.shields.io/badge/n8n-0B1118?style=for-the-badge&logo=n8n&logoColor=EA4B71" alt="n8n"/>
+</p>
+</td>
+<td width="50%">
+<h3>⌘ Cloud, DevOps &amp; Infrastructure</h3>
+<p>
+<img src="https://img.shields.io/badge/Docker-0B1118?style=for-the-badge&logo=docker&logoColor=2496ED" alt="Docker"/>
+<img src="https://img.shields.io/badge/WSL-0B1118?style=for-the-badge&logo=linux&logoColor=FCC624" alt="WSL"/>
+</p>
+</td>
+</tr>
+
+<tr>
+<td width="50%">
+<h3>⌘ Databases</h3>
+<p>
+<img src="https://img.shields.io/badge/MySQL-0B1118?style=for-the-badge&logo=mysql&logoColor=4479A1" alt="MySQL"/>
+<img src="https://img.shields.io/badge/Oracle-0B1118?style=for-the-badge&logo=oracle&logoColor=F80000" alt="Oracle Database"/>
+</p>
+</td>
+<td width="50%">
+<h3>⌘ Design &amp; UI/UX</h3>
+<p>
+<img src="https://img.shields.io/badge/Figma-0B1118?style=for-the-badge&logo=figma&logoColor=F24E1E" alt="Figma"/>
+<img src="https://img.shields.io/badge/Canva-0B1118?style=for-the-badge&logo=canva&logoColor=00C4CC" alt="Canva"/>
+<img src="https://img.shields.io/badge/Adobe%20XD-0B1118?style=for-the-badge&logo=adobexd&logoColor=FF61F6" alt="Adobe XD"/>
+<img src="https://img.shields.io/badge/Photoshop-0B1118?style=for-the-badge&logo=adobephotoshop&logoColor=31A8FF" alt="Photoshop"/>
+<img src="https://img.shields.io/badge/Framer-0B1118?style=for-the-badge&logo=framer&logoColor=0055FF" alt="Framer"/>
+</p>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</div>
+
 <div align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./assets/projects-dark.svg?v=20260918">
