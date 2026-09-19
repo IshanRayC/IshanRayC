@@ -3,11 +3,11 @@ viewBox="0 0 1180 610" role="img" aria-label="Ishan Ray Chaudhuri system profile
 <defs>
   <clipPath id="v"><rect x="52" y="130" width="420" height="420" rx="14"/></clipPath>
   <linearGradient id="headerGradient" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0" stop-color="#0E8AA3"/>
+    <stop offset="0" stop-color="#062A35"/>
     <stop offset=".18" stop-color="#0B596A"/>
-    <stop offset=".50" stop-color="#062A35"/>
+    <stop offset=".50" stop-color="#0E8AA3"/>
     <stop offset=".82" stop-color="#0B596A"/>
-    <stop offset="1" stop-color="#0E8AA3"/>
+    <stop offset="1" stop-color="#062A35"/>
   </linearGradient>
   <linearGradient id="labsText" x1="0" y1="0" x2="1" y2="0">
     <stop offset="0" stop-color="#ECFEFF"/>
