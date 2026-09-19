@@ -58,48 +58,75 @@ def hero(theme):
     bg, panel, stroke, text, muted = DARK if theme == "dark" else LIGHT
     body, vb = read_portrait()
     logo_data = read_logo_data()
+    # Logo and 95 sit directly on the single rounded header — no separate boxes,
+    # no outlines, and no divider strokes.
     logo_img = f'<image href="data:image/png;base64,{logo_data}" x="960" y="47" width="32" height="34" preserveAspectRatio="xMidYMid meet"/>' if logo_data else ""
     if theme == "dark":
         shell, label, dotted, visual, value = "#0D1016", "#67E8F9", "#16343E", "#06080B", "#F8FAFC"
     else:
         shell, label, dotted, visual, value = "#FFFFFF", "#0E7490", "#D6EAF0", "#050608", "#0F172A"
+
     portrait = f'<svg x="52" y="130" width="420" height="420" viewBox="{esc(vb)}" preserveAspectRatio="xMidYMid meet" overflow="hidden">{body}</svg>'
     rows = [
         ("Subject","ISHAN RAY CHAUDHURI"),("Role","CSE AND DATA SCIENCE STUDENT"),
         ("Origin","CHENNAI, INDIA"),("Education","BTECH CSE · VIT CHENNAI"),
         ("","BS DATA SCIENCE · IIT MADRAS"),("Status","LEARNING + BUILDING + SHIPPING"),
         ("Core.Lang","C · C++ · PYTHON · JAVA · R"),("Core.Data","NUMPY · PANDAS · MATLAB"),
-        ("Core.Infra","DOCKER · WSL · CLOUD · DEVOPS")]
-    p = [f'''<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="610" viewBox="0 0 1180 610" role="img" aria-label="Ishan Ray Chaudhuri system profile">
-<defs><clipPath id="v"><rect x="52" y="130" width="420" height="420" rx="14"/></clipPath><linearGradient id="headerGradient" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#062A35"/><stop offset=".48" stop-color="#0B596A"/><stop offset="1" stop-color="#0E8AA3"/></linearGradient><linearGradient id="labsText" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ECFEFF"/><stop offset="1" stop-color="#A5F3FC"/></linearGradient><filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-<rect width="1180" height="610" rx="18" fill="{bg}"/><rect x="18" y="18" width="1144" height="574" rx="16" fill="{shell}" stroke="{stroke}"/>
+        ("Core.Infra","DOCKER · WSL · CLOUD · DEVOPS")
+    ]
+
+    p = [f'''<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="610"
+viewBox="0 0 1180 610" role="img" aria-label="Ishan Ray Chaudhuri system profile">
 <defs>
   <clipPath id="v"><rect x="52" y="130" width="420" height="420" rx="14"/></clipPath>
-  <clipPath id="headerClip"><rect x="42" y="42" width="1100" height="44" rx="12"/></clipPath>
-  <linearGradient id="headerGradient" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#062A35"/><stop offset=".48" stop-color="#0B596A"/><stop offset="1" stop-color="#0E8AA3"/></linearGradient>
-  <linearGradient id="labsText" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ECFEFF"/><stop offset="1" stop-color="#A5F3FC"/></linearGradient>
+  <linearGradient id="headerGradient" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#062A35"/>
+    <stop offset=".48" stop-color="#0B596A"/>
+    <stop offset="1" stop-color="#0E8AA3"/>
+  </linearGradient>
+  <linearGradient id="labsText" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#ECFEFF"/>
+    <stop offset="1" stop-color="#A5F3FC"/>
+  </linearGradient>
+  <clipPath id="headerClip">
+    <rect x="42" y="42" width="1100" height="44" rx="12"/>
+  </clipPath>
 </defs>
-<rect width="1180" height="610" rx="18" fill="{bg}"/><rect x="18" y="18" width="1144" height="574" rx="16" fill="{shell}" stroke="{stroke}"/>
-<g clip-path="url(#headerClip)">
-  <rect x="42" y="42" width="1100" height="44" rx="12" fill="url(#headerGradient)"/>
-  <circle cx="66" cy="64" r="6" fill="#ECFEFF"/><circle cx="86" cy="64" r="6" fill="#ECFEFF"/><circle cx="106" cy="64" r="6" fill="#ECFEFF"/>
-  <text x="134" y="70" fill="url(#labsText)" font-size="14" font-weight="700" letter-spacing=".7" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">ISHAN LABS</text>
-  <rect x="954" y="42" width="44" height="44" rx="9" fill="#071A20"/>{logo_img}
-  <rect x="998" y="42" width="144" height="44" rx="10" fill="#0A4855"/><text x="1070" y="69" fill="#F0FDFF" font-size="14" font-weight="800" letter-spacing="1.2" text-anchor="middle" font-family="ui-monospace,monospace">95</text>
-</g>
-<text x="60" y="116" fill="{label}" font-size="13" font-family="ui-monospace,monospace">VISUAL.MAP</text><text x="504" y="116" fill="{label}" font-size="13" font-family="ui-monospace,monospace">SYSTEM.INFO</text>
-<rect x="52" y="130" width="420" height="420" rx="14" fill="{visual}" stroke="{CYAN}" stroke-width="2"/><g clip-path="url(#v)">{portrait}</g>
+
+<rect width="1180" height="610" rx="18" fill="{bg}"/>
+<rect x="18" y="18" width="1144" height="574" rx="16" fill="{shell}" stroke="{stroke}"/>
+
+<!-- ONE rounded header: logo + 95 are directly on it -->
+<rect x="42" y="42" width="1100" height="44" rx="12" fill="url(#headerGradient)"/>
+<circle cx="66" cy="64" r="6" fill="#ECFEFF"/>
+<circle cx="86" cy="64" r="6" fill="#ECFEFF"/>
+<circle cx="106" cy="64" r="6" fill="#ECFEFF"/>
+<text x="134" y="70" fill="url(#labsText)" font-size="14" font-weight="700"
+      letter-spacing=".7" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">ISHAN LABS</text>
+{logo_img}
+<text x="1070" y="69" fill="#F0FDFF" font-size="14" font-weight="800"
+      letter-spacing="1.2" text-anchor="middle"
+      font-family="ui-monospace,SFMono-Regular,Menlo,monospace">95</text>
+
+<text x="60" y="116" fill="{label}" font-size="13" font-family="ui-monospace,monospace">VISUAL.MAP</text>
+<text x="504" y="116" fill="{label}" font-size="13" font-family="ui-monospace,monospace">SYSTEM.INFO</text>
+<rect x="52" y="130" width="420" height="420" rx="14" fill="{visual}" stroke="{CYAN}" stroke-width="2"/>
+<g clip-path="url(#v)">{portrait}</g>
 <g font-size="14" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">''']
+
     y = 154
     for k, v in rows:
         p.append(f'<text x="522" y="{y}" fill="{muted}">{esc(k)}</text>' if k else f'<text x="522" y="{y}" fill="{muted}"> </text>')
         p.append(f'<path d="M610 {y-4} H900" stroke="{dotted}" stroke-dasharray="2 6"/><text x="930" y="{y}" fill="{value}" text-anchor="end">{esc(v)}</text>')
         y += 23
-    p.append(f'''</g><rect x="522" y="378" width="408" height="34" rx="17" fill="{CYAN}" fill-opacity=".10" stroke="{CYAN}" stroke-opacity=".75"/>
+
+    p.append(f'''</g>
+<rect x="522" y="378" width="408" height="34" rx="17" fill="{CYAN}" fill-opacity=".10" stroke="{CYAN}" stroke-opacity=".75"/>
 <text x="726" y="400" fill="{CYAN}" font-size="14" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">@IshanRayC</text>
 <text x="522" y="448" fill="{CYAN}" font-size="13" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">TARGET</text>
 <text x="522" y="472" fill="{value}" font-size="15" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">SOFTWARE · AI/ML · CLOUD · DEVOPS · QUANT · HFT</text>
-<text x="522" y="496" fill="{value}" font-size="15" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">AUTOMATION · SYSTEM DESIGNS</text></svg>''')
+<text x="522" y="496" fill="{value}" font-size="15" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">AUTOMATION · SYSTEM DESIGNS</text>
+</svg>''')
     return "".join(p)
 
 def signature(theme):
