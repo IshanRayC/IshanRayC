@@ -112,20 +112,10 @@ viewBox="0 0 1180 610" role="img" aria-label="Ishan Ray Chaudhuri system profile
       letter-spacing=".7" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">ISHAN LABS</text>
 <rect x="954" y="42" width="44" height="44" fill="#042A31"/>
 {logo_img}
-<defs>
-  <linearGradient id="racing95" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0" stop-color="#FFE36B"/>
-    <stop offset="0.52" stop-color="#FF9E2C"/>
-    <stop offset="1" stop-color="#F0442E"/>
-  </linearGradient>
-</defs>
-<g transform="translate(1070 69) skewX(-8)">
-  <text x="2.5" y="2.5" fill="#02070A" opacity=".85" font-size="21" font-weight="900"
-        text-anchor="middle" font-family="Arial Black,Arial Narrow,sans-serif">95</text>
-  <text x="0" y="0" fill="url(#racing95)" stroke="#F8FAFC" stroke-width="2.2"
-        paint-order="stroke fill" font-size="21" font-weight="900"
-        text-anchor="middle" font-family="Arial Black,Arial Narrow,sans-serif">95</text>
-</g>
+<text x="1070" y="69" fill="#F0FDFF" font-size="20" font-weight="700"
+      font-style="italic" letter-spacing="-1.2" text-anchor="middle"
+      font-family="Crillee, Crillee Italic, Arial Narrow, sans-serif"
+      transform="skewX(-7) scale(1.02,1)">95</text>
 
 <text x="60" y="116" fill="{label}" font-size="13" font-family="ui-monospace,monospace">VISUAL.MAP</text>
 <text x="504" y="116" fill="{label}" font-size="13" font-family="ui-monospace,monospace">SYSTEM.INFO</text>
