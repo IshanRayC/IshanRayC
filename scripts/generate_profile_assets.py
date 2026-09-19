@@ -110,7 +110,6 @@ viewBox="0 0 1180 610" role="img" aria-label="Ishan Ray Chaudhuri system profile
 <circle cx="106" cy="64" r="6" fill="#ECFEFF"/>
 <text x="134" y="70" fill="url(#labsText)" font-size="14" font-weight="700"
       letter-spacing=".7" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">ISHAN LABS</text>
-<rect x="954" y="42" width="44" height="44" fill="#042A31"/>
 {logo_img}
 <text x="1070" y="69" fill="#F0FDFF" font-size="20" font-weight="700"
       font-style="italic" letter-spacing="-1.2" text-anchor="middle"
