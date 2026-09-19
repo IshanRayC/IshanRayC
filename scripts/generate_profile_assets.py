@@ -209,25 +209,18 @@ def signature(theme):
     stroke = "#B8DCE4" if theme == "light" else "#12313B"
     logo_data = read_logo_data()
     logo_img = (
-        f'<rect x="12" y="9" width="132" height="54" rx="8" fill="#0B1118"/>'
-        f'<image href="data:image/png;base64,{logo_data}" x="18" y="14" width="30" height="44" preserveAspectRatio="xMidYMid meet"/>'
+        f'<rect x="12" y="9" width="54" height="54" rx="8" fill="#0B1118"/>'
+        f'<image href="data:image/png;base64,{logo_data}" x="21" y="14" width="36" height="44" preserveAspectRatio="xMidYMid meet"/>'
         if logo_data else ""
     )
-    # 95 is deliberately on the right side of the stripe, outside the IS badge.
-    # 18.75px is 25% smaller than the previous 25px target height.
-    badge_95 = pro_racing_95_svg(
-        target_height=18.75,
-        center_x=982.0,
-        baseline_y=50.0,
-    )
+    # Restored to the pre-95 stripe: IS monogram only.
+    # Keep the portrait sizing/crop changes in hero() untouched.
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="72" viewBox="0 0 1040 72" role="img" aria-label="Ishan signature stripe">
 <rect x="1" y="1" width="1038" height="70" rx="8" fill="{bg}" stroke="{CYAN}" stroke-width="2"/>
 {logo_img}
-{badge_95}
-<rect x="156" y="10" width="1" height="52" fill="{stroke}"/>
-<text x="184" y="44" fill="{CYAN}" font-size="20" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">BUILD • BREAK • DEBUG • LEARN • DEPLOY</text>
+<rect x="82" y="10" width="1" height="52" fill="{stroke}"/>
+<text x="110" y="44" fill="{CYAN}" font-size="20" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">BUILD • BREAK • DEBUG • LEARN • DEPLOY</text>
 </svg>'''
-
 def snake_body():
     url = "https://raw.githubusercontent.com/IshanRayC/IshanRayC/gh-pages/github-contribution-snake.svg"
     try:
@@ -338,21 +331,33 @@ aria-label="GitHub activity, stats, languages and contribution snake">
   <rect x="958" y="158" width="51" height="4" rx="2" fill="{secondary}"/>
 
   <!-- GITHUB STATS CARD -->
-  <rect x="26" y="210" width="550" height="220" rx="14"
+  <rect x="26" y="210" width="566" height="220" rx="14"
         fill="{card}" stroke="{card_border}"/>
   <text x="50" y="242" fill="{primary}" font-size="15.6" font-weight="700"
         font-family="ui-monospace,SFMono-Regular,Menlo,monospace">GITHUB STATS</text>
-  <path d="M178 238 H550" stroke="{card_border}" stroke-dasharray="2 7"/>
+  <path d="M178 238 H566" stroke="{card_border}" stroke-dasharray="2 7"/>
 
+  <!-- Consistent icon columns: each icon sits on a fixed 30px rail directly left of its labels. -->
   <g fill="none" stroke="{primary}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M-8 -4.5 H-1.5 L0 -3 H8 V6 H-8 Z" transform="translate(31 279)"/>
-    <path d="M0 -8 L2.1 -2.6 L7.8 -2.1 L3.4 1.5 L4.8 7.4 L0 4.3 L-4.8 7.4 L-3.4 1.5 L-7.8 -2.1 L-2.1 -2.6 Z" transform="translate(267 279)"/>
-    <circle cx="28.3" cy="319.1" r="3.2"/><path d="M22.5 329.5 C23.3 325.8 25.3 324.1 28.3 324.1 C31.2 324.1 33.3 325.8 34.1 329.5"/>
-    <circle cx="36.2" cy="320.6" r="2.3"/><path d="M34.6 324.4 C37 324.5 38.4 325.7 39.1 327.8"/>
-    <path d="M-8 0 H-3 M3 0 H8" transform="translate(267 327.5)"/><circle cx="267" cy="327.5" r="3.4" fill="{primary}" stroke="none"/>
-    <circle cx="28.3" cy="371" r="2.15"/><circle cx="28.3" cy="383" r="2.15"/><circle cx="39.3" cy="371" r="2.15"/>
-    <path d="M28.3 373.15 V380.85 M30.6 383 C36.2 383 39.3 380 39.3 374.8 V373.15"/>
-    <circle cx="267" cy="376" r="7.2"/><path d="M267 372.4 V377.2"/><circle cx="267" cy="380.2" r=".75" fill="{primary}" stroke="none"/>
+    <!-- Repositories -->
+    <path d="M-8 -4.5 H-1.5 L0 -3 H8 V6 H-8 Z" transform="translate(48 279)"/>
+    <!-- Stars -->
+    <path d="M0 -8 L2.1 -2.6 L7.8 -2.1 L3.4 1.5 L4.8 7.4 L0 4.3 L-4.8 7.4 L-3.4 1.5 L-7.8 -2.1 L-2.1 -2.6 Z" transform="translate(318 279)"/>
+    <!-- Followers -->
+    <circle cx="48" cy="319.1" r="3.2"/>
+    <path d="M42.2 329.5 C43 325.8 45 324.1 48 324.1 C50.9 324.1 53 325.8 53.8 329.5"/>
+    <circle cx="55.9" cy="320.6" r="2.3"/>
+    <path d="M54.3 324.4 C56.7 324.5 58.1 325.7 58.8 327.8"/>
+    <!-- Commits -->
+    <path d="M310 327.5 H314 M322 327.5 H326" />
+    <circle cx="318" cy="327.5" r="3.4" fill="{primary}" stroke="none"/>
+    <!-- Pull Requests -->
+    <circle cx="48" cy="371" r="2.15"/><circle cx="48" cy="383" r="2.15"/><circle cx="59" cy="371" r="2.15"/>
+    <path d="M48 373.15 V380.85 M50.3 383 C55.9 383 59 380 59 374.8 V373.15"/>
+    <!-- Issues -->
+    <circle cx="318" cy="376" r="7.2"/>
+    <path d="M318 372.4 V377.2"/>
+    <circle cx="318" cy="380.2" r=".75" fill="{primary}" stroke="none"/>
   </g>
   <text x="82" y="282" fill="{muted}" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Repositories</text>
   <text x="82" y="303" fill="{text}" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["repos"]}</text>
