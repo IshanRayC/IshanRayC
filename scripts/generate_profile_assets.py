@@ -226,7 +226,9 @@ def signature(theme):
 {badge_95}
 <rect x="156" y="10" width="1" height="52" fill="{stroke}"/>
 <text x="184" y="44" fill="{CYAN}" font-size="20" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">BUILD • BREAK • DEBUG • LEARN • DEPLOY</text>
-</svg>'''def snake_body():
+</svg>'''
+
+def snake_body():
     url = "https://raw.githubusercontent.com/IshanRayC/IshanRayC/gh-pages/github-contribution-snake.svg"
     try:
         req = urllib.request.Request(
