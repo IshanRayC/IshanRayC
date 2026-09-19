@@ -279,9 +279,9 @@ aria-label="GitHub activity, stats, languages and contribution snake">
       <circle cx="-12" cy="-18" r="2"/><circle cx="0" cy="-18" r="2"/><circle cx="12" cy="-18" r="2"/>
     </g>
   </g>
-  <text x="196.67" y="94" text-anchor="middle" fill="{primary}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="30" font-weight="700">{active}</text>
-  <text x="196.67" y="124" text-anchor="middle" fill="{primary}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="14" font-weight="700">Active Days</text>
-  <text x="196.67" y="148" text-anchor="middle" fill="{sub}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="12">last 400 days</text>
+  <text x="196.67" y="94" text-anchor="middle" fill="{primary}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="34.5" font-weight="700">{active}</text>
+  <text x="196.67" y="124" text-anchor="middle" fill="{primary}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="16.1" font-weight="700">Active Days</text>
+  <text x="196.67" y="148" text-anchor="middle" fill="{sub}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="13.8">last 400 days</text>
   <rect x="172" y="158" width="49" height="4" rx="2" fill="{primary}"/>
 
   <!-- CURRENT STREAK -->
@@ -291,9 +291,9 @@ aria-label="GitHub activity, stats, languages and contribution snake">
   <g transform="translate(590 19.5)" stroke-opacity="0">
     <path d="M 1.5 0.67 C 1.5 0.67 2.24 3.32 2.24 5.47 C 2.24 7.53 0.89 9.2 -1.17 9.2 C -3.23 9.2 -4.79 7.53 -4.79 5.47 L -4.76 5.11 C -6.78 7.51 -8 10.62 -8 13.99 C -8 18.41 -4.42 22 0 22 C 4.42 22 8 18.41 8 13.99 C 8 8.6 5.41 3.79 1.5 0.67 Z M -0.29 19 C -2.07 19 -3.51 17.6 -3.51 15.86 C -3.51 14.24 -2.46 13.1 -0.7 12.74 C 1.07 12.38 2.9 11.53 3.92 10.16 C 4.31 11.45 4.51 12.81 4.51 14.2 C 4.51 16.85 2.36 19 -0.29 19 Z" fill="{primary}"/>
   </g>
-  <text x="590" y="80" text-anchor="middle" fill="{text}" font-family="Segoe UI,Ubuntu,sans-serif" font-weight="700" font-size="28">{cur}</text>
-  <text x="590" y="140" text-anchor="middle" fill="{primary}" font-family="Segoe UI,Ubuntu,sans-serif" font-weight="700" font-size="14">Current Streak</text>
-  <text x="590" y="166" text-anchor="middle" fill="{sub}" font-family="Segoe UI,Ubuntu,sans-serif" font-weight="400" font-size="12">recent contribution run</text>
+  <text x="590" y="80" text-anchor="middle" fill="{text}" font-family="Segoe UI,Ubuntu,sans-serif" font-weight="700" font-size="32.2">{cur}</text>
+  <text x="590" y="140" text-anchor="middle" fill="{primary}" font-family="Segoe UI,Ubuntu,sans-serif" font-weight="700" font-size="16.1">Current Streak</text>
+  <text x="590" y="166" text-anchor="middle" fill="{sub}" font-family="Segoe UI,Ubuntu,sans-serif" font-weight="400" font-size="13.8">recent contribution run</text>
 
   <!-- LONGEST STREAK -->
   <g transform="translate(983.33 34) scale(0.78)">
@@ -304,15 +304,15 @@ aria-label="GitHub activity, stats, languages and contribution snake">
     <path d="M-3 15 H3 V23 H-3 Z" fill="{secondary}"/>
     <rect x="-18" y="22" width="36" height="8" rx="3" fill="{secondary}"/>
   </g>
-  <text x="983.33" y="94" text-anchor="middle" fill="{secondary}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="30" font-weight="700">{longest}</text>
-  <text x="983.33" y="124" text-anchor="middle" fill="{secondary}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="14" font-weight="700">Longest Streak</text>
-  <text x="983.33" y="148" text-anchor="middle" fill="{sub}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="12">all-time record</text>
+  <text x="983.33" y="94" text-anchor="middle" fill="{secondary}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="34.5" font-weight="700">{longest}</text>
+  <text x="983.33" y="124" text-anchor="middle" fill="{secondary}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="16.1" font-weight="700">Longest Streak</text>
+  <text x="983.33" y="148" text-anchor="middle" fill="{sub}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="13.8">all-time record</text>
   <rect x="958" y="158" width="51" height="4" rx="2" fill="{secondary}"/>
 
   <!-- GITHUB STATS CARD -->
   <rect x="26" y="210" width="550" height="220" rx="14"
         fill="{card}" stroke="{card_border}"/>
-  <text x="50" y="242" fill="{primary}" font-size="13" font-weight="700"
+  <text x="50" y="242" fill="{primary}" font-size="14.95" font-weight="700"
         font-family="ui-monospace,SFMono-Regular,Menlo,monospace">GITHUB STATS</text>
   <path d="M178 238 H550" stroke="{card_border}" stroke-dasharray="2 7"/>
 
@@ -326,25 +326,25 @@ aria-label="GitHub activity, stats, languages and contribution snake">
     <path d="M28.3 373.15 V380.85 M30.6 383 C36.2 383 39.3 380 39.3 374.8 V373.15"/>
     <circle cx="267" cy="376" r="7.2"/><path d="M267 372.4 V377.2"/><circle cx="267" cy="380.2" r=".75" fill="{primary}" stroke="none"/>
   </g>
-  <text x="82" y="282" fill="{muted}" font-size="9" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Repositories</text>
-  <text x="82" y="303" fill="{text}" font-size="17" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["repos"]}</text>
-  <text x="348" y="282" fill="{muted}" font-size="9" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Stars</text>
-  <text x="348" y="303" fill="{text}" font-size="17" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["stars"]}</text>
-  <text x="82" y="329" fill="{muted}" font-size="9" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Followers</text>
-  <text x="82" y="350" fill="{text}" font-size="17" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["followers"]}</text>
-  <text x="348" y="329" fill="{muted}" font-size="9" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Commits</text>
-  <text x="348" y="350" fill="{text}" font-size="17" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["commits"]}</text>
-  <text x="82" y="376" fill="{muted}" font-size="9" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Pull Requests</text>
-  <text x="82" y="397" fill="{text}" font-size="17" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["prs"]}</text>
-  <text x="348" y="376" fill="{muted}" font-size="9" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Issues</text>
-  <text x="348" y="397" fill="{text}" font-size="17" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["issues"]}</text>
-  <text x="50" y="414" fill="{secondary}" font-size="9"
+  <text x="82" y="282" fill="{muted}" font-size="10.35" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Repositories</text>
+  <text x="82" y="303" fill="{text}" font-size="19.55" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["repos"]}</text>
+  <text x="348" y="282" fill="{muted}" font-size="10.35" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Stars</text>
+  <text x="348" y="303" fill="{text}" font-size="19.55" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["stars"]}</text>
+  <text x="82" y="329" fill="{muted}" font-size="10.35" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Followers</text>
+  <text x="82" y="350" fill="{text}" font-size="19.55" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["followers"]}</text>
+  <text x="348" y="329" fill="{muted}" font-size="10.35" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Commits</text>
+  <text x="348" y="350" fill="{text}" font-size="19.55" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["commits"]}</text>
+  <text x="82" y="376" fill="{muted}" font-size="10.35" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Pull Requests</text>
+  <text x="82" y="397" fill="{text}" font-size="19.55" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["prs"]}</text>
+  <text x="348" y="376" fill="{muted}" font-size="10.35" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Issues</text>
+  <text x="348" y="397" fill="{text}" font-size="19.55" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["issues"]}</text>
+  <text x="50" y="414" fill="{secondary}" font-size="10.35"
         font-family="ui-monospace,SFMono-Regular,Menlo,monospace">generated by GitHub Actions</text>
 
   <!-- TOP LANGUAGES CARD -->
   <rect x="604" y="210" width="550" height="220" rx="14"
         fill="{card}" stroke="{card_border}"/>
-  <text x="628" y="242" fill="{primary}" font-size="13" font-weight="700"
+  <text x="628" y="242" fill="{primary}" font-size="14.95" font-weight="700"
         font-family="ui-monospace,SFMono-Regular,Menlo,monospace">TOP LANGUAGES</text>
   <path d="M752 238 H1128" stroke="{card_border}" stroke-dasharray="2 7"/>
 
@@ -361,11 +361,11 @@ aria-label="GitHub activity, stats, languages and contribution snake">
         y = 301 + i * 21
         p.append(
             f'<circle cx="632" cy="{y-5}" r="4" fill="{lang_colors[i]}"/>'
-            f'<text x="646" y="{y}" fill="{text}" font-size="11" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{esc(lang)}</text>'
-            f'<text x="1128" y="{y}" text-anchor="end" fill="{muted}" font-size="11" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{n/total*100:.1f}%</text>'
+            f'<text x="646" y="{y}" fill="{text}" font-size="12.65" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{esc(lang)}</text>'
+            f'<text x="1128" y="{y}" text-anchor="end" fill="{muted}" font-size="12.65" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{n/total*100:.1f}%</text>'
         )
     p.append(
-        f'<text x="628" y="414" fill="{secondary}" font-size="9" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">calculated from GitHub language bytes</text>'
+        f'<text x="628" y="414" fill="{secondary}" font-size="10.35" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">calculated from GitHub language bytes</text>'
     )
 
     # Full animated snake, inlined into the generated activity SVG so GitHub
@@ -378,7 +378,7 @@ aria-label="GitHub activity, stats, languages and contribution snake">
         # temporarily unavailable.
         p.append(
             f'<text x="590" y="535" text-anchor="middle" fill="{muted}" '
-            f'font-size="11" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">'
+            f'font-size="12.65" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">'
             f'CONTRIBUTION SNAKE REFRESHING…</text>'
         )
 
