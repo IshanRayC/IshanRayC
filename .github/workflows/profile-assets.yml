@@ -9,8 +9,8 @@ on:
       - .github/workflows/profile-assets.yml
       - assets/portrait.svg
   schedule:
-    # Refresh profile stats twice per hour. 15/45 avoids the busy top-of-hour window.
-    - cron: "15,45 * * * *"
+    # Refresh every 30 minutes so commits, PRs, issues, streaks, and top languages stay current.
+    - cron: "0,30 * * * *"
   workflow_dispatch:
 
 permissions:
