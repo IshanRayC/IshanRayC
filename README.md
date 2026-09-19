@@ -13,9 +13,9 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/signature-stripe-dark.svg?v=20260920-1931-fix4">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/signature-stripe-light.svg?v=20260920-1931-fix4">
-  <img width="100%" src="./assets/signature-stripe-dark.svg?v=20260920-1931-fix4" alt="Ishan signature stripe">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/signature-stripe-dark.svg?v=20260920-1940-fix5">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/signature-stripe-light.svg?v=20260920-1940-fix5">
+  <img width="100%" src="./assets/signature-stripe-dark.svg?v=20260920-1940-fix5" alt="Ishan signature stripe">
 </picture>
 </div>
 
@@ -29,9 +29,9 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-activity-dark.svg?v=20260920-1931-fix4">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/profile-activity-light.svg?v=20260920-1931-fix4">
-  <img width="100%" src="./assets/profile-activity-dark.svg?v=20260920-1931-fix4" alt="GitHub activity statistics">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-activity-dark.svg?v=20260920-1940-fix5">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/profile-activity-light.svg?v=20260920-1940-fix5">
+  <img width="100%" src="./assets/profile-activity-dark.svg?v=20260920-1940-fix5" alt="GitHub activity statistics">
 </picture>
 </div>
 

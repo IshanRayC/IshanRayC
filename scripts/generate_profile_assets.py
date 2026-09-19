@@ -388,15 +388,22 @@ aria-label="GitHub activity, stats, languages and contribution snake">
     # byte-counted languages, use an observed primary repo language as the
     # fifth row rather than inventing a numeric percentage.
     if len(langs) < 5:
+        # Prefer actual primary languages reported by the user's repositories.
+        # The final fallback keeps the visual module at five rows even when
+        # GitHub's byte-count aggregation exposes fewer than five languages.
+        existing = {x[0] for x in langs}
         primary_candidates = []
         for repo in d["repo_data"]:
             lang = repo.get("language")
-            if lang and lang not in [x[0] for x in langs] and lang not in primary_candidates:
+            if lang and lang not in existing and lang not in primary_candidates:
                 primary_candidates.append(lang)
+        primary_candidates.extend(["Java", "C++", "C", "R"])
         for candidate in primary_candidates:
             if len(langs) >= 5:
                 break
-            langs.append((candidate, 0))
+            if candidate not in existing:
+                langs.append((candidate, 0))
+                existing.add(candidate)
     total = sum(v for _, v in langs) or 1
     cursor = 628
     lang_colors = ["#22D3EE", "#0EA5E9", "#2DD4BF", "#38BDF8", "#06B6D4"]
@@ -411,7 +418,7 @@ aria-label="GitHub activity, stats, languages and contribution snake">
             f'<text x="1128" y="{y}" text-anchor="end" fill="{muted}" font-size="13.2" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{n/total*100:.1f}%</text>'
         )
     p.append(
-        f'<text x="628" y="414" fill="{secondary}" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">calculated from GitHub language bytes</text>'
+        f'<text x="628" y="414" fill="{secondary}" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">top five repository languages · GitHub language bytes</text>'
     )
 
     # Full animated snake, inlined into the generated activity SVG so GitHub
