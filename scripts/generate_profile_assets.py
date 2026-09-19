@@ -412,7 +412,9 @@ aria-label="GitHub activity, stats, languages and contribution snake">
                 existing.add(candidate)
     total = sum(v for _, v in langs) or 1
     cursor = 628
-    lang_colors = ["#22D3EE", "#0EA5E9", "#2DD4BF", "#38BDF8", "#06B6D4"]
+    # Five high-contrast cool tones chosen to stay elegant, distinct, and readable at a distance.
+    # Order: electric cyan → aqua blue → turquoise → vivid blue → deep indigo-blue.
+    lang_colors = ["#00E5FF", "#19C3FF", "#18C9A8", "#246BFF", "#4F46E5"]
     for i, (lang, n) in enumerate(langs[:5]):
         w = max(3, 500 * n / total)
         p.append(f'<rect x="{cursor:.1f}" y="264" width="{w:.1f}" height="14" fill="{lang_colors[i]}"/>')
