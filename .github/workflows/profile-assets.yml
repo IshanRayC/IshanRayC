@@ -22,6 +22,8 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+      - name: Install SVG font tooling
+        run: python3 -m pip install --quiet fonttools
       - name: Generate profile SVGs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
