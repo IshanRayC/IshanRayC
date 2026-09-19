@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import base64,html,json,math,os,re,urllib.parse,urllib.request
+import base64,html,io,json,math,os,re,subprocess,urllib.parse,urllib.request,zipfile
 from collections import Counter
 from datetime import date,timedelta
 from pathlib import Path
@@ -54,6 +54,65 @@ def read_logo_data():
     return base64.b64encode(path.read_bytes()).decode("ascii")
 
 
+def pro_racing_95_svg(fill="#F0FDFF", target_height=25, center_x=1070, baseline_y=72):
+    """Return actual Pro Racing Slant 95 glyph outlines as inline SVG paths."""
+    try:
+        from fontTools.ttLib import TTFont
+        from fontTools.pens.svgPathPen import SVGPathPen
+        from fontTools.pens.boundsPen import BoundsPen
+    except ImportError:
+        subprocess.run(["python3", "-m", "pip", "install", "--quiet", "fonttools"], check=True)
+        from fontTools.ttLib import TTFont
+        from fontTools.pens.svgPathPen import SVGPathPen
+        from fontTools.pens.boundsPen import BoundsPen
+
+    url = "https://dl.dafont.com/dl/?f=pro_racing"
+    req = urllib.request.Request(url, headers={"User-Agent": "IshanRayC-profile"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        data = r.read()
+    with zipfile.ZipFile(io.BytesIO(data)) as z:
+        names = z.namelist()
+        font_name = next((n for n in names if n.lower().endswith("pro racing slant.otf".lower())), None)
+        if not font_name:
+            raise RuntimeError("Pro Racing Slant.otf not found in downloaded archive")
+        font_bytes = z.read(font_name)
+
+    font = TTFont(io.BytesIO(font_bytes))
+    upm = float(font["head"].unitsPerEm)
+    glyph_set = font.getGlyphSet()
+    cmap = font.getBestCmap()
+    hmtx = font["hmtx"].metrics
+
+    glyphs = []
+    max_height = 1.0
+    total_advance = 0.0
+    for ch in "95":
+        gname = cmap.get(ord(ch))
+        if not gname:
+            raise RuntimeError(f"Missing glyph for {ch}")
+        pen = SVGPathPen(glyph_set)
+        glyph_set[gname].draw(pen)
+        bounds_pen = BoundsPen(glyph_set)
+        glyph_set[gname].draw(bounds_pen)
+        bounds = bounds_pen.bounds
+        if not bounds:
+            raise RuntimeError(f"Empty glyph for {ch}")
+        x0, y0, x1, y1 = bounds
+        max_height = max(max_height, float(y1 - y0))
+        advance = float(hmtx[gname][0])
+        glyphs.append((pen.getCommands(), advance, x0, y0, x1, y1))
+        total_advance += advance
+
+    scale = float(target_height) / max_height
+    start_x = float(center_x) - (total_advance * scale / 2.0)
+    parts = [f'<g transform="translate({start_x:.3f} {baseline_y:.3f}) scale({scale:.6f} {-scale:.6f})" fill="{fill}" fill-rule="nonzero">']
+    advance_x = 0.0
+    for path_d, advance, *_ in glyphs:
+        parts.append(f'<path d="{path_d}" transform="translate({advance_x:.3f} 0)"/>')
+        advance_x += advance
+    parts.append('</g>')
+    return "".join(parts)
+
 def hero(theme):
     bg, panel, stroke, text, muted = DARK if theme == "dark" else LIGHT
     body, vb = read_portrait()
@@ -93,9 +152,6 @@ viewBox="0 0 1180 610" role="img" aria-label="Ishan Ray Chaudhuri system profile
   <clipPath id="headerClip">
     <rect x="42" y="42" width="1100" height="44" rx="12"/>
   </clipPath>
-  <style><![CDATA[
-    @import url('https://fonts.cdnfonts.com/css/pro-racing');
-  ]]></style>
 </defs>
 
 <rect width="1180" height="610" rx="18" fill="{bg}"/>
@@ -109,9 +165,7 @@ viewBox="0 0 1180 610" role="img" aria-label="Ishan Ray Chaudhuri system profile
 <text x="134" y="70" fill="url(#labsText)" font-size="14" font-weight="700"
       letter-spacing=".7" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">ISHAN LABS</text>
 {logo_img}
-<text x="1070" y="71" fill="#F0FDFF" font-size="22" font-weight="400"
-      font-style="normal" text-anchor="middle"
-      font-family="'Pro Racing', sans-serif">95</text>
+{pro_racing_95_svg()}
 
 <text x="60" y="116" fill="{label}" font-size="13" font-family="ui-monospace,monospace">VISUAL.MAP</text>
 <text x="504" y="116" fill="{label}" font-size="13" font-family="ui-monospace,monospace">SYSTEM.INFO</text>
