@@ -58,7 +58,7 @@ def hero(theme):
     bg, panel, stroke, text, muted = DARK if theme == "dark" else LIGHT
     body, vb = read_portrait()
     logo_data = read_logo_data()
-    logo_img = f'<image href="data:image/png;base64,{logo_data}" x="960" y="46" width="32" height="36" preserveAspectRatio="xMidYMid meet"/>' if logo_data else ""
+    logo_img = f'<image href="data:image/png;base64,{logo_data}" x="960" y="47" width="32" height="34" preserveAspectRatio="xMidYMid meet"/>' if logo_data else ""
     if theme == "dark":
         shell, label, dotted, visual, value = "#0D1016", "#67E8F9", "#16343E", "#06080B", "#F8FAFC"
     else:
@@ -73,12 +73,20 @@ def hero(theme):
     p = [f'''<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="610" viewBox="0 0 1180 610" role="img" aria-label="Ishan Ray Chaudhuri system profile">
 <defs><clipPath id="v"><rect x="52" y="130" width="420" height="420" rx="14"/></clipPath><linearGradient id="headerGradient" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#062A35"/><stop offset=".48" stop-color="#0B596A"/><stop offset="1" stop-color="#0E8AA3"/></linearGradient><linearGradient id="labsText" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ECFEFF"/><stop offset="1" stop-color="#A5F3FC"/></linearGradient><filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
 <rect width="1180" height="610" rx="18" fill="{bg}"/><rect x="18" y="18" width="1144" height="574" rx="16" fill="{shell}" stroke="{stroke}"/>
-<rect x="42" y="42" width="1100" height="44" rx="10" fill="url(#headerGradient)"/>
-<rect x="42" y="42" width="1100" height="1" rx="1" fill="#67E8F9" fill-opacity=".55"/>
-<circle cx="66" cy="64" r="6" fill="#ECFEFF"/><circle cx="86" cy="64" r="6" fill="#ECFEFF"/><circle cx="106" cy="64" r="6" fill="#ECFEFF"/>
-<text x="134" y="70" fill="url(#labsText)" font-size="14" font-weight="700" letter-spacing=".7" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">ISHAN LABS</text>
-<rect x="954" y="42" width="44" height="44" rx="7" fill="#071A20" stroke="#67E8F9" stroke-width="1.2"/><rect x="957" y="45" width="38" height="38" rx="5" fill="#081116" stroke="#155E75" stroke-opacity=".65"/>{logo_img}
-<rect x="998" y="42" width="144" height="44" rx="0 10 10 0" fill="#0A4855" stroke="#67E8F9" stroke-opacity=".55"/><text x="1070" y="69" fill="#F0FDFF" font-size="14" font-weight="800" letter-spacing="1.2" text-anchor="middle" font-family="ui-monospace,monospace">95</text>
+<defs>
+  <clipPath id="v"><rect x="52" y="130" width="420" height="420" rx="14"/></clipPath>
+  <clipPath id="headerClip"><rect x="42" y="42" width="1100" height="44" rx="12"/></clipPath>
+  <linearGradient id="headerGradient" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#062A35"/><stop offset=".48" stop-color="#0B596A"/><stop offset="1" stop-color="#0E8AA3"/></linearGradient>
+  <linearGradient id="labsText" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ECFEFF"/><stop offset="1" stop-color="#A5F3FC"/></linearGradient>
+</defs>
+<rect width="1180" height="610" rx="18" fill="{bg}"/><rect x="18" y="18" width="1144" height="574" rx="16" fill="{shell}" stroke="{stroke}"/>
+<g clip-path="url(#headerClip)">
+  <rect x="42" y="42" width="1100" height="44" rx="12" fill="url(#headerGradient)"/>
+  <circle cx="66" cy="64" r="6" fill="#ECFEFF"/><circle cx="86" cy="64" r="6" fill="#ECFEFF"/><circle cx="106" cy="64" r="6" fill="#ECFEFF"/>
+  <text x="134" y="70" fill="url(#labsText)" font-size="14" font-weight="700" letter-spacing=".7" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">ISHAN LABS</text>
+  <rect x="954" y="42" width="44" height="44" rx="9" fill="#071A20"/>{logo_img}
+  <rect x="998" y="42" width="144" height="44" rx="10" fill="#0A4855"/><text x="1070" y="69" fill="#F0FDFF" font-size="14" font-weight="800" letter-spacing="1.2" text-anchor="middle" font-family="ui-monospace,monospace">95</text>
+</g>
 <text x="60" y="116" fill="{label}" font-size="13" font-family="ui-monospace,monospace">VISUAL.MAP</text><text x="504" y="116" fill="{label}" font-size="13" font-family="ui-monospace,monospace">SYSTEM.INFO</text>
 <rect x="52" y="130" width="420" height="420" rx="14" fill="{visual}" stroke="{CYAN}" stroke-width="2"/><g clip-path="url(#v)">{portrait}</g>
 <g font-size="14" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">''']
