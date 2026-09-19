@@ -93,6 +93,9 @@ viewBox="0 0 1180 610" role="img" aria-label="Ishan Ray Chaudhuri system profile
   <clipPath id="headerClip">
     <rect x="42" y="42" width="1100" height="44" rx="12"/>
   </clipPath>
+  <style><![CDATA[
+    @import url('https://fonts.cdnfonts.com/css/pro-racing');
+  ]]></style>
 </defs>
 
 <rect width="1180" height="610" rx="18" fill="{bg}"/>
@@ -106,9 +109,9 @@ viewBox="0 0 1180 610" role="img" aria-label="Ishan Ray Chaudhuri system profile
 <text x="134" y="70" fill="url(#labsText)" font-size="14" font-weight="700"
       letter-spacing=".7" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">ISHAN LABS</text>
 {logo_img}
-<text x="1070" y="71" fill="#F0FDFF" font-size="22" font-weight="700"
-      font-style="italic" text-anchor="middle"
-      font-family="Gothic UI,Segoe UI,sans-serif">95</text>
+<text x="1070" y="71" fill="#F0FDFF" font-size="22" font-weight="400"
+      font-style="normal" text-anchor="middle"
+      font-family="'Pro Racing', sans-serif">95</text>
 
 <text x="60" y="116" fill="{label}" font-size="13" font-family="ui-monospace,monospace">VISUAL.MAP</text>
 <text x="504" y="116" fill="{label}" font-size="13" font-family="ui-monospace,monospace">SYSTEM.INFO</text>
