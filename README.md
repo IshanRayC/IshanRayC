@@ -1,9 +1,9 @@
 <!-- ===== CYAN SYSTEM PROFILE — reference-style layout ===== -->
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/hero-dark.svg?v=20260918">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/hero-light.svg?v=20260918">
-  <img width="100%" src="./assets/hero-dark.svg?v=20260918" alt="Ishan Ray Chaudhuri system profile">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/header-gradient-dark.svg?v=20260919">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/header-gradient-light.svg?v=20260919">
+  <img width="100%" src="./assets/header-gradient-dark.svg?v=20260919" alt="Ishan Ray Chaudhuri profile header">
 </picture>
 
 <!-- EXISTING NAME ANIMATION — kept unchanged -->
