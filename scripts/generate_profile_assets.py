@@ -274,9 +274,7 @@ aria-label="GitHub activity, stats, languages and contribution snake">
 <rect x="1" y="1" width="1178" height="668" rx="16"
       fill="{frame}" stroke="{card_border}" stroke-width="2"/>
 <g clip-path="url(#activityFrame)">
-  <!-- Streak panel with deliberate top padding for the side icons. -->
-  <rect x="4" y="8" width="1172" height="186" rx="12"
-        fill="{card}" stroke="{card_border}"/>
+  <!-- Single clean top edge for the streak panel. -->
   <rect x="4" y="18" width="1172" height="176" rx="12"
         fill="{card}" stroke="{card_border}"/>
   <line x1="396" y1="54" x2="396" y2="176" stroke="{divider}"/>
