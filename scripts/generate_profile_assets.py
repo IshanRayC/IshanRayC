@@ -94,15 +94,15 @@ def hero(theme):
 
 def signature(theme):
     bg = "#FFFFFF" if theme == "light" else "#0D1016"
-    text = "#0F172A" if theme == "light" else "#F8FAFC"
     stroke = "#B8DCE4" if theme == "light" else "#12313B"
+    logo_data = read_logo_data()
+    logo_img = f'<rect x="12" y="9" width="54" height="54" rx="8" fill="#0B1118"/><image href="data:image/png;base64,{logo_data}" x="21" y="14" width="36" height="44" preserveAspectRatio="xMidYMid meet"/>' if logo_data else ""
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="72" viewBox="0 0 1040 72" role="img" aria-label="Ishan signature stripe">
-<rect x="1" y="1" width="1038" height="70" rx="8" fill="{bg}" stroke="{CYAN}" stroke-width="2"/><rect x="82" y="10" width="1" height="52" fill="{stroke}"/>
-<text x="24" y="44" fill="{text}" font-size="18" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">IR</text>
+<rect x="1" y="1" width="1038" height="70" rx="8" fill="{bg}" stroke="{CYAN}" stroke-width="2"/>
+{logo_img}
+<rect x="82" y="10" width="1" height="52" fill="{stroke}"/>
 <text x="110" y="44" fill="{CYAN}" font-size="20" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">BUILD • BREAK • DEBUG • LEARN • DEPLOY</text>
-<text x="1000" y="44" fill="{CYAN}" font-size="20" font-weight="700" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">02</text></svg>'''
-
-
+</svg>'''
 
 def snake_body():
     url = "https://raw.githubusercontent.com/IshanRayC/IshanRayC/gh-pages/github-contribution-snake.svg"
