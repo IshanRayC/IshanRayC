@@ -104,9 +104,9 @@ viewBox="0 0 1180 610" role="img" aria-label="Ishan Ray Chaudhuri system profile
 <text x="134" y="70" fill="url(#labsText)" font-size="14" font-weight="700"
       letter-spacing=".7" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">ISHAN LABS</text>
 {logo_img}
-<text x="1070" y="69" fill="#F0FDFF" font-size="14" font-weight="800"
-      letter-spacing="1.2" text-anchor="middle"
-      font-family="ui-monospace,SFMono-Regular,Menlo,monospace">95</text>
+<text x="1070" y="69" fill="#F0FDFF" font-size="15" font-weight="700"
+      font-style="italic" text-anchor="middle"
+      font-family="Gothic UI,Segoe UI,sans-serif">95</text>
 
 <text x="60" y="116" fill="{label}" font-size="13" font-family="ui-monospace,monospace">VISUAL.MAP</text>
 <text x="504" y="116" fill="{label}" font-size="13" font-family="ui-monospace,monospace">SYSTEM.INFO</text>
