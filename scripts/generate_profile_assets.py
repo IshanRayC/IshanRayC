@@ -125,15 +125,23 @@ def hero(theme):
     else:
         shell, label, dotted, visual, value = "#FFFFFF", "#0E7490", "#D6EAF0", "#050608", "#0F172A"
 
+    # The portrait source is intentionally taller than the square frame.
+    # Use a centered square crop and xMidYMid slice so the animation fills the
+    # frame edge-to-edge without the old contained-image imbalance.
     portrait_vb = vb
     try:
         vx, vy, vw, vh = [float(v) for v in vb.split()]
-        crop_top = min(80.0, vh * 0.071)
-        crop_bottom = min(80.0, vh * 0.071)
-        portrait_vb = f"{vx:.2f} {vy + crop_top:.2f} {vw:.2f} {vh - crop_top - crop_bottom:.2f}"
+        if vh > vw:
+            crop = (vh - vw) / 2.0
+            portrait_vb = f"{vx:.2f} {vy + crop:.2f} {vw:.2f} {vw:.2f}"
+        elif vw > vh:
+            crop = (vw - vh) / 2.0
+            portrait_vb = f"{vx + crop:.2f} {vy:.2f} {vh:.2f} {vh:.2f}"
+        else:
+            portrait_vb = f"{vx:.2f} {vy:.2f} {vw:.2f} {vh:.2f}"
     except Exception:
         portrait_vb = vb
-    portrait = f'<svg x="52" y="130" width="420" height="420" viewBox="{esc(portrait_vb)}" preserveAspectRatio="xMidYMid meet" overflow="hidden">{body}</svg>'
+    portrait = f'<svg x="52" y="130" width="420" height="420" viewBox="{esc(portrait_vb)}" preserveAspectRatio="xMidYMid slice" overflow="hidden" shape-rendering="geometricPrecision">{body}</svg>'
     rows = [
         ("Subject","ISHAN RAY CHAUDHURI"),("Role","CSE AND DATA SCIENCE STUDENT"),
         ("Origin","CHENNAI, INDIA"),("Education","BTECH CSE · VIT CHENNAI"),
@@ -200,15 +208,25 @@ def signature(theme):
     bg = "#FFFFFF" if theme == "light" else "#0D1016"
     stroke = "#B8DCE4" if theme == "light" else "#12313B"
     logo_data = read_logo_data()
-    logo_img = f'<rect x="12" y="9" width="132" height="54" rx="8" fill="#0B1118"/><image href="data:image/png;base64,{logo_data}" x="18" y="14" width="30" height="44" preserveAspectRatio="xMidYMid meet"/>{pro_racing_95_svg(target_height=25, center_x=94.60, baseline_y=48.50)}' if logo_data else pro_racing_95_svg(target_height=25, center_x=94.60, baseline_y=48.50)
+    logo_img = (
+        f'<rect x="12" y="9" width="132" height="54" rx="8" fill="#0B1118"/>'
+        f'<image href="data:image/png;base64,{logo_data}" x="18" y="14" width="30" height="44" preserveAspectRatio="xMidYMid meet"/>'
+        if logo_data else ""
+    )
+    # 95 is deliberately on the right side of the stripe, outside the IS badge.
+    # 18.75px is 25% smaller than the previous 25px target height.
+    badge_95 = pro_racing_95_svg(
+        target_height=18.75,
+        center_x=982.0,
+        baseline_y=50.0,
+    )
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="72" viewBox="0 0 1040 72" role="img" aria-label="Ishan signature stripe">
 <rect x="1" y="1" width="1038" height="70" rx="8" fill="{bg}" stroke="{CYAN}" stroke-width="2"/>
 {logo_img}
+{badge_95}
 <rect x="156" y="10" width="1" height="52" fill="{stroke}"/>
 <text x="184" y="44" fill="{CYAN}" font-size="20" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">BUILD • BREAK • DEBUG • LEARN • DEPLOY</text>
-</svg>'''
-
-def snake_body():
+</svg>'''def snake_body():
     url = "https://raw.githubusercontent.com/IshanRayC/IshanRayC/gh-pages/github-contribution-snake.svg"
     try:
         req = urllib.request.Request(

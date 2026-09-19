@@ -1,4 +1,5 @@
 name: Refresh Profile Assets
+
 on:
   push:
     branches: [main]
@@ -11,29 +12,63 @@ on:
     # Refresh profile stats twice per hour. 15/45 avoids the busy top-of-hour window.
     - cron: "15,45 * * * *"
   workflow_dispatch:
+
 permissions:
   contents: write
+
 concurrency:
   group: profile-assets
   cancel-in-progress: true
+
 jobs:
   generate:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Install SVG font tooling
         run: python3 -m pip install --quiet fonttools
-      - name: Generate profile SVGs
+
+      - name: Generate, sync, and publish profile SVGs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python3 scripts/generate_profile_assets.py
-      - name: Commit generated SVGs
+        shell: bash
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/profile-activity-dark.svg assets/profile-activity-light.svg assets/projects-dark.svg assets/projects-light.svg assets/hero-dark.svg assets/hero-light.svg assets/signature-stripe-dark.svg assets/signature-stripe-light.svg
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m "chore(profile): refresh cyan profile visuals"
-          git pull --rebase origin main
-          git push origin HEAD:main
+
+          for attempt in 1 2 3; do
+            echo "Profile asset publish attempt $attempt/3"
+
+            # Always regenerate from the newest main so this workflow cannot
+            # overwrite a newer commit from another profile workflow/action.
+            git fetch origin main
+            git reset --hard origin/main
+
+            python3 scripts/generate_profile_assets.py
+
+            git add               assets/profile-activity-dark.svg               assets/profile-activity-light.svg               assets/projects-dark.svg               assets/projects-light.svg               assets/hero-dark.svg               assets/hero-light.svg               assets/signature-stripe-dark.svg               assets/signature-stripe-light.svg
+
+            if git diff --cached --quiet; then
+              echo "Generated assets are already up to date."
+              exit 0
+            fi
+
+            git commit -m "chore(profile): refresh cyan profile visuals"
+
+            if git push origin HEAD:main; then
+              echo "Profile assets published successfully."
+              exit 0
+            fi
+
+            echo "Push raced with another writer; syncing and retrying..."
+            git reset --hard origin/main
+          done
+
+          echo "Failed to publish profile assets after 3 attempts."
+          exit 1
