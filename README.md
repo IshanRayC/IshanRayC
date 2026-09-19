@@ -30,9 +30,9 @@
 </td></tr>
 <tr><td align="center" style="padding:0">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-activity-dark.svg?v=20260920-2000-fix6">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/profile-activity-light.svg?v=20260920-2000-fix6">
-  <img width="100%" src="./assets/profile-activity-dark.svg?v=20260920-2000-fix6" alt="GitHub activity statistics">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-activity-dark.svg?v=20260920-2010-fix7">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/profile-activity-light.svg?v=20260920-2010-fix7">
+  <img width="100%" src="./assets/profile-activity-dark.svg?v=20260920-2010-fix7" alt="GitHub activity statistics">
 </picture>
 </td></tr>
 </table>
