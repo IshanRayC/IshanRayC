@@ -29,9 +29,9 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-activity-dark.svg?v=20260923">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/profile-activity-light.svg?v=20260923">
-  <img width="100%" src="./assets/profile-activity-dark.svg?v=20260923" alt="GitHub activity statistics">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-activity-dark.svg?v=20260926">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/profile-activity-light.svg?v=20260926">
+  <img width="100%" src="./assets/profile-activity-dark.svg?v=20260926" alt="GitHub activity statistics">
 </picture>
 </div>
 
