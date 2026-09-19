@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="190" viewBox="0 0 1180 190" role="img" aria-label="Ishan Ray Chaudhuri GitHub profile header">
+<defs>
+  <linearGradient id="edgeGlow" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#082B35"/>
+    <stop offset=".16" stop-color="#061D25"/>
+    <stop offset=".34" stop-color="#071116"/>
+    <stop offset=".5" stop-color="#070B10"/>
+    <stop offset=".66" stop-color="#071116"/>
+    <stop offset=".84" stop-color="#061D25"/>
+    <stop offset="1" stop-color="#082B35"/>
+  </linearGradient>
+  <radialGradient id="left" cx="0%" cy="50%" r="62%"><stop stop-color="#0E8AA3" stop-opacity=".72"/><stop offset="1" stop-color="#0E8AA3" stop-opacity="0"/></radialGradient>
+  <radialGradient id="right" cx="100%" cy="50%" r="62%"><stop stop-color="#0E8AA3" stop-opacity=".72"/><stop offset="1" stop-color="#0E8AA3" stop-opacity="0"/></radialGradient>
+  <linearGradient id="text" x1="0" x2="1"><stop stop-color="#ECFEFF"/><stop offset=".5" stop-color="#FFFFFF"/><stop offset="1" stop-color="#A5F3FC"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="1180" height="190" rx="18" fill="#070B10"/>
+<rect x="18" y="18" width="1144" height="154" rx="16" fill="url(#edgeGlow)" stroke="#12313B"/>
+<rect x="18" y="18" width="1144" height="154" rx="16" fill="url(#left)"/>
+<rect x="18" y="18" width="1144" height="154" rx="16" fill="url(#right)"/>
+<path d="M55 145 Q295 102 430 124 T590 145 T750 124 T1125 145" fill="none" stroke="#22D3EE" stroke-opacity=".13"/>
+<text x="590" y="105" text-anchor="middle" fill="url(#text)" font-family="Georgia, 'Times New Roman', serif" font-size="112" font-weight="900" font-style="italic" letter-spacing="-5" filter="url(#glow)">95</text>
+<text x="590" y="142" text-anchor="middle" fill="#22D3EE" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="18" font-weight="800" font-style="italic" letter-spacing="8">IS</text>
+<circle cx="52" cy="52" r="5" fill="#22D3EE"/><circle cx="72" cy="52" r="5" fill="#06B6D4"/><circle cx="92" cy="52" r="5" fill="#0EA5E9"/>
+<text x="1118" y="56" text-anchor="end" fill="#64748B" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="10" font-weight="700" letter-spacing="2">ISHANRAYC // PROFILE</text>
+</svg>
