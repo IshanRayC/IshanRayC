@@ -28,10 +28,14 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/featured-work-dark.svg?v=20260920-1415-final">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/featured-work-light.svg?v=20260920-1415-final">
-  <img width="100%" src="./assets/featured-work-dark.svg?v=20260920-1415-final" alt="Featured work">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/featured-work-header-dark.svg?v=20260920-1500-clickable">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/featured-work-header-light.svg?v=20260920-1500-clickable">
+  <img width="100%" src="./assets/featured-work-header-dark.svg?v=20260920-1500-clickable" alt="Featured work">
 </picture>
+
+<a href="https://github.com/IshanRayC/VITalWatch"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/featured-vitalwatch-dark.svg?v=20260920-1500-clickable"><source media="(prefers-color-scheme: light)" srcset="./assets/featured-vitalwatch-light.svg?v=20260920-1500-clickable"><img width="360" src="./assets/featured-vitalwatch-dark.svg?v=20260920-1500-clickable" alt="VITalWatch project"></picture></a>
+<a href="https://github.com/IshanRayC/mcp"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/featured-mcp-dark.svg?v=20260920-1500-clickable"><source media="(prefers-color-scheme: light)" srcset="./assets/featured-mcp-light.svg?v=20260920-1500-clickable"><img width="360" src="./assets/featured-mcp-dark.svg?v=20260920-1500-clickable" alt="MCP project"></picture></a>
+<a href="https://github.com/IshanRayC/simple-calc"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/featured-simple-calc-dark.svg?v=20260920-1500-clickable"><source media="(prefers-color-scheme: light)" srcset="./assets/featured-simple-calc-light.svg?v=20260920-1500-clickable"><img width="360" src="./assets/featured-simple-calc-dark.svg?v=20260920-1500-clickable" alt="Simple Calc project"></picture></a>
 </div>
 
 <div align="center">
@@ -44,8 +48,8 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/tech-stack-v7-dark.svg?v=20260920-1230-aligned">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/tech-stack-v7-light.svg?v=20260920-1230-aligned">
-  <img width="100%" src="./assets/tech-stack-v7-dark.svg?v=20260920-1230-aligned" alt="Technology stack">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/tech-stack-v8-dark.svg?v=20260920-1500-heading">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/tech-stack-v8-light.svg?v=20260920-1500-heading">
+  <img width="100%" src="./assets/tech-stack-v8-dark.svg?v=20260920-1500-heading" alt="Technology stack">
 </picture>
 </div>
