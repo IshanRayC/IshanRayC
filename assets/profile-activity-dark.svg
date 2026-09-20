@@ -36,9 +36,9 @@ aria-label="GitHub activity, stats, languages and contribution snake">
     </g>
   </g>
   <text x="214.67" y="104" text-anchor="middle" fill="#22D3EE" font-family="Segoe UI,Ubuntu,sans-serif" font-size="34.5" font-weight="700">16</text>
-  <text x="196.67" y="134" text-anchor="middle" fill="#22D3EE" font-family="Segoe UI,Ubuntu,sans-serif" font-size="16.1" font-weight="700">Active Days</text>
-  <text x="196.67" y="158" text-anchor="middle" fill="#94A3B8" font-family="Segoe UI,Ubuntu,sans-serif" font-size="13.8">last 400 days</text>
-  <rect x="172" y="170" width="49" height="4" rx="2" fill="#22D3EE"/>
+  <text x="214.67" y="134" text-anchor="middle" fill="#22D3EE" font-family="Segoe UI,Ubuntu,sans-serif" font-size="16.1" font-weight="700">Active Days</text>
+  <text x="214.67" y="158" text-anchor="middle" fill="#94A3B8" font-family="Segoe UI,Ubuntu,sans-serif" font-size="13.8">last 400 days</text>
+  <rect x="190" y="170" width="49" height="4" rx="2" fill="#22D3EE"/>
 
   <!-- CURRENT STREAK -->
   <g mask="url(#streakMask)">
@@ -61,9 +61,9 @@ aria-label="GitHub activity, stats, languages and contribution snake">
     <rect x="-18" y="22" width="36" height="8" rx="3" fill="#67E8F9"/>
   </g>
   <text x="965.33" y="104" text-anchor="middle" fill="#67E8F9" font-family="Segoe UI,Ubuntu,sans-serif" font-size="34.5" font-weight="700">8</text>
-  <text x="983.33" y="134" text-anchor="middle" fill="#67E8F9" font-family="Segoe UI,Ubuntu,sans-serif" font-size="16.1" font-weight="700">Longest Streak</text>
-  <text x="983.33" y="158" text-anchor="middle" fill="#94A3B8" font-family="Segoe UI,Ubuntu,sans-serif" font-size="13.8">all-time record</text>
-  <rect x="958" y="170" width="51" height="4" rx="2" fill="#67E8F9"/>
+  <text x="965.33" y="134" text-anchor="middle" fill="#67E8F9" font-family="Segoe UI,Ubuntu,sans-serif" font-size="16.1" font-weight="700">Longest Streak</text>
+  <text x="965.33" y="158" text-anchor="middle" fill="#94A3B8" font-family="Segoe UI,Ubuntu,sans-serif" font-size="13.8">all-time record</text>
+  <rect x="940" y="170" width="51" height="4" rx="2" fill="#67E8F9"/>
 
   <!-- GITHUB STATS CARD -->
   <rect x="26" y="210" width="556" height="220" rx="14"
@@ -104,7 +104,7 @@ aria-label="GitHub activity, stats, languages and contribution snake">
   <text x="76" y="320" fill="#94A3B8" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Followers</text>
   <text x="76" y="341" fill="#F8FAFC" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">20</text>
   <text x="346" y="320" fill="#94A3B8" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Commits</text>
-  <text x="346" y="341" fill="#F8FAFC" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">332</text>
+  <text x="346" y="341" fill="#F8FAFC" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">336</text>
 
   <text x="76" y="369" fill="#94A3B8" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Pull Requests</text>
   <text x="76" y="390" fill="#F8FAFC" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">2</text>
@@ -117,7 +117,7 @@ aria-label="GitHub activity, stats, languages and contribution snake">
   <!-- TOP LANGUAGES CARD -->
   <rect x="598" y="210" width="556" height="220" rx="14"
         fill="#111116" stroke="#12313B"/>
-  <text x="628" y="242" fill="#22D3EE" font-size="15.6" font-weight="700"
+  <text x="622" y="242" fill="#22D3EE" font-size="15.6" font-weight="700"
         font-family="ui-monospace,SFMono-Regular,Menlo,monospace">TOP LANGUAGES</text>
   <path d="M726 238 H1130" stroke="#12313B" stroke-dasharray="2 7"/>
 
