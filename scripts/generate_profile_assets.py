@@ -449,12 +449,101 @@ aria-label="GitHub activity, stats, languages and contribution snake">
     return "".join(p)
 
 def projects(d,theme):
- bg,panel,stroke,text,muted=DARK if theme=="dark" else LIGHT;wanted=["VITalWatch-Prototype","AI_Agents_Hackathon","DeepFake_shield","n8n-workflows","Free-Certifications","project-based-learning"];by={r["name"]:r for r in d["repo_data"]};rs=[by[x] for x in wanted if x in by];h=58+math.ceil(len(rs)/2)*146
- p=[f'<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="{h}" viewBox="0 0 1180 {h}"><rect x="1" y="1" width="1178" height="{h-2}" rx="16" fill="{bg}" stroke="{stroke}" stroke-width="2"/>']
- for i,r in enumerate(rs):
-  x=5+(i%2)*570;y=42+(i//2)*146;desc=esc(r.get("description") or "Repository project")
-  p.append(f'<a href="https://github.com/{r["full_name"]}"><rect x="{x}" y="{y}" width="560" height="132" rx="12" fill="{panel}" stroke="{stroke}"/><text x="{x+16}" y="{y+23}" fill="{muted}" font-family="monospace" font-size="9">● {esc(r["full_name"])}</text><text x="{x+16}" y="{y+57}" fill="{text}" font-family="monospace" font-size="15" font-weight="700">{esc(r["name"])}</text><text x="{x+16}" y="{y+81}" fill="{muted}" font-family="monospace" font-size="10">{desc[:80]}</text><rect x="{x+16}" y="{y+98}" width="86" height="18" rx="9" fill="#06232A" stroke="{stroke}"/><text x="{x+59}" y="{y+111}" text-anchor="middle" fill="{CYAN}" font-family="monospace" font-size="9">{esc(r.get("language") or "GitHub")}</text><text x="{x+542}" y="{y+111}" text-anchor="end" fill="{muted}" font-family="monospace" font-size="10">★ {r.get("stargazers_count",0)}</text></a>')
- p.append("</svg>");return "".join(p)
+    bg,panel,stroke,text,muted=DARK if theme=="dark" else LIGHT
+    by={r["name"]:r for r in d["repo_data"]}
+
+    # Curated featured work: keep the profile focused on a small number of
+    # substantive projects instead of turning the profile into a repository dump.
+    featured = [
+        {
+            "name":"VITalWatch",
+            "tag":"PRODUCT · CLINICAL SYSTEM",
+            "fallback":"Clinical-trial oversight and pharmacovigilance frontend prototype.",
+            "url":"https://github.com/IshanRayC/VITalWatch",
+            "demo":"https://vital-watch-sand.vercel.app/",
+            "chips":["React","TypeScript","Vite","Tailwind"]
+        },
+        {
+            "name":"mcp",
+            "tag":"AI · MCP · DOCS",
+            "fallback":"Microsoft Learn documentation access through a remote MCP server.",
+            "url":"https://github.com/IshanRayC/mcp",
+            "demo":"",
+            "chips":["MCP","Microsoft Learn","AI Agents"]
+        },
+        {
+            "name":"simple-calc",
+            "tag":"PYTHON · FOUNDATIONS",
+            "fallback":"Small, tested Python utility covering core arithmetic operations.",
+            "url":"https://github.com/IshanRayC/simple-calc",
+            "demo":"",
+            "chips":["Python","CLI","Testing"]
+        }
+    ]
+
+    def chip(x,y,label):
+        w=max(54,min(118,16+len(label)*6.1))
+        return (
+            f'<rect x="{x}" y="{y}" width="{w:.1f}" height="20" rx="10" fill="#071A2F" stroke="{stroke}"/>'
+            f'<text x="{x+w/2:.1f}" y="{y+13.5}" text-anchor="middle" fill="{CYAN}" '
+            f'font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif" '
+            f'font-size="9.5" font-weight="700">{esc(label)}</text>'
+        )
+
+    p=[f'''<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="278" viewBox="0 0 1180 278"
+role="img" aria-label="Featured projects">
+<defs>
+  <linearGradient id="featuredLine" x1="0" x2="1">
+    <stop stop-color="{CYAN}"/>
+    <stop offset=".5" stop-color="#67E8F9"/>
+    <stop offset="1" stop-color="#0EA5E9"/>
+  </linearGradient>
+</defs>
+<rect x="1" y="1" width="1178" height="276" rx="18" fill="{bg}" stroke="{stroke}" stroke-width="2"/>
+<rect x="18" y="18" width="1144" height="72" rx="13" fill="{panel}" stroke="{stroke}"/>
+<rect x="18" y="18" width="7" height="72" rx="3.5" fill="url(#featuredLine)"/>
+<text x="48" y="49" fill="{CYAN}" font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif"
+      font-size="26" font-weight="800" letter-spacing="1.4">FEATURED WORK</text>
+<text x="48" y="72" fill="{muted}" font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif"
+      font-size="11.5" letter-spacing="1.1">SELECTED BUILDS · SYSTEMS · AI · SOFTWARE ENGINEERING</text>
+<text x="1132" y="72" text-anchor="end" fill="{CYAN}" font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif"
+      font-size="10" font-weight="700">ISHANRAYC / WORK</text>
+''']
+
+    for i,item in enumerate(featured):
+        r=by.get(item["name"],{})
+        x=18+i*394
+        title=item["name"]
+        desc=esc(r.get("description") or item["fallback"])
+        lang=esc(r.get("language") or item["chips"][0])
+        p.append(
+            f'<a href="{item["url"]}">'
+            f'<rect x="{x}" y="108" width="378" height="152" rx="13" fill="{panel}" stroke="{stroke}"/>'
+            f'<circle cx="{x+23}" cy="131" r="5" fill="{CYAN}"/>'
+            f'<text x="{x+38}" y="136" fill="{muted}" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" '
+            f'font-size="9.5" font-weight="700">{esc(item["tag"])}</text>'
+            f'<text x="{x+18}" y="166" fill="{text}" font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif" '
+            f'font-size="18" font-weight="800">{esc(title)}</text>'
+            f'<text x="{x+18}" y="188" fill="{muted}" font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif" '
+            f'font-size="10.8">{desc[:82]}</text>'
+            f'<text x="{x+18}" y="207" fill="{muted}" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" '
+            f'font-size="8.8">PRIMARY STACK · {lang}</text>'
+        )
+        cx=x+18
+        for label in item["chips"][:3]:
+            p.append(chip(cx,221,label))
+            cx += max(54,min(118,16+len(label)*6.1))+6
+        if item["demo"]:
+            p.append(
+                f'<rect x="{x+286}" y="221" width="74" height="20" rx="10" fill="{CYAN}" fill-opacity=".12" stroke="{CYAN}" stroke-opacity=".55"/>'
+                f'<text x="{x+323}" y="234.5" text-anchor="middle" fill="{CYAN}" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" '
+                f'font-size="8.8" font-weight="700">LIVE DEMO ↗</text>'
+            )
+        p.append('</a>')
+
+    p.append('</svg>')
+    return "".join(p)
+
 def main():
  token=os.environ.get("GITHUB_TOKEN");assert token,"GITHUB_TOKEN missing";A.mkdir(exist_ok=True);d=collect(token)
  for t in ("dark","light"):
