@@ -26,6 +26,15 @@
 <a href="https://codeforces.com/profile/IshanRayC"><img src="https://img.shields.io/badge/CODEFORCES-0EA5E9?style=for-the-badge&logo=codeforces&logoColor=white"></a>
 <a href="https://www.kaggle.com/ishanrayc"><img src="https://img.shields.io/badge/KAGGLE-0891B2?style=for-the-badge&logo=kaggle&logoColor=white"></a>
 </div>
+
+<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/featured-work-dark.svg?v=20260920-1300-featured">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/featured-work-light.svg?v=20260920-1300-featured">
+  <img width="100%" src="./assets/featured-work-dark.svg?v=20260920-1300-featured" alt="Featured work">
+</picture>
+</div>
+
 <div align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-activity-dark.svg?v=20260920-0923-fix9">
@@ -44,10 +53,3 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/projects-dark.svg?v=20260918">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/projects-light.svg?v=20260918">
-  <img width="100%" src="./assets/projects-dark.svg?v=20260918" alt="Projects">
-</picture>
-</div>
-
-
