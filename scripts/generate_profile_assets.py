@@ -547,5 +547,5 @@ role="img" aria-label="Featured projects">
 def main():
  token=os.environ.get("GITHUB_TOKEN");assert token,"GITHUB_TOKEN missing";A.mkdir(exist_ok=True);d=collect(token)
  for t in ("dark","light"):
-  (A/f"profile-activity-{t}.svg").write_text(activity(d,t),encoding="utf-8");(A/f"projects-{t}.svg").write_text(projects(d,t),encoding="utf-8");(A/f"hero-{t}.svg").write_text(hero(t),encoding="utf-8");(A/f"signature-stripe-{t}.svg").write_text(signature(t),encoding="utf-8")
+  (A/f"profile-activity-{t}.svg").write_text(activity(d,t),encoding="utf-8");(A/f"projects-{t}.svg").write_text(projects(d,t),encoding="utf-8");(A/f"featured-work-{t}.svg").write_text(projects(d,t),encoding="utf-8");(A/f"hero-{t}.svg").write_text(hero(t),encoding="utf-8");(A/f"signature-stripe-{t}.svg").write_text(signature(t),encoding="utf-8")
 if __name__=="__main__":main()
