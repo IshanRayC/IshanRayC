@@ -56,7 +56,7 @@ jobs:
             cp assets/hero-dark.svg assets/hero-v2-dark.svg
             cp assets/hero-light.svg assets/hero-v2-light.svg
 
-            git add               assets/profile-activity-dark.svg               assets/profile-activity-light.svg               assets/projects-dark.svg               assets/projects-light.svg               assets/hero-dark.svg               assets/hero-light.svg               assets/hero-v2-dark.svg               assets/hero-v2-light.svg               assets/signature-stripe-dark.svg               assets/signature-stripe-light.svg
+            git add               assets/profile-activity-dark.svg               assets/profile-activity-light.svg               assets/projects-dark.svg               assets/projects-light.svg               assets/hero-dark.svg               assets/hero-light.svg               assets/hero-v2-dark.svg               assets/hero-v2-light.svg               assets/signature-stripe-dark.svg               assets/signature-stripe-light.svg               assets/featured-work-dark.svg               assets/featured-work-light.svg
 
             if git diff --cached --quiet; then
               echo "Generated assets are already up to date."
