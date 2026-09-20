@@ -485,7 +485,7 @@ role="img" aria-label="Featured work">
 <rect x="18" y="18" width="1144" height="72" rx="13" fill="{panel}" stroke="{stroke}"/>
 <rect x="18" y="18" width="7" height="72" rx="3.5" fill="url(#featuredLine)"/>
 <text x="48" y="49" fill="{CYAN}" font-family="Bodoni Moda,Didot,Baskerville,Georgia,serif"
-      font-size="28" font-weight="700" letter-spacing="1.8">FEATURED WORK</text>
+      font-size="26" font-weight="800" letter-spacing="1.4">FEATURED WORK</text>
 <text x="48" y="72" fill="{muted}" font-family="Bodoni Moda,Didot,Baskerville,Georgia,serif"
       font-size="11.5" letter-spacing="1.2">SELECTED BUILDS · SYSTEMS · AI · SOFTWARE ENGINEERING</text>
 <text x="1132" y="72" text-anchor="end" fill="{CYAN}" font-family="Bodoni Moda,Didot,Baskerville,Georgia,serif"
