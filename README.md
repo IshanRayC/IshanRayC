@@ -45,8 +45,8 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/tech-stack-v9-dark.svg?v=20260920-2355-5pct">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/tech-stack-v9-light.svg?v=20260920-2355-5pct">
-  <img width="100%" src="./assets/tech-stack-v9-dark.svg?v=20260920-2355-5pct" alt="Technology stack">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/tech-stack-v10-dark.svg?v=20260920-5pct-final">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/tech-stack-v10-light.svg?v=20260920-5pct-final">
+  <img width="100%" src="./assets/tech-stack-v10-dark.svg?v=20260920-5pct-final" alt="Technology stack">
 </picture>
 </div>
