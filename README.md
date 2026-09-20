@@ -50,6 +50,3 @@
   <img width="100%" src="./assets/tech-stack-v7-dark.svg?v=20260920-1230-aligned" alt="Technology stack">
 </picture>
 </div>
-
-<div align="center">
-<picture>
