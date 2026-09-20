@@ -452,33 +452,17 @@ def projects(d,theme):
     bg,panel,stroke,text,muted=DARK if theme=="dark" else LIGHT
     by={r["name"]:r for r in d["repo_data"]}
 
-    # Curated featured work: a small, recruiter-friendly selection with clear
-    # hierarchy instead of a dense repository catalogue.
+    # Curated featured work: a small set of substantive projects with clear hierarchy.
     featured = [
-        {
-            "name":"VITalWatch",
-            "tag":"PRODUCT · CLINICAL SYSTEM",
-            "lines":["Clinical-trial oversight +","pharmacovigilance frontend prototype."],
-            "url":"https://github.com/IshanRayC/VITalWatch",
-            "demo":"https://vital-watch-sand.vercel.app/",
-            "chips":["React","TypeScript","Vite"]
-        },
-        {
-            "name":"mcp",
-            "tag":"AI · MCP · DOCS",
-            "lines":["Microsoft Learn docs access through","a remote MCP server."],
-            "url":"https://github.com/IshanRayC/mcp",
-            "demo":"",
-            "chips":["MCP","Docs","AI Agents"]
-        },
-        {
-            "name":"simple-calc",
-            "tag":"PYTHON · FOUNDATIONS",
-            "lines":["Small Python utility for core","arithmetic operations."],
-            "url":"https://github.com/IshanRayC/simple-calc",
-            "demo":"",
-            "chips":["Python","CLI","Testing"]
-        }
+        {"name":"VITalWatch","tag":"PRODUCT · CLINICAL SYSTEM",
+         "lines":["Clinical-trial oversight +","pharmacovigilance frontend prototype."],
+         "url":"https://github.com/IshanRayC/VITalWatch","chips":["React","TypeScript","Vite"]},
+        {"name":"mcp","tag":"AI · MCP · DOCS",
+         "lines":["Microsoft Learn docs access through","a remote MCP server."],
+         "url":"https://github.com/IshanRayC/mcp","chips":["MCP","Docs","AI Agents"]},
+        {"name":"simple-calc","tag":"PYTHON · FOUNDATIONS",
+         "lines":["Small Python utility for core","arithmetic operations."],
+         "url":"https://github.com/IshanRayC/simple-calc","chips":["Python","CLI","Testing"]}
     ]
 
     def chip(x,y,label):
@@ -494,9 +478,7 @@ def projects(d,theme):
 role="img" aria-label="Featured work">
 <defs>
   <linearGradient id="featuredLine" x1="0" x2="1">
-    <stop stop-color="{CYAN}"/>
-    <stop offset=".5" stop-color="#67E8F9"/>
-    <stop offset="1" stop-color="#0EA5E9"/>
+    <stop stop-color="{CYAN}"/><stop offset=".5" stop-color="#67E8F9"/><stop offset="1" stop-color="#0EA5E9"/>
   </linearGradient>
 </defs>
 <rect x="1" y="1" width="1178" height="276" rx="18" fill="{bg}" stroke="{stroke}" stroke-width="2"/>
@@ -512,8 +494,8 @@ role="img" aria-label="Featured work">
 
     for i,item in enumerate(featured):
         x=18+i*394
-        r=by.get(item["name"],{})
         p.append(
+            f'<a href="{item["url"]}">'
             f'<rect x="{x}" y="108" width="378" height="152" rx="13" fill="{panel}" stroke="{stroke}"/>'
             f'<rect x="{x}" y="108" width="378" height="3" rx="1.5" fill="{CYAN}" opacity=".65"/>'
             f'<text x="{x+348}" y="130" text-anchor="end" fill="{CYAN}" fill-opacity=".35" '
@@ -521,8 +503,8 @@ role="img" aria-label="Featured work">
             f'<circle cx="{x+23}" cy="131" r="4.5" fill="{CYAN}"/>'
             f'<text x="{x+38}" y="136" fill="{muted}" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" '
             f'font-size="9.2" font-weight="700">{esc(item["tag"])}</text>'
-            f'<a href="{item["url"]}"><text x="{x+18}" y="166" fill="{text}" font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif" '
-            f'font-size="18" font-weight="800">{esc(item["name"])} ↗</text></a>'
+            f'<text x="{x+18}" y="166" fill="{text}" font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif" '
+            f'font-size="18" font-weight="800">{esc(item["name"])}</text>'
             f'<text x="{x+18}" y="187" fill="{muted}" font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif" '
             f'font-size="10.8">{esc(item["lines"][0])}</text>'
             f'<text x="{x+18}" y="202" fill="{muted}" font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif" '
@@ -532,12 +514,7 @@ role="img" aria-label="Featured work">
         for label in item["chips"]:
             p.append(chip(cx,221,label))
             cx += max(54,min(118,16+len(label)*6.1))+6
-        if item["demo"]:
-            p.append(
-                f'<a href="{item["demo"]}"><rect x="{x+286}" y="221" width="74" height="20" rx="10" fill="{CYAN}" fill-opacity=".12" stroke="{CYAN}" stroke-opacity=".55"/>'
-                f'<text x="{x+323}" y="234.5" text-anchor="middle" fill="{CYAN}" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" '
-                f'font-size="8.8" font-weight="700">LIVE DEMO ↗</text></a>'
-            )
+        p.append('</a>')
 
     p.append('</svg>')
     return "".join(p)
