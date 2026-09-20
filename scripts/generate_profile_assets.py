@@ -144,7 +144,7 @@ def hero(theme):
     portrait = f'<svg x="52" y="130" width="420" height="420" viewBox="{esc(portrait_vb)}" preserveAspectRatio="xMidYMid slice" overflow="hidden" shape-rendering="geometricPrecision">{body}</svg>'
     rows = [
         ("Subject","ISHAN RAY CHAUDHURI"),("Role","CSE AND DATA SCIENCE STUDENT"),
-        ("Origin","CHENNAI, INDIA"),("Education","BTECH CSE · VIT CHENNAI"),
+        ("Origin","INDIA"),("Education","BTECH CSE · VIT CHENNAI"),
         ("","BS DATA SCIENCE · IIT MADRAS"),("Status","LEARNING + BUILDING + SHIPPING"),
         ("Core.Lang","C · C++ · PYTHON · JAVA · R"),("Core.Data","NUMPY · PANDAS · MATLAB"),
         ("Core.Infra","DOCKER · WSL · CLOUD · DEVOPS")
@@ -200,7 +200,7 @@ viewBox="0 0 1180 610" role="img" aria-label="Ishan Ray Chaudhuri system profile
 <text x="726" y="400" fill="{CYAN}" font-size="14" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">@IshanRayC</text>
 <text x="522" y="448" fill="{CYAN}" font-size="13" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">TARGET</text>
 <text x="522" y="472" fill="{value}" font-size="15" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">SOFTWARE · AI/ML · CLOUD · DEVOPS · QUANT · HFT</text>
-<text x="522" y="496" fill="{value}" font-size="15" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">AUTOMATION · SYSTEM DESIGNS</text>
+<text x="522" y="496" fill="{value}" font-size="15" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">AUTOMATION · SYSTEM DESIGNS · FULL STACK</text>
 </svg>''')
     return "".join(p)
 
