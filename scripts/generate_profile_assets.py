@@ -302,9 +302,9 @@ aria-label="GitHub activity, stats, languages and contribution snake">
     </g>
   </g>
   <text x="214.67" y="104" text-anchor="middle" fill="{primary}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="34.5" font-weight="700">{active}</text>
-  <text x="196.67" y="134" text-anchor="middle" fill="{primary}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="16.1" font-weight="700">Active Days</text>
-  <text x="196.67" y="158" text-anchor="middle" fill="{sub}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="13.8">last 400 days</text>
-  <rect x="172" y="170" width="49" height="4" rx="2" fill="{primary}"/>
+  <text x="214.67" y="134" text-anchor="middle" fill="{primary}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="16.1" font-weight="700">Active Days</text>
+  <text x="214.67" y="158" text-anchor="middle" fill="{sub}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="13.8">last 400 days</text>
+  <rect x="190" y="170" width="49" height="4" rx="2" fill="{primary}"/>
 
   <!-- CURRENT STREAK -->
   <g mask="url(#streakMask)">
@@ -327,9 +327,9 @@ aria-label="GitHub activity, stats, languages and contribution snake">
     <rect x="-18" y="22" width="36" height="8" rx="3" fill="{secondary}"/>
   </g>
   <text x="965.33" y="104" text-anchor="middle" fill="{secondary}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="34.5" font-weight="700">{longest}</text>
-  <text x="983.33" y="134" text-anchor="middle" fill="{secondary}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="16.1" font-weight="700">Longest Streak</text>
-  <text x="983.33" y="158" text-anchor="middle" fill="{sub}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="13.8">all-time record</text>
-  <rect x="958" y="170" width="51" height="4" rx="2" fill="{secondary}"/>
+  <text x="965.33" y="134" text-anchor="middle" fill="{secondary}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="16.1" font-weight="700">Longest Streak</text>
+  <text x="965.33" y="158" text-anchor="middle" fill="{sub}" font-family="Segoe UI,Ubuntu,sans-serif" font-size="13.8">all-time record</text>
+  <rect x="940" y="170" width="51" height="4" rx="2" fill="{secondary}"/>
 
   <!-- GITHUB STATS CARD -->
   <rect x="26" y="210" width="556" height="220" rx="14"
@@ -383,7 +383,7 @@ aria-label="GitHub activity, stats, languages and contribution snake">
   <!-- TOP LANGUAGES CARD -->
   <rect x="598" y="210" width="556" height="220" rx="14"
         fill="{card}" stroke="{card_border}"/>
-  <text x="628" y="242" fill="{primary}" font-size="15.6" font-weight="700"
+  <text x="622" y="242" fill="{primary}" font-size="15.6" font-weight="700"
         font-family="ui-monospace,SFMono-Regular,Menlo,monospace">TOP LANGUAGES</text>
   <path d="M726 238 H1130" stroke="{card_border}" stroke-dasharray="2 7"/>
 
