@@ -8,8 +8,8 @@ role="img" aria-label="Featured work">
 <rect x="1" y="1" width="1178" height="276" rx="18" fill="#F5FAFC" stroke="#B8DCE4" stroke-width="2"/>
 <rect x="18" y="18" width="1144" height="72" rx="13" fill="#FFFFFF" stroke="#B8DCE4"/>
 <rect x="18" y="18" width="7" height="72" rx="3.5" fill="url(#featuredLine)"/>
-<text x="48" y="49" fill="#22D3EE" font-family="Bodoni Moda,Didot,Baskerville,Georgia,serif"
-      font-size="28" font-weight="700" letter-spacing="1.8">FEATURED WORK</text>
+<text x="48" y="49" fill="#22D3EE" font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif"
+      font-size="26" font-weight="800" letter-spacing="1.4">FEATURED WORK</text>
 <text x="48" y="72" fill="#64748B" font-family="Bodoni Moda,Didot,Baskerville,Georgia,serif"
       font-size="11.5" letter-spacing="1.2">SELECTED BUILDS · SYSTEMS · AI · SOFTWARE ENGINEERING</text>
 <text x="1132" y="72" text-anchor="end" fill="#22D3EE" font-family="Bodoni Moda,Didot,Baskerville,Georgia,serif"
