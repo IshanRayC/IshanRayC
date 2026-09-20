@@ -28,11 +28,11 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/featured-top-dark.svg?v=20260920-2330-armani">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/featured-top-light.svg?v=20260920-2330-armani">
-  <img width="100%" src="./assets/featured-top-dark.svg?v=20260920-2330-armani" alt="Featured work">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/featured-top-dark.svg?v=20260920-2345-clean">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/featured-top-light.svg?v=20260920-2345-clean">
+  <img width="100%" src="./assets/featured-top-dark.svg?v=20260920-2345-clean" alt="Featured work">
 </picture>
-<a href="https://github.com/IshanRayC/VITalWatch"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/featured-vitalwatch-band-dark.svg?v=20260920-2330-armani"><source media="(prefers-color-scheme: light)" srcset="./assets/featured-vitalwatch-band-light.svg?v=20260920-2330-armani"><img width="33.39%" src="./assets/featured-vitalwatch-band-dark.svg?v=20260920-2330-armani" alt="VITalWatch project"></picture></a><a href="https://github.com/IshanRayC/mcp"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/featured-mcp-band-dark.svg?v=20260920-2330-armani"><source media="(prefers-color-scheme: light)" srcset="./assets/featured-mcp-band-light.svg?v=20260920-2330-armani"><img width="33.39%" src="./assets/featured-mcp-band-dark.svg?v=20260920-2330-armani" alt="MCP project"></picture></a><a href="https://github.com/IshanRayC/simple-calc"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/featured-simple-calc-band-dark.svg?v=20260920-2330-armani"><source media="(prefers-color-scheme: light)" srcset="./assets/featured-simple-calc-band-light.svg?v=20260920-2330-armani"><img width="33.22%" src="./assets/featured-simple-calc-band-dark.svg?v=20260920-2330-armani" alt="Simple Calc project"></picture></a>
+<a href="https://github.com/IshanRayC/VITalWatch"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/featured-vitalwatch-band-dark.svg?v=20260920-2345-clean"><source media="(prefers-color-scheme: light)" srcset="./assets/featured-vitalwatch-band-light.svg?v=20260920-2345-clean"><img width="33.39%" src="./assets/featured-vitalwatch-band-dark.svg?v=20260920-2345-clean" alt="VITalWatch project"></picture></a><a href="https://github.com/IshanRayC/mcp"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/featured-mcp-band-dark.svg?v=20260920-2345-clean"><source media="(prefers-color-scheme: light)" srcset="./assets/featured-mcp-band-light.svg?v=20260920-2345-clean"><img width="33.39%" src="./assets/featured-mcp-band-dark.svg?v=20260920-2345-clean" alt="MCP project"></picture></a><a href="https://github.com/IshanRayC/simple-calc"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/featured-simple-calc-band-dark.svg?v=20260920-2345-clean"><source media="(prefers-color-scheme: light)" srcset="./assets/featured-simple-calc-band-light.svg?v=20260920-2345-clean"><img width="33.22%" src="./assets/featured-simple-calc-band-dark.svg?v=20260920-2345-clean" alt="Simple Calc project"></picture></a>
 </div>
 
 <div align="center">
@@ -45,8 +45,8 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/tech-stack-v9-dark.svg?v=20260920-1700-final">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/tech-stack-v9-light.svg?v=20260920-1700-final">
-  <img width="100%" src="./assets/tech-stack-v9-dark.svg?v=20260920-1700-final" alt="Technology stack">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/tech-stack-v9-dark.svg?v=20260920-2345-clean">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/tech-stack-v9-light.svg?v=20260920-2345-clean">
+  <img width="100%" src="./assets/tech-stack-v9-dark.svg?v=20260920-2345-clean" alt="Technology stack">
 </picture>
 </div>
