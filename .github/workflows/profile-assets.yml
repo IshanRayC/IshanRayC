@@ -42,7 +42,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          for attempt in 1 2 3; do
+          for attempt in 1 2 3 4 5 6; do
             echo "Profile asset publish attempt $attempt/3"
 
             # Always regenerate from the newest main so this workflow cannot
@@ -65,14 +65,20 @@ jobs:
 
             git commit -m "chore(profile): refresh cyan profile visuals"
 
+            # Re-sync immediately before pushing so brief concurrent profile commits do not cause a false failure.
+            git fetch origin main
+            git rebase origin/main
+
             if git push origin HEAD:main; then
               echo "Profile assets published successfully."
               exit 0
             fi
 
             echo "Push raced with another writer; syncing and retrying..."
+            git rebase --abort || true
             git reset --hard origin/main
+            sleep 2
           done
 
-          echo "Failed to publish profile assets after 3 attempts."
+          echo "Failed to publish profile assets after 6 attempts."
           exit 1
