@@ -1,9 +1,9 @@
 <!-- ===== CYAN SYSTEM PROFILE — reference-style layout ===== -->
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/hero-dark.svg?v=20260920-20260920-hero2">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/hero-light.svg?v=20260920-20260920-hero2">
-  <img width="100%" src="./assets/hero-dark.svg?v=20260920-20260920-hero2" alt="Ishan Ray Chaudhuri system profile">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/hero-v2-dark.svg?v=20260920-1100-hero-v2">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/hero-v2-light.svg?v=20260920-1100-hero-v2">
+  <img width="100%" src="./assets/hero-v2-dark.svg?v=20260920-1100-hero-v2" alt="Ishan Ray Chaudhuri system profile">
 </picture>
 
 <!-- EXISTING NAME ANIMATION — kept unchanged -->
@@ -36,9 +36,9 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/tech-stack-v3-dark.svg?v=20260920-1035-clean">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/tech-stack-v3-light.svg?v=20260920-1035-clean">
-  <img width="100%" src="./assets/tech-stack-v3-dark.svg?v=20260920-1035-clean" alt="Technology stack">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/tech-stack-v4-dark.svg?v=20260920-1100-tech-v4">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/tech-stack-v4-light.svg?v=20260920-1100-tech-v4">
+  <img width="100%" src="./assets/tech-stack-v4-dark.svg?v=20260920-1100-tech-v4" alt="Technology stack">
 </picture>
 </div>
 
