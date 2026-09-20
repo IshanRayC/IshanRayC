@@ -28,22 +28,16 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/featured-top-dark.svg?v=20260920-1700-final">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/featured-top-light.svg?v=20260920-1700-final">
-  <img width="100%" src="./assets/featured-top-dark.svg?v=20260920-1700-final" alt="Featured work">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/featured-top-dark.svg?v=20260920-1730-final">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/featured-top-light.svg?v=20260920-1730-final">
+  <img width="100%" src="./assets/featured-top-dark.svg?v=20260920-1730-final" alt="Featured work">
 </picture>
 
 <table width="100%" cellpadding="8" cellspacing="0">
 <tr>
-<td width="33.33%" align="center">
-<a href="https://github.com/IshanRayC/VITalWatch"><img width="100%" src="./assets/featured-vitalwatch-band-dark.svg?v=20260920-1700-final" alt="VITalWatch project"></a>
-</td>
-<td width="33.33%" align="center">
-<a href="https://github.com/IshanRayC/mcp"><img width="100%" src="./assets/featured-mcp-band-dark.svg?v=20260920-1700-final" alt="MCP project"></a>
-</td>
-<td width="33.33%" align="center">
-<a href="https://github.com/IshanRayC/simple-calc"><img width="100%" src="./assets/featured-simple-calc-band-dark.svg?v=20260920-1700-final" alt="Simple Calc project"></a>
-</td>
+<td width="33.33%" align="center"><a href="https://github.com/IshanRayC/VITalWatch"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/featured-vitalwatch-card-dark.svg?v=20260920-1730-final"><source media="(prefers-color-scheme: light)" srcset="./assets/featured-vitalwatch-card-light.svg?v=20260920-1730-final"><img width="100%" src="./assets/featured-vitalwatch-card-dark.svg?v=20260920-1730-final" alt="VITalWatch project"></picture></a></td>
+<td width="33.33%" align="center"><a href="https://github.com/IshanRayC/mcp"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/featured-mcp-card-dark.svg?v=20260920-1730-final"><source media="(prefers-color-scheme: light)" srcset="./assets/featured-mcp-card-light.svg?v=20260920-1730-final"><img width="100%" src="./assets/featured-mcp-card-dark.svg?v=20260920-1730-final" alt="MCP project"></picture></a></td>
+<td width="33.33%" align="center"><a href="https://github.com/IshanRayC/simple-calc"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/featured-simple-calc-card-dark.svg?v=20260920-1730-final"><source media="(prefers-color-scheme: light)" srcset="./assets/featured-simple-calc-card-light.svg?v=20260920-1730-final"><img width="100%" src="./assets/featured-simple-calc-card-dark.svg?v=20260920-1730-final" alt="Simple Calc project"></picture></a></td>
 </tr>
 </table>
 </div>
