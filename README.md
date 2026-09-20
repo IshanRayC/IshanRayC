@@ -1,9 +1,9 @@
 <!-- ===== CYAN SYSTEM PROFILE — reference-style layout ===== -->
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/hero-v2-dark.svg?v=20260920-1400-interests">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/hero-v2-light.svg?v=20260920-1400-interests">
-  <img width="100%" src="./assets/hero-v2-dark.svg?v=20260920-1400-interests" alt="Ishan Ray Chaudhuri system profile">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/hero-v2-dark.svg?v=20260920-1415-final">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/hero-v2-light.svg?v=20260920-1415-final">
+  <img width="100%" src="./assets/hero-v2-dark.svg?v=20260920-1415-final" alt="Ishan Ray Chaudhuri system profile">
 </picture>
 
 <!-- EXISTING NAME ANIMATION — kept unchanged -->
@@ -28,9 +28,9 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/featured-work-dark.svg?v=20260920-1400-repo-click">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/featured-work-light.svg?v=20260920-1400-repo-click">
-  <img width="100%" src="./assets/featured-work-dark.svg?v=20260920-1400-repo-click" alt="Featured work">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/featured-work-dark.svg?v=20260920-1415-final">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/featured-work-light.svg?v=20260920-1415-final">
+  <img width="100%" src="./assets/featured-work-dark.svg?v=20260920-1415-final" alt="Featured work">
 </picture>
 </div>
 
