@@ -519,8 +519,31 @@ role="img" aria-label="Featured work">
     p.append('</svg>')
     return "".join(p)
 
+def featured_slices(svg):
+    """Split the exact featured-work visual into a header and three horizontal card slices.
+    The README can wrap each slice in a real HTML link, while the SVG artwork remains unchanged.
+    """
+    inner=svg[svg.index(">")+1:svg.rindex("</svg>")]
+    specs={
+        "featured-top":("0 0 1180 108",1180,108),
+        "featured-vitalwatch-band":("0 108 394 170",394,170),
+        "featured-mcp-band":("394 108 788 170",394,170),
+        "featured-simple-calc-band":("788 108 1180 170",392,170),
+    }
+    return {
+        name:f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="{vb}" role="img">{inner}</svg>'
+        for name,(vb,w,h) in specs.items()
+    }
+
 def main():
  token=os.environ.get("GITHUB_TOKEN");assert token,"GITHUB_TOKEN missing";A.mkdir(exist_ok=True);d=collect(token)
  for t in ("dark","light"):
-  (A/f"profile-activity-{t}.svg").write_text(activity(d,t),encoding="utf-8");(A/f"projects-{t}.svg").write_text(projects(d,t),encoding="utf-8");(A/f"featured-work-{t}.svg").write_text(projects(d,t),encoding="utf-8");(A/f"hero-{t}.svg").write_text(hero(t),encoding="utf-8");(A/f"signature-stripe-{t}.svg").write_text(signature(t),encoding="utf-8")
+  (A/f"profile-activity-{t}.svg").write_text(activity(d,t),encoding="utf-8")
+  (A/f"projects-{t}.svg").write_text(projects(d,t),encoding="utf-8")
+  fw=projects(d,t)
+  (A/f"featured-work-{t}.svg").write_text(fw,encoding="utf-8")
+  for name,content in featured_slices(fw).items():
+   (A/f"{name}-{t}.svg").write_text(content,encoding="utf-8")
+  (A/f"hero-{t}.svg").write_text(hero(t),encoding="utf-8")
+  (A/f"signature-stripe-{t}.svg").write_text(signature(t),encoding="utf-8")
 if __name__=="__main__":main()
