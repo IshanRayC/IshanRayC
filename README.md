@@ -21,7 +21,6 @@
 
 <div align="center">
 <a href="https://www.linkedin.com/in/ishan-ray-chaudhuri/"><img src="https://img.shields.io/badge/LINKEDIN-06B6D4?style=for-the-badge&logo=linkedin&logoColor=white"></a>
-<a href="https://github.com/IshanRayC"><img src="https://img.shields.io/badge/ISHANRAYC-0B1118?style=for-the-badge&logo=github&logoColor=22D3EE"></a>
 <a href="https://leetcode.com/u/IshanRayC"><img src="https://img.shields.io/badge/LEETCODE-22D3EE?style=for-the-badge&logo=leetcode&logoColor=0B1118"></a>
 <a href="https://codeforces.com/profile/IshanRayC"><img src="https://img.shields.io/badge/CODEFORCES-0EA5E9?style=for-the-badge&logo=codeforces&logoColor=white"></a>
 <a href="https://www.kaggle.com/ishanrayc"><img src="https://img.shields.io/badge/KAGGLE-0891B2?style=for-the-badge&logo=kaggle&logoColor=white"></a>
@@ -29,9 +28,9 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/featured-work-dark.svg?v=20260920-1300-featured">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/featured-work-light.svg?v=20260920-1300-featured">
-  <img width="100%" src="./assets/featured-work-dark.svg?v=20260920-1300-featured" alt="Featured work">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/featured-work-dark.svg?v=20260920-1400-featured">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/featured-work-light.svg?v=20260920-1400-featured">
+  <img width="100%" src="./assets/featured-work-dark.svg?v=20260920-1400-featured" alt="Featured work">
 </picture>
 </div>
 
