@@ -493,7 +493,7 @@ role="img" aria-label="Featured work">
 ''']
 
     for i,item in enumerate(featured):
-        x=18+i*394
+        x=16+i*386
         p.append(
             f'<a href="{item["url"]}">'
             f'<rect x="{x}" y="108" width="378" height="152" rx="13" fill="{panel}" stroke="{stroke}"/>'
@@ -527,8 +527,8 @@ def featured_slices(svg):
     specs={
         "featured-top":("0 0 1180 108",1180,108),
         "featured-vitalwatch-band":("0 108 394 170",394,170),
-        "featured-mcp-band":("394 108 788 170",394,170),
-        "featured-simple-calc-band":("788 108 1180 170",392,170),
+        "featured-mcp-band":("394 108 394 170",394,170),
+        "featured-simple-calc-band":("788 108 392 170",392,170),
     }
     return {
         name:f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="{vb}" role="img">{inner}</svg>'
