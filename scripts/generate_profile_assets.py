@@ -452,29 +452,29 @@ def projects(d,theme):
     bg,panel,stroke,text,muted=DARK if theme=="dark" else LIGHT
     by={r["name"]:r for r in d["repo_data"]}
 
-    # Curated featured work: keep the profile focused on a small number of
-    # substantive projects instead of turning the profile into a repository dump.
+    # Curated featured work: a small, recruiter-friendly selection with clear
+    # hierarchy instead of a dense repository catalogue.
     featured = [
         {
             "name":"VITalWatch",
             "tag":"PRODUCT · CLINICAL SYSTEM",
-            "fallback":"Clinical-trial oversight and pharmacovigilance frontend prototype.",
+            "lines":["Clinical-trial oversight +","pharmacovigilance frontend prototype."],
             "url":"https://github.com/IshanRayC/VITalWatch",
             "demo":"https://vital-watch-sand.vercel.app/",
-            "chips":["React","TypeScript","Vite","Tailwind"]
+            "chips":["React","TypeScript","Vite"]
         },
         {
             "name":"mcp",
             "tag":"AI · MCP · DOCS",
-            "fallback":"Microsoft Learn documentation access through a remote MCP server.",
+            "lines":["Microsoft Learn docs access through","a remote MCP server."],
             "url":"https://github.com/IshanRayC/mcp",
             "demo":"",
-            "chips":["MCP","Microsoft Learn","AI Agents"]
+            "chips":["MCP","Docs","AI Agents"]
         },
         {
             "name":"simple-calc",
             "tag":"PYTHON · FOUNDATIONS",
-            "fallback":"Small, tested Python utility covering core arithmetic operations.",
+            "lines":["Small Python utility for core","arithmetic operations."],
             "url":"https://github.com/IshanRayC/simple-calc",
             "demo":"",
             "chips":["Python","CLI","Testing"]
@@ -491,7 +491,7 @@ def projects(d,theme):
         )
 
     p=[f'''<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="278" viewBox="0 0 1180 278"
-role="img" aria-label="Featured projects">
+role="img" aria-label="Featured work">
 <defs>
   <linearGradient id="featuredLine" x1="0" x2="1">
     <stop stop-color="{CYAN}"/>
@@ -511,35 +511,33 @@ role="img" aria-label="Featured projects">
 ''']
 
     for i,item in enumerate(featured):
-        r=by.get(item["name"],{})
         x=18+i*394
-        title=item["name"]
-        desc=esc(r.get("description") or item["fallback"])
-        lang=esc(r.get("language") or item["chips"][0])
+        r=by.get(item["name"],{})
         p.append(
-            f'<a href="{item["url"]}">'
             f'<rect x="{x}" y="108" width="378" height="152" rx="13" fill="{panel}" stroke="{stroke}"/>'
-            f'<circle cx="{x+23}" cy="131" r="5" fill="{CYAN}"/>'
+            f'<rect x="{x}" y="108" width="378" height="3" rx="1.5" fill="{CYAN}" opacity=".65"/>'
+            f'<text x="{x+348}" y="130" text-anchor="end" fill="{CYAN}" fill-opacity=".35" '
+            f'font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="9.5" font-weight="700">0{i+1:02d}</text>'
+            f'<circle cx="{x+23}" cy="131" r="4.5" fill="{CYAN}"/>'
             f'<text x="{x+38}" y="136" fill="{muted}" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" '
-            f'font-size="9.5" font-weight="700">{esc(item["tag"])}</text>'
-            f'<text x="{x+18}" y="166" fill="{text}" font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif" '
-            f'font-size="18" font-weight="800">{esc(title)}</text>'
-            f'<text x="{x+18}" y="188" fill="{muted}" font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif" '
-            f'font-size="10.8">{desc[:82]}</text>'
-            f'<text x="{x+18}" y="207" fill="{muted}" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" '
-            f'font-size="8.8">PRIMARY STACK · {lang}</text>'
+            f'font-size="9.2" font-weight="700">{esc(item["tag"])}</text>'
+            f'<a href="{item["url"]}"><text x="{x+18}" y="166" fill="{text}" font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif" '
+            f'font-size="18" font-weight="800">{esc(item["name"])} ↗</text></a>'
+            f'<text x="{x+18}" y="187" fill="{muted}" font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif" '
+            f'font-size="10.8">{esc(item["lines"][0])}</text>'
+            f'<text x="{x+18}" y="202" fill="{muted}" font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif" '
+            f'font-size="10.8">{esc(item["lines"][1])}</text>'
         )
         cx=x+18
-        for label in item["chips"][:3]:
+        for label in item["chips"]:
             p.append(chip(cx,221,label))
             cx += max(54,min(118,16+len(label)*6.1))+6
         if item["demo"]:
             p.append(
-                f'<rect x="{x+286}" y="221" width="74" height="20" rx="10" fill="{CYAN}" fill-opacity=".12" stroke="{CYAN}" stroke-opacity=".55"/>'
+                f'<a href="{item["demo"]}"><rect x="{x+286}" y="221" width="74" height="20" rx="10" fill="{CYAN}" fill-opacity=".12" stroke="{CYAN}" stroke-opacity=".55"/>'
                 f'<text x="{x+323}" y="234.5" text-anchor="middle" fill="{CYAN}" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" '
-                f'font-size="8.8" font-weight="700">LIVE DEMO ↗</text>'
+                f'font-size="8.8" font-weight="700">LIVE DEMO ↗</text></a>'
             )
-        p.append('</a>')
 
     p.append('</svg>')
     return "".join(p)
