@@ -179,7 +179,7 @@ viewBox="0 0 1180 610" role="img" aria-label="Ishan Ray Chaudhuri system profile
 <circle cx="86" cy="64" r="6" fill="#ECFEFF"/>
 <circle cx="106" cy="64" r="6" fill="#ECFEFF"/>
 <text x="134" y="70" fill="url(#labsText)" font-size="14" font-weight="700"
-      letter-spacing=".7" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">ISHAN LABS</text>
+      letter-spacing=".7" font-family="Inter,Helvetica Neue,Arial,sans-serif">ISHAN LABS</text>
 {logo_img}
 {pro_racing_95_svg()}
 
@@ -187,7 +187,7 @@ viewBox="0 0 1180 610" role="img" aria-label="Ishan Ray Chaudhuri system profile
 <text x="504" y="116" fill="{label}" font-size="13" font-family="ui-monospace,monospace">SYSTEM.INFO</text>
 <rect x="52" y="130" width="420" height="420" rx="14" fill="{visual}" stroke="{CYAN}" stroke-width="2"/>
 <g clip-path="url(#v)">{portrait}</g>
-<g font-size="14" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">''']
+<g font-size="14" font-family="Inter,Helvetica Neue,Arial,sans-serif">''']
 
     y = 154
     for k, v in rows:
@@ -197,10 +197,10 @@ viewBox="0 0 1180 610" role="img" aria-label="Ishan Ray Chaudhuri system profile
 
     p.append(f'''</g>
 <rect x="522" y="378" width="408" height="34" rx="17" fill="{CYAN}" fill-opacity=".10" stroke="{CYAN}" stroke-opacity=".75"/>
-<text x="726" y="400" fill="{CYAN}" font-size="14" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">@IshanRayC</text>
+<text x="726" y="400" fill="{CYAN}" font-size="14" text-anchor="middle" font-family="Inter,Helvetica Neue,Arial,sans-serif">@IshanRayC</text>
 <text x="522" y="448" fill="{CYAN}" font-size="13" font-family="ui-monospace,monospace">INTERESTS</text>
-<text x="522" y="472" fill="{value}" font-size="15" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">SOFTWARE · AI/ML · DEVOPS · AUTOMATION</text>
-<text x="522" y="496" fill="{value}" font-size="15" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">FULL STACK</text>
+<text x="522" y="472" fill="{value}" font-size="15" font-family="Inter,Helvetica Neue,Arial,sans-serif">SOFTWARE · AI/ML · DEVOPS · AUTOMATION</text>
+<text x="522" y="496" fill="{value}" font-size="15" font-family="Inter,Helvetica Neue,Arial,sans-serif">FULL STACK</text>
 </svg>''')
     return "".join(p)
 
@@ -219,7 +219,7 @@ def signature(theme):
 <rect x="1" y="1" width="1038" height="70" rx="8" fill="{bg}" stroke="{CYAN}" stroke-width="2"/>
 {logo_img}
 <rect x="82" y="10" width="1" height="52" fill="{stroke}"/>
-<text x="110" y="44" fill="{CYAN}" font-size="20" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">BUILD • BREAK • DEBUG • LEARN • DEPLOY</text>
+<text x="110" y="44" fill="{CYAN}" font-size="20" font-weight="700" font-family="Inter,Helvetica Neue,Arial,sans-serif">BUILD • BREAK • DEBUG • LEARN • DEPLOY</text>
 </svg>'''
 def snake_body():
     url = "https://raw.githubusercontent.com/IshanRayC/IshanRayC/gh-pages/github-contribution-snake.svg"
@@ -335,7 +335,7 @@ aria-label="GitHub activity, stats, languages and contribution snake">
   <rect x="26" y="210" width="556" height="220" rx="14"
         fill="{card}" stroke="{card_border}"/>
   <text x="50" y="242" fill="{primary}" font-size="15.6" font-weight="700"
-        font-family="ui-monospace,SFMono-Regular,Menlo,monospace">GITHUB STATS</text>
+        font-family="Inter,Helvetica Neue,Arial,sans-serif">GITHUB STATS</text>
   <path d="M178 238 H556" stroke="{card_border}" stroke-dasharray="2 7"/>
 
   <!-- Fixed icon rails: equal x positions, equal row spacing, consistent label gap. -->
@@ -362,29 +362,29 @@ aria-label="GitHub activity, stats, languages and contribution snake">
     <circle cx="318" cy="368.2" r=".75" fill="{primary}" stroke="none"/>
   </g>
 
-  <text x="76" y="275" fill="{muted}" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Repositories</text>
-  <text x="76" y="296" fill="{text}" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["repos"]}</text>
-  <text x="346" y="275" fill="{muted}" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Stars</text>
-  <text x="346" y="296" fill="{text}" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["stars"]}</text>
+  <text x="76" y="275" fill="{muted}" font-size="10.8" font-family="Inter,Helvetica Neue,Arial,sans-serif">Repositories</text>
+  <text x="76" y="296" fill="{text}" font-size="20.4" font-weight="700" font-family="Inter,Helvetica Neue,Arial,sans-serif">{d["repos"]}</text>
+  <text x="346" y="275" fill="{muted}" font-size="10.8" font-family="Inter,Helvetica Neue,Arial,sans-serif">Stars</text>
+  <text x="346" y="296" fill="{text}" font-size="20.4" font-weight="700" font-family="Inter,Helvetica Neue,Arial,sans-serif">{d["stars"]}</text>
 
-  <text x="76" y="320" fill="{muted}" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Followers</text>
-  <text x="76" y="341" fill="{text}" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["followers"]}</text>
-  <text x="346" y="320" fill="{muted}" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Commits</text>
-  <text x="346" y="341" fill="{text}" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["commits"]}</text>
+  <text x="76" y="320" fill="{muted}" font-size="10.8" font-family="Inter,Helvetica Neue,Arial,sans-serif">Followers</text>
+  <text x="76" y="341" fill="{text}" font-size="20.4" font-weight="700" font-family="Inter,Helvetica Neue,Arial,sans-serif">{d["followers"]}</text>
+  <text x="346" y="320" fill="{muted}" font-size="10.8" font-family="Inter,Helvetica Neue,Arial,sans-serif">Commits</text>
+  <text x="346" y="341" fill="{text}" font-size="20.4" font-weight="700" font-family="Inter,Helvetica Neue,Arial,sans-serif">{d["commits"]}</text>
 
-  <text x="76" y="369" fill="{muted}" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Pull Requests</text>
-  <text x="76" y="390" fill="{text}" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["prs"]}</text>
-  <text x="346" y="369" fill="{muted}" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">Issues</text>
-  <text x="346" y="390" fill="{text}" font-size="20.4" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{d["issues"]}</text>
+  <text x="76" y="369" fill="{muted}" font-size="10.8" font-family="Inter,Helvetica Neue,Arial,sans-serif">Pull Requests</text>
+  <text x="76" y="390" fill="{text}" font-size="20.4" font-weight="700" font-family="Inter,Helvetica Neue,Arial,sans-serif">{d["prs"]}</text>
+  <text x="346" y="369" fill="{muted}" font-size="10.8" font-family="Inter,Helvetica Neue,Arial,sans-serif">Issues</text>
+  <text x="346" y="390" fill="{text}" font-size="20.4" font-weight="700" font-family="Inter,Helvetica Neue,Arial,sans-serif">{d["issues"]}</text>
 
   <text x="50" y="414" fill="{secondary}" font-size="10.8"
-        font-family="ui-monospace,SFMono-Regular,Menlo,monospace">generated by GitHub Actions</text>
+        font-family="Inter,Helvetica Neue,Arial,sans-serif">generated by GitHub Actions</text>
 
   <!-- TOP LANGUAGES CARD -->
   <rect x="598" y="210" width="556" height="220" rx="14"
         fill="{card}" stroke="{card_border}"/>
   <text x="622" y="242" fill="{primary}" font-size="15.6" font-weight="700"
-        font-family="ui-monospace,SFMono-Regular,Menlo,monospace">TOP LANGUAGES</text>
+        font-family="Inter,Helvetica Neue,Arial,sans-serif">TOP LANGUAGES</text>
   <path d="M726 238 H1130" stroke="{card_border}" stroke-dasharray="2 7"/>
 
   <rect x="622" y="264" width="508" height="12" rx="2" fill="{snake_default}"/>
@@ -422,11 +422,11 @@ aria-label="GitHub activity, stats, languages and contribution snake">
         y = 301 + i * 21
         p.append(
             f'<circle cx="626" cy="{y-5}" r="4" fill="{lang_colors[i]}"/>'
-            f'<text x="640" y="{y}" fill="{text}" font-size="13.2" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{esc(lang)}</text>'
-            f'<text x="1130" y="{y}" text-anchor="end" fill="{muted}" font-size="13.2" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">{n/total*100:.1f}%</text>'
+            f'<text x="640" y="{y}" fill="{text}" font-size="13.2" font-family="Inter,Helvetica Neue,Arial,sans-serif">{esc(lang)}</text>'
+            f'<text x="1130" y="{y}" text-anchor="end" fill="{muted}" font-size="13.2" font-family="Inter,Helvetica Neue,Arial,sans-serif">{n/total*100:.1f}%</text>'
         )
     p.append(
-        f'<text x="622" y="414" fill="{secondary}" font-size="10.8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">top five repository languages · GitHub language bytes</text>'
+        f'<text x="622" y="414" fill="{secondary}" font-size="10.8" font-family="Inter,Helvetica Neue,Arial,sans-serif">top five repository languages · GitHub language bytes</text>'
     )
 
     # Full animated snake, inlined into the generated activity SVG so GitHub
@@ -439,7 +439,7 @@ aria-label="GitHub activity, stats, languages and contribution snake">
         # temporarily unavailable.
         p.append(
             f'<text x="590" y="535" text-anchor="middle" fill="{muted}" '
-            f'font-size="12.65" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">'
+            f'font-size="12.65" font-family="Inter,Helvetica Neue,Arial,sans-serif">'
             f'CONTRIBUTION SNAKE REFRESHING…</text>'
         )
 
@@ -470,8 +470,8 @@ def projects(d,theme):
         return (
             f'<rect x="{x}" y="{y}" width="{w:.1f}" height="20" rx="10" fill="#071A2F" stroke="{stroke}"/>'
             f'<text x="{x+w/2:.1f}" y="{y+13.5}" text-anchor="middle" fill="{CYAN}" '
-            f'font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif" '
-            f'font-size="9.5" font-weight="700">{esc(label)}</text>'
+            f'font-family="Bodoni Moda,Didot,Baskerville,Georgia,serif" '
+            f'font-size="9.3" font-weight="650">{esc(label)}</text>'
         )
 
     p=[f'''<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="278" viewBox="0 0 1180 278"
@@ -484,12 +484,12 @@ role="img" aria-label="Featured work">
 <rect x="1" y="1" width="1178" height="276" rx="18" fill="{bg}" stroke="{stroke}" stroke-width="2"/>
 <rect x="18" y="18" width="1144" height="72" rx="13" fill="{panel}" stroke="{stroke}"/>
 <rect x="18" y="18" width="7" height="72" rx="3.5" fill="url(#featuredLine)"/>
-<text x="48" y="49" fill="{CYAN}" font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif"
-      font-size="26" font-weight="800" letter-spacing="1.4">FEATURED WORK</text>
-<text x="48" y="72" fill="{muted}" font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif"
-      font-size="11.5" letter-spacing="1.1">SELECTED BUILDS · SYSTEMS · AI · SOFTWARE ENGINEERING</text>
-<text x="1132" y="72" text-anchor="end" fill="{CYAN}" font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif"
-      font-size="10" font-weight="700">ISHANRAYC / WORK</text>
+<text x="48" y="49" fill="{CYAN}" font-family="Bodoni Moda,Didot,Baskerville,Georgia,serif"
+      font-size="28" font-weight="700" letter-spacing="1.8">FEATURED WORK</text>
+<text x="48" y="72" fill="{muted}" font-family="Bodoni Moda,Didot,Baskerville,Georgia,serif"
+      font-size="11.5" letter-spacing="1.2">SELECTED BUILDS · SYSTEMS · AI · SOFTWARE ENGINEERING</text>
+<text x="1132" y="72" text-anchor="end" fill="{CYAN}" font-family="Bodoni Moda,Didot,Baskerville,Georgia,serif"
+      font-size="9.7" font-weight="700">ISHANRAYC / WORK</text>
 ''']
 
     for i,item in enumerate(featured):
@@ -499,16 +499,16 @@ role="img" aria-label="Featured work">
             f'<rect x="{x}" y="108" width="378" height="152" rx="13" fill="{panel}" stroke="{stroke}"/>'
             f'<rect x="{x}" y="108" width="378" height="3" rx="1.5" fill="{CYAN}" opacity=".65"/>'
             f'<text x="{x+348}" y="130" text-anchor="end" fill="{CYAN}" fill-opacity=".35" '
-            f'font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="9.5" font-weight="700">0{i+1:02d}</text>'
+            f'font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="9.7" font-weight="700">0{i+1:02d}</text>'
             f'<circle cx="{x+23}" cy="131" r="4.5" fill="{CYAN}"/>'
-            f'<text x="{x+38}" y="136" fill="{muted}" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" '
-            f'font-size="9.2" font-weight="700">{esc(item["tag"])}</text>'
-            f'<text x="{x+18}" y="166" fill="{text}" font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif" '
-            f'font-size="18" font-weight="800">{esc(item["name"])}</text>'
-            f'<text x="{x+18}" y="187" fill="{muted}" font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif" '
-            f'font-size="10.8">{esc(item["lines"][0])}</text>'
-            f'<text x="{x+18}" y="202" fill="{muted}" font-family="Banscrift SemiBold Condensed,Arial Narrow,Rajdhani,Segoe UI,Arial,sans-serif" '
-            f'font-size="10.8">{esc(item["lines"][1])}</text>'
+            f'<text x="{x+38}" y="136" fill="{muted}" font-family="Inter,Helvetica Neue,Arial,sans-serif" '
+            f'font-size="9.7" font-weight="700">{esc(item["tag"])}</text>'
+            f'<text x="{x+18}" y="166" fill="{text}" font-family="Bodoni Moda,Didot,Baskerville,Georgia,serif" '
+            f'font-size="20" font-weight="600" letter-spacing="0.3">{esc(item["name"])}</text>'
+            f'<text x="{x+18}" y="187" fill="{muted}" font-family="Bodoni Moda,Didot,Baskerville,Georgia,serif" '
+            f'font-size="12.6" font-weight="500" letter-spacing="0.05">{esc(item["lines"][0])}</text>'
+            f'<text x="{x+18}" y="202" fill="{muted}" font-family="Bodoni Moda,Didot,Baskerville,Georgia,serif" '
+            f'font-size="12.6" font-weight="500" letter-spacing="0.05">{esc(item["lines"][1])}</text>'
         )
         cx=x+18
         for label in item["chips"]:
