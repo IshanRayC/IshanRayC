@@ -36,9 +36,9 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/tech-stack-v5-dark.svg?v=20260920-1130-clean">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/tech-stack-v5-light.svg?v=20260920-1130-clean">
-  <img width="100%" src="./assets/tech-stack-v5-dark.svg?v=20260920-1130-clean" alt="Technology stack">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/tech-stack-v6-dark.svg?v=20260920-1200-v6">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/tech-stack-v6-light.svg?v=20260920-1200-v6">
+  <img width="100%" src="./assets/tech-stack-v6-dark.svg?v=20260920-1200-v6" alt="Technology stack">
 </picture>
 </div>
 
